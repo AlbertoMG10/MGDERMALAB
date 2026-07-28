@@ -1,11 +1,15 @@
 const header = document.querySelector("[data-header]");
 const reveals = document.querySelectorAll(".reveal");
 const timeline = document.querySelector("[data-timeline]");
-const leadForms = document.querySelectorAll(".contact-form, .individual-form");
+const leadForms = document.querySelectorAll(".contact-form");
 const heroImage = document.querySelector(".hero-image");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const mainNav = document.querySelector("#main-nav");
 const whatsappLinks = document.querySelectorAll("[data-whatsapp-link]");
+const contactForm = document.querySelector(".contact-form");
+const clientTypeSelect = document.querySelector("[data-client-type]");
+const recetaField = document.querySelector("[data-receta-field]");
+const recetaSelect = document.querySelector("[data-receta-select]");
 
 const WHATSAPP_NUMBER = "525523348746";
 const WHATSAPP_MESSAGE =
@@ -134,6 +138,8 @@ const buildContactPayload = (data) => {
   const tipoCliente = normalizeValue(data.get("tipo_cliente"));
   const producto = normalizeValue(data.get("producto_linea"));
   const cantidad = normalizeValue(data.get("volumen"));
+  const receta = tipoCliente === "Compra individual" ? normalizeValue(data.get("receta")) : "";
+  const recetaMessage = receta ? ` Receta médica: ${receta}.` : "";
 
   return {
     nombre: normalizeValue(data.get("nombre")),
@@ -141,34 +147,26 @@ const buildContactPayload = (data) => {
     tipoCliente,
     producto,
     cantidad,
-    receta: "",
-    mensaje: `Solicitud desde formulario de cotización. Tipo de cliente: ${tipoCliente}. Producto o línea: ${producto}. Cantidad aproximada: ${cantidad}.`,
-    ...getTrackingParams(),
-  };
-};
-
-const buildIndividualPayload = (data) => {
-  const producto = normalizeValue(data.get("producto_individual"));
-  const receta = normalizeValue(data.get("receta"));
-
-  return {
-    nombre: normalizeValue(data.get("nombre_individual")),
-    whatsapp: normalizeValue(data.get("whatsapp_individual")),
-    tipoCliente: "Compra individual",
-    producto,
-    cantidad: "1",
     receta,
-    mensaje: `Compra individual. Producto de interés: ${producto}. Receta médica: ${receta}.`,
+    mensaje: `Solicitud desde formulario de cotización. Tipo de cliente: ${tipoCliente}. Producto o línea: ${producto}. Cantidad aproximada: ${cantidad}.${recetaMessage}`,
     ...getTrackingParams(),
   };
 };
 
 const buildPayload = (form, data) => {
-  if (form.matches(".individual-form")) {
-    return buildIndividualPayload(data);
-  }
-
   return buildContactPayload(data);
+};
+
+const updateRecetaField = () => {
+  if (!clientTypeSelect || !recetaField || !recetaSelect) return;
+
+  const shouldShow = clientTypeSelect.value === "Compra individual";
+  recetaField.hidden = !shouldShow;
+  recetaSelect.required = shouldShow;
+
+  if (!shouldShow) {
+    recetaSelect.value = "";
+  }
 };
 
 const setFormStatus = (form, message, state = "") => {
@@ -212,6 +210,7 @@ const submitLeadForm = async (form, event) => {
     }
 
     form.reset();
+    updateRecetaField();
     setFormStatus(form, "Solicitud enviada correctamente.", "success");
     trackEvent("lead_form_submit", {
       form_name: form.getAttribute("name") || "lead",
@@ -239,6 +238,11 @@ const submitLeadForm = async (form, event) => {
 leadForms.forEach((form) => {
   form.addEventListener("submit", (event) => submitLeadForm(form, event));
 });
+
+if (contactForm && clientTypeSelect) {
+  clientTypeSelect.addEventListener("change", updateRecetaField);
+  updateRecetaField();
+}
 
 whatsappLinks.forEach((link) => {
   link.addEventListener("click", () => {

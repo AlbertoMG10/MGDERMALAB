@@ -448,30 +448,6 @@
         </div>
       </section>
 
-      <section class="section patient" id="compra-individual">
-        <div class="patient-card reveal">
-          <p class="eyebrow">Compra individual</p>
-          <h2>Orientación responsable para uso personal.</h2>
-          <p>
-            Si buscas alguno de nuestros productos para uso personal, podemos
-            orientarte sobre la disponibilidad y los requisitos aplicables para
-            su adquisición.
-          </p>
-          <form class="individual-form" name="compra_individual" method="POST" data-netlify="true" data-netlify-honeypot="bot-field-individual">
-            <input type="hidden" name="form-name" value="compra_individual" />
-            <p class="bot-field" aria-hidden="true">
-              <label>No llenar este campo<input name="bot-field-individual" tabindex="-1" autocomplete="off" /></label>
-            </p>
-            <label>Producto de interés<input type="text" name="producto_individual" placeholder="Producto que buscas" autocomplete="off" required /></label>
-            <label>¿Cuentas con receta médica?<select name="receta" required><option value="">Selecciona una opción</option><option>Sí</option><option>No</option></select></label>
-            <label>Nombre<input type="text" name="nombre_individual" placeholder="Tu nombre" autocomplete="name" required /></label>
-            <label>WhatsApp<input type="tel" name="whatsapp_individual" placeholder="+52" autocomplete="tel" inputmode="tel" pattern="[0-9\\s()+-]{8,}" required /></label>
-            <button type="submit">Enviar solicitud</button>
-            <p class="form-status" aria-live="polite"></p>
-          </form>
-        </div>
-      </section>
-
       <section class="contact-section" id="contacto">
         <div class="contact-copy reveal">
           <p class="eyebrow">Contacto comercial</p>
@@ -499,17 +475,25 @@
           </label>
           <label>
             WhatsApp
-            <input type="tel" name="whatsapp" placeholder="+52" autocomplete="tel" inputmode="tel" pattern="[0-9\s()+-]{8,}" required />
+            <input type="tel" name="whatsapp" placeholder="+52" autocomplete="tel" inputmode="tel" pattern="[0-9 \(\)\+\-]{8,}" minlength="8" required />
           </label>
           <label>
             Tipo de cliente
-            <select name="tipo_cliente" required>
+            <select name="tipo_cliente" data-client-type required>
               <option value="">Selecciona una opción</option>
               <option>Médico</option>
               <option>Clínica</option>
               <option>Farmacia</option>
               <option>Distribuidor</option>
               <option>Compra individual</option>
+            </select>
+          </label>
+          <label class="receta-field" data-receta-field hidden>
+            ¿Cuenta con receta médica?
+            <select name="receta" data-receta-select>
+              <option value="">Selecciona una opción</option>
+              <option>Sí</option>
+              <option>No</option>
             </select>
           </label>
           <label>
@@ -554,7 +538,7 @@
         <strong>Programas</strong>
         <a href="#medicos">Médicos</a>
         <a href="#farmacias">Farmacias</a>
-        <a href="#compra-individual">Compra individual</a>
+        <a href="#contacto">Compra individual</a>
         <a href="#contacto">Abrir cuenta comercial</a>
       </div>
       <div class="footer-column">
