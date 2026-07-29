@@ -36,6 +36,7 @@
     />
     <link rel="preload" as="image" href="assets/hero-operacion-1600.jpg" imagesrcset="assets/hero-operacion-900.jpg 900w, assets/hero-operacion-1600.jpg 1600w" imagesizes="100vw" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -540,6 +541,7 @@
             Cantidad aproximada
             <input type="text" name="volumen" placeholder="Ej. 3 piezas, 10 piezas, 50+" required />
           </label>
+          <div class="turnstile-field" data-turnstile-widget aria-label="Verificación de seguridad"></div>
           <button type="submit">Solicitar cotización</button>
           <p class="form-status" aria-live="polite"></p>
           <p class="form-note">Al enviar, aceptas que usemos tus datos para seguimiento comercial. Consulta el <a href="privacidad.html">aviso de privacidad</a>.</p>

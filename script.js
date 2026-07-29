@@ -15,11 +15,14 @@ const WHATSAPP_NUMBER = "525523348746";
 const WHATSAPP_MESSAGE =
   "Hola, me interesa solicitar disponibilidad y cotización de productos de MG Dermalab.";
 const LEADS_ENDPOINT = "https://mgdermalab-backend.onrender.com/api/leads";
+const TURNSTILE_SITE_KEY = "";
+const TURNSTILE_SITE_KEY_ENDPOINT = "https://mgdermalab-backend.onrender.com/api/turnstile-site-key";
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const mobileViewport = window.matchMedia("(max-width: 980px)");
 
 let ticking = false;
+let turnstileWidgetId = null;
 
 const normalizeValue = (value) => String(value || "").trim();
 
@@ -134,6 +137,85 @@ const getTrackingParams = () => {
   };
 };
 
+const getTurnstileWidget = () => document.querySelector("[data-turnstile-widget]");
+
+const setTurnstileError = (message) => {
+  const widget = getTurnstileWidget();
+  if (!widget) return;
+
+  widget.dataset.state = "error";
+  widget.textContent = message;
+};
+
+const getTurnstileSiteKey = async () => {
+  if (TURNSTILE_SITE_KEY) return TURNSTILE_SITE_KEY;
+
+  const response = await fetch(TURNSTILE_SITE_KEY_ENDPOINT, {
+    method: "GET",
+    headers: { Accept: "application/json" },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Turnstile site key endpoint responded with ${response.status}`);
+  }
+
+  const data = await response.json();
+  return normalizeValue(data.siteKey || data.site_key);
+};
+
+const waitForTurnstile = () =>
+  new Promise((resolve, reject) => {
+    const startedAt = Date.now();
+
+    const check = () => {
+      if (window.turnstile && typeof window.turnstile.render === "function") {
+        resolve(window.turnstile);
+        return;
+      }
+
+      if (Date.now() - startedAt > 8000) {
+        reject(new Error("Cloudflare Turnstile no cargó a tiempo."));
+        return;
+      }
+
+      window.setTimeout(check, 120);
+    };
+
+    check();
+  });
+
+const initTurnstile = async () => {
+  const widget = getTurnstileWidget();
+  if (!widget || turnstileWidgetId !== null) return;
+
+  try {
+    const [siteKey, turnstile] = await Promise.all([getTurnstileSiteKey(), waitForTurnstile()]);
+
+    if (!siteKey) {
+      throw new Error("No se recibió la Site Key de Turnstile.");
+    }
+
+    turnstileWidgetId = turnstile.render(widget, {
+      sitekey: siteKey,
+      theme: "light",
+    });
+  } catch (error) {
+    setTurnstileError("No se pudo cargar la verificación de seguridad. Inténtalo nuevamente o contáctanos por WhatsApp.");
+    trackEvent("turnstile_load_error", { message: error.message });
+  }
+};
+
+const getTurnstileToken = () => {
+  if (!window.turnstile || turnstileWidgetId === null) return "";
+  return normalizeValue(window.turnstile.getResponse(turnstileWidgetId));
+};
+
+const resetTurnstile = () => {
+  if (window.turnstile && turnstileWidgetId !== null) {
+    window.turnstile.reset(turnstileWidgetId);
+  }
+};
+
 const buildContactPayload = (data) => {
   const tipoCliente = normalizeValue(data.get("tipo_cliente"));
   const producto = normalizeValue(data.get("producto_linea"));
@@ -148,6 +230,7 @@ const buildContactPayload = (data) => {
     producto,
     cantidad,
     receta,
+    "cf-turnstile-response": normalizeValue(data.get("cf-turnstile-response")) || getTurnstileToken(),
     mensaje: `Solicitud desde formulario de cotización. Tipo de cliente: ${tipoCliente}. Producto o línea: ${producto}. Cantidad aproximada: ${cantidad}.${recetaMessage}`,
     ...getTrackingParams(),
   };
@@ -190,6 +273,11 @@ const submitLeadForm = async (form, event) => {
   const data = new FormData(form);
   const payload = buildPayload(form, data);
 
+  if (!payload["cf-turnstile-response"]) {
+    setFormStatus(form, "Completa la verificación de seguridad antes de enviar.", "error");
+    return;
+  }
+
   if (button) {
     button.disabled = true;
     button.textContent = "Enviando...";
@@ -211,6 +299,7 @@ const submitLeadForm = async (form, event) => {
 
     form.reset();
     updateRecetaField();
+    resetTurnstile();
     setFormStatus(form, "Solicitud enviada correctamente.", "success");
     trackEvent("lead_form_submit", {
       form_name: form.getAttribute("name") || "lead",
@@ -223,6 +312,7 @@ const submitLeadForm = async (form, event) => {
       "No fue posible enviar la solicitud. Inténtalo nuevamente o contáctanos por WhatsApp.",
       "error"
     );
+    resetTurnstile();
     trackEvent("lead_form_error", {
       form_name: form.getAttribute("name") || "lead",
       message: error.message,
@@ -292,4 +382,5 @@ updateHeader();
 updateTimeline();
 updateHeroParallax();
 configureWhatsApp();
+initTurnstile();
 scrollToHash();

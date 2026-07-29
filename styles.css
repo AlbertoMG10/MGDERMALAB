@@ -1452,6 +1452,24 @@ details p {
   background: var(--white);
 }
 
+.turnstile-field {
+  min-height: 65px;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+}
+
+.turnstile-field[data-state="error"] {
+  min-height: auto;
+  padding: 12px 14px;
+  border: 1px solid rgba(179, 38, 30, 0.24);
+  border-radius: var(--radius);
+  background: rgba(179, 38, 30, 0.06);
+  color: #8f1d17;
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .contact-form .product-option input[type="checkbox"] {
   width: 16px;
   min-width: 16px;
