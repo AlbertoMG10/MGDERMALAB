@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="MG Dermalab">
+  <rect width="128" height="128" rx="28" fill="#0A2540"/>
+  <circle cx="64" cy="64" r="43" fill="none" stroke="#2AB5AE" stroke-width="6"/>
+  <text x="64" y="76" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="43" font-weight="700" fill="#FFFFFF">MG</text>
+</svg>
