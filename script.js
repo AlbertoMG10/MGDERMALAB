@@ -46,6 +46,13 @@ const trackEvent = (eventName, params = {}) => {
   }
 };
 
+const pushGenerateLeadEvent = () => {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "generate_lead",
+  });
+};
+
 const updateHeader = () => {
   if (!header) return;
   header.classList.toggle("is-scrolled", window.scrollY > 28);
@@ -313,6 +320,7 @@ const submitLeadForm = async (form, event) => {
     updateRecetaField();
     resetTurnstile();
     setFormStatus(form, "Solicitud enviada correctamente.", "success");
+    pushGenerateLeadEvent();
     trackEvent("lead_form_submit", {
       form_name: form.getAttribute("name") || "lead",
       tipo_cliente: payload.tipoCliente,
