@@ -1,14 +1,27 @@
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; frame-ancestors 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.googletagmanager.com https://connect.facebook.net https://www.clarity.ms; frame-src https://challenges.cloudflare.com; connect-src 'self' https://mgdermalab-backend.onrender.com https://challenges.cloudflare.com https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms; form-action 'self' https://mgdermalab-backend.onrender.com
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.googletagmanager.com https://connect.facebook.net https://www.clarity.ms; frame-src https://challenges.cloudflare.com; connect-src 'self' https://mgdermalab-backend.onrender.com https://challenges.cloudflare.com https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms; form-action 'self' https://mgdermalab-backend.onrender.com; upgrade-insecure-requests
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
 /*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpeg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.avif
   Cache-Control: public, max-age=31536000, immutable
 
 /*.ico
@@ -28,3 +41,6 @@
 
 /robots.txt
   Cache-Control: public, max-age=3600
+
+/site.webmanifest
+  Cache-Control: public, max-age=86400

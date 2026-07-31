@@ -258,6 +258,13 @@ const setFormStatus = (form, message, state = "") => {
 
   status.textContent = message;
   status.dataset.state = state;
+
+  if (message) {
+    status.setAttribute("tabindex", "-1");
+    status.focus({ preventScroll: true });
+  } else {
+    status.removeAttribute("tabindex");
+  }
 };
 
 const submitLeadForm = async (form, event) => {
@@ -282,6 +289,7 @@ const submitLeadForm = async (form, event) => {
     button.disabled = true;
     button.textContent = "Enviando...";
   }
+  form.setAttribute("aria-busy", "true");
   setFormStatus(form, "Enviando...", "loading");
 
   try {
@@ -289,12 +297,16 @@ const submitLeadForm = async (form, event) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
+      credentials: "omit",
       body: JSON.stringify(payload),
     });
 
-    if (!response.ok) {
-      throw new Error(`Lead endpoint responded with ${response.status}`);
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok || result.ok === false) {
+      throw new Error(result.message || `Lead endpoint responded with ${response.status}`);
     }
 
     form.reset();
@@ -307,9 +319,14 @@ const submitLeadForm = async (form, event) => {
       producto: payload.producto,
     });
   } catch (error) {
+    const visibleMessage =
+      error && error.message && !/Lead endpoint|Failed to fetch|NetworkError/i.test(error.message)
+        ? error.message
+        : "No fue posible enviar la solicitud. Inténtalo nuevamente o contáctanos por WhatsApp.";
+
     setFormStatus(
       form,
-      "No fue posible enviar la solicitud. Inténtalo nuevamente o contáctanos por WhatsApp.",
+      visibleMessage,
       "error"
     );
     resetTurnstile();
@@ -322,6 +339,7 @@ const submitLeadForm = async (form, event) => {
       button.disabled = false;
       button.textContent = originalText;
     }
+    form.removeAttribute("aria-busy");
   }
 };
 
