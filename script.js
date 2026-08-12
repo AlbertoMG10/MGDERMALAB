@@ -34,8 +34,8 @@ const PRODUCT_METADATA = [
   { pattern: /dysport/i, categoria: "Medicina estética", producto: "Dysport", presentacion: "300 U / 500 U", principioActivo: "Toxina botulínica tipo A" },
   { pattern: /sculptra/i, categoria: "Medicina estética", producto: "Sculptra", presentacion: "Bajo cotización", principioActivo: "Ácido poli-L-láctico" },
   { pattern: /restylane|skinboosters/i, categoria: "Medicina estética", producto: "Línea Restylane", presentacion: "Según referencia", principioActivo: "Ácido hialurónico" },
-  { pattern: /tirzepatida|terzipatida/i, categoria: "Control de peso y metabolismo", producto: "Tirzepatida", presentacion: "Bajo cotización", principioActivo: "Tirzepatida" },
-  { pattern: /retatrutida|retratuide/i, categoria: "Control de peso y metabolismo", producto: "Retatrutida", presentacion: "Sujeta a disponibilidad y regulación", principioActivo: "Retatrutida" },
+    { pattern: /tirzepatida|terzipatida/i, categoria: "Control de peso y metabolismo", producto: "Tirzepatida", presentacion: "60 mg", principioActivo: "Tirzepatida" },
+    { pattern: /retatrutida|retratuide/i, categoria: "Control de peso y metabolismo", producto: "Retatrutida", presentacion: "60 mg", principioActivo: "Retatrutida" },
   { pattern: /glp-?1/i, categoria: "Control de peso y metabolismo", producto: "GLP-1", presentacion: "Bajo cotización", principioActivo: "Agonista GLP-1" },
 ];
 
