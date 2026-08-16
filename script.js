@@ -23,40 +23,248 @@ const mobileViewport = window.matchMedia("(max-width: 980px)");
 
 let ticking = false;
 let turnstileWidgetId = null;
+let lastProductTrigger = null;
+
+const PRODUCT_DETAILS = {
+  "neotrex-10": {
+    category: "Dermatología",
+    name: "Neotrex 10 mg",
+    active: "Isotretinoína",
+    image: "assets/neotrex-10-premium.png",
+    desc: "Tratamiento sistémico indicado para el acné severo y resistente, reduciendo la producción de sebo y previniendo nuevas lesiones.",
+    benefits: ["Reduce la producción de sebo", "Actúa sobre las lesiones inflamatorias", "Ayuda a prevenir cicatrices por acné"],
+    indications: ["Acné severo", "Acné resistente a otros tratamientos"],
+    presentations: "Caja con cápsulas de 10 mg",
+    conservation: "Conservar a temperatura ambiente, en lugar seco y protegido de la luz.",
+    receta: "Sí",
+  },
+  "neotrex-20": {
+    category: "Dermatología",
+    name: "Neotrex 20 mg",
+    active: "Isotretinoína",
+    image: "assets/neotrex-20-premium.png",
+    desc: "Tratamiento sistémico indicado para el acné severo y resistente, reduciendo la producción de sebo y previniendo nuevas lesiones.",
+    benefits: ["Reduce la producción de sebo", "Actúa sobre las lesiones inflamatorias", "Ayuda a prevenir cicatrices por acné"],
+    indications: ["Acné severo", "Acné resistente a otros tratamientos"],
+    presentations: "Caja con cápsulas de 20 mg",
+    conservation: "Conservar a temperatura ambiente, en lugar seco y protegido de la luz.",
+    receta: "Sí",
+  },
+  "epuris-10": {
+    category: "Dermatología",
+    name: "Epuris 10 mg",
+    active: "Isotretinoína",
+    image: "assets/epuris-10.webp",
+    desc: "Isotretinoína de absorción optimizada para el tratamiento del acné severo bajo supervisión médica.",
+    benefits: ["Absorción optimizada", "Reduce la producción de sebo", "Previene nuevas lesiones"],
+    indications: ["Acné severo"],
+    presentations: "Caja con cápsulas de 10 mg",
+    conservation: "Conservar a temperatura ambiente, en lugar seco y protegido de la luz.",
+    receta: "Sí",
+  },
+  "epuris-20": {
+    category: "Dermatología",
+    name: "Epuris 20 mg",
+    active: "Isotretinoína",
+    image: "assets/epuris-20-premium.png",
+    desc: "Isotretinoína de absorción optimizada para el tratamiento del acné severo bajo supervisión médica.",
+    benefits: ["Absorción optimizada", "Reduce la producción de sebo", "Previene nuevas lesiones"],
+    indications: ["Acné severo"],
+    presentations: "Caja con cápsulas de 20 mg",
+    conservation: "Conservar a temperatura ambiente, en lugar seco y protegido de la luz.",
+    receta: "Sí",
+  },
+  "vastionin-10": {
+    category: "Dermatología",
+    name: "Vastionin 10 mg",
+    active: "Isotretinoína",
+    image: "assets/vastionin-10.webp",
+    desc: "Isotretinoína indicada para pacientes con acné moderado a severo resistente a tratamientos convencionales.",
+    benefits: ["Indicada en casos resistentes", "Reduce la producción de sebo", "Previene nuevas lesiones"],
+    indications: ["Acné moderado a severo", "Acné resistente a tratamientos convencionales"],
+    presentations: "Caja con cápsulas de 10 mg",
+    conservation: "Conservar a temperatura ambiente, en lugar seco y protegido de la luz.",
+    receta: "Sí",
+  },
+  "vastionin-20": {
+    category: "Dermatología",
+    name: "Vastionin 20 mg",
+    active: "Isotretinoína",
+    image: "assets/vastionin-20-premium.png",
+    desc: "Isotretinoína indicada para pacientes con acné moderado a severo resistente a tratamientos convencionales.",
+    benefits: ["Indicada en casos resistentes", "Reduce la producción de sebo", "Previene nuevas lesiones"],
+    indications: ["Acné moderado a severo", "Acné resistente a tratamientos convencionales"],
+    presentations: "Caja con cápsulas de 20 mg",
+    conservation: "Conservar a temperatura ambiente, en lugar seco y protegido de la luz.",
+    receta: "Sí",
+  },
+  "dysport-300": {
+    category: "Medicina estética",
+    name: "Dysport 300 U",
+    active: "Toxina botulínica tipo A",
+    image: "assets/dysport-300.jpg",
+    desc: "Toxina botulínica tipo A utilizada para disminuir temporalmente las líneas de expresión mediante la relajación muscular.",
+    benefits: ["Relajación muscular localizada", "Disminuye líneas de expresión", "Resultado temporal y progresivo"],
+    indications: ["Líneas de expresión", "Arrugas dinámicas del tercio superior facial"],
+    presentations: "Vial de 300 U",
+    conservation: "Conservar en refrigeración (2-8 °C). No congelar.",
+    receta: "Sí (aplicación por profesional autorizado)",
+  },
+  "dysport-500": {
+    category: "Medicina estética",
+    name: "Dysport 500 U",
+    active: "Toxina botulínica tipo A",
+    image: "assets/dysport-500.webp",
+    desc: "Toxina botulínica tipo A utilizada para disminuir temporalmente las líneas de expresión mediante la relajación muscular.",
+    benefits: ["Relajación muscular localizada", "Disminuye líneas de expresión", "Ideal para tratamientos de mayor cobertura"],
+    indications: ["Líneas de expresión", "Arrugas dinámicas del tercio superior facial"],
+    presentations: "Vial de 500 U",
+    conservation: "Conservar en refrigeración (2-8 °C). No congelar.",
+    receta: "Sí (aplicación por profesional autorizado)",
+  },
+  sculptra: {
+    category: "Medicina estética",
+    name: "Sculptra",
+    active: "Ácido poli-L-láctico",
+    image: "assets/sculptra-2pack.avif",
+    desc: "Bioestimulador de colágeno que restaura volumen y mejora progresivamente la firmeza y calidad de la piel.",
+    benefits: ["Estimula la producción natural de colágeno", "Resultado progresivo y natural", "Mejora firmeza y calidad de piel"],
+    indications: ["Pérdida de volumen facial", "Flacidez"],
+    presentations: "Caja con 2 viales",
+    conservation: "Conservar a temperatura ambiente, en lugar seco.",
+    receta: "Sí (aplicación por profesional autorizado)",
+  },
+  "restylane-kysse": {
+    category: "Medicina estética · Línea Restylane",
+    name: "Restylane Kysse",
+    active: "Ácido hialurónico",
+    image: "assets/restylane-family.avif",
+    desc: "Especializado para aumento y definición de labios, proporcionando resultados naturales, suaves y con movimiento.",
+    benefits: ["Resultado natural y con movimiento", "Define y aumenta volumen labial", "Textura suave"],
+    indications: ["Labios"],
+    presentations: "Jeringa prellenada",
+    conservation: "Conservar en refrigeración (2-8 °C). No congelar.",
+    receta: "Sí (aplicación por profesional autorizado)",
+  },
+  "restylane-lyft": {
+    category: "Medicina estética · Línea Restylane",
+    name: "Restylane Lyft",
+    active: "Ácido hialurónico",
+    image: "assets/restylane-family.avif",
+    desc: "Diseñado para restaurar volumen facial y mejorar la proyección de pómulos y mentón.",
+    benefits: ["Restaura volumen facial", "Mejora la proyección de pómulos y mentón", "Resultado duradero"],
+    indications: ["Pómulos", "Mentón"],
+    presentations: "Jeringa prellenada",
+    conservation: "Conservar en refrigeración (2-8 °C). No congelar.",
+    receta: "Sí (aplicación por profesional autorizado)",
+  },
+  "restylane-refyne": {
+    category: "Medicina estética · Línea Restylane",
+    name: "Restylane Refyne",
+    active: "Ácido hialurónico",
+    image: "assets/restylane-family.avif",
+    desc: "Indicado para corregir arrugas moderadas conservando las expresiones naturales del rostro.",
+    benefits: ["Flexibilidad natural del gel", "Conserva expresiones faciales", "Corrige arrugas moderadas"],
+    indications: ["Arrugas moderadas", "Líneas de expresión"],
+    presentations: "Jeringa prellenada",
+    conservation: "Conservar en refrigeración (2-8 °C). No congelar.",
+    receta: "Sí (aplicación por profesional autorizado)",
+  },
+  "restylane-defyne": {
+    category: "Medicina estética · Línea Restylane",
+    name: "Restylane Defyne",
+    active: "Ácido hialurónico",
+    image: "assets/restylane-family.avif",
+    desc: "Corrige pliegues profundos y líneas marcadas manteniendo flexibilidad facial.",
+    benefits: ["Corrige pliegues profundos", "Mantiene flexibilidad facial", "Resultado duradero"],
+    indications: ["Pliegues profundos", "Líneas marcadas"],
+    presentations: "Jeringa prellenada",
+    conservation: "Conservar en refrigeración (2-8 °C). No congelar.",
+    receta: "Sí (aplicación por profesional autorizado)",
+  },
+  "restylane-contour": {
+    category: "Medicina estética · Línea Restylane",
+    name: "Restylane Contour",
+    active: "Ácido hialurónico",
+    image: "assets/restylane-family.avif",
+    desc: "Recupera y define el volumen de los pómulos con un aspecto natural.",
+    benefits: ["Define contorno facial", "Aspecto natural", "Recupera volumen en pómulos"],
+    indications: ["Pómulos"],
+    presentations: "Jeringa prellenada",
+    conservation: "Conservar en refrigeración (2-8 °C). No congelar.",
+    receta: "Sí (aplicación por profesional autorizado)",
+  },
+  "restylane-eyelight": {
+    category: "Medicina estética · Línea Restylane",
+    name: "Restylane Eyelight",
+    active: "Ácido hialurónico",
+    image: "assets/restylane-family.avif",
+    desc: "Especializado para mejorar el surco lagrimal y reducir el aspecto de las ojeras hundidas.",
+    benefits: ["Mejora el surco lagrimal", "Reduce el aspecto de ojeras hundidas", "Resultado sutil y natural"],
+    indications: ["Ojeras", "Surco lagrimal"],
+    presentations: "Jeringa prellenada",
+    conservation: "Conservar en refrigeración (2-8 °C). No congelar.",
+    receta: "Sí (aplicación por profesional autorizado)",
+  },
+  "restylane-skinboosters-vital": {
+    category: "Medicina estética · Línea Restylane",
+    name: "Restylane Skinboosters Vital",
+    active: "Ácido hialurónico no reticulado",
+    image: "assets/restylane-family.avif",
+    desc: "Mejora la hidratación profunda, elasticidad y calidad de la piel.",
+    benefits: ["Hidratación profunda", "Mejora elasticidad de la piel", "Mejora calidad y luminosidad de piel"],
+    indications: ["Hidratación profunda", "Calidad de piel"],
+    presentations: "Jeringa prellenada",
+    conservation: "Conservar en refrigeración (2-8 °C). No congelar.",
+    receta: "Sí (aplicación por profesional autorizado)",
+  },
+  "restylane-skinboosters-vital-light": {
+    category: "Medicina estética · Línea Restylane",
+    name: "Restylane Skinboosters Vital Light",
+    active: "Ácido hialurónico no reticulado",
+    image: "assets/restylane-family.avif",
+    desc: "Hidratación profunda para pieles jóvenes y zonas delicadas.",
+    benefits: ["Formulación ligera", "Ideal para zonas delicadas", "Hidratación profunda"],
+    indications: ["Piel joven", "Zonas delicadas"],
+    presentations: "Jeringa prellenada",
+    conservation: "Conservar en refrigeración (2-8 °C). No congelar.",
+    receta: "Sí (aplicación por profesional autorizado)",
+  },
+  tirzepatida: {
+    category: "Control de peso y metabolismo",
+    name: "Tirzepatida 60 mg",
+    active: "Agonista DUAL — GLP-1 / GIP (2 hormonas)",
+    image: "",
+    desc: "Actúa sobre 2 receptores de incretinas (GLP-1 y GIP). Es el tratamiento indicado específicamente para diabetes mellitus tipo 2, con efecto asociado en el control de peso. Contamos con presentación de 60 mg.",
+    benefits: [
+      "Actúa sobre dos receptores de incretinas (GLP-1 y GIP)",
+      "Ayuda a regular la glucosa en sangre",
+      "Dosis ajustable según respuesta y tolerancia del paciente",
+    ],
+    indications: ["Diabetes mellitus tipo 2", "Apoyo en control de peso"],
+    presentations: "Vial de 60 mg. Vía de administración subcutánea. Dosis inicial recomendada de 2.5 mg una vez por semana, ajustable a 5 mg, 10 mg o 15 mg semanales según indicación médica.",
+    conservation: "Refrigerar a 2 °C - 8 °C. No congelar.",
+    receta: "Sí. Uso exclusivo en adultos, bajo supervisión médica.",
+  },
+  retatrutida: {
+    category: "Control de peso y metabolismo",
+    name: "Retatrutida 60 mg",
+    active: "Agonista TRIPLE — GLP-1 / GIP / Glucagón (3 hormonas)",
+    image: "",
+    desc: "Actúa sobre 3 receptores (GLP-1, GIP y glucagón), sumando el efecto del glucagón para aumentar el uso de energía corporal. Es el tratamiento enfocado principalmente en pérdida de peso, con beneficio adicional en control glucémico. Contamos con presentación de 60 mg.",
+    benefits: [
+      "Actúa sobre tres receptores: GLP-1, GIP y glucagón",
+      "Promueve la secreción de insulina y mejora el control glucémico",
+      "Aumenta la utilización de energía y facilita la pérdida de peso",
+    ],
+    indications: ["Sobrepeso y obesidad", "Pérdida de peso sostenida", "Control glucémico en diabetes tipo 2"],
+    presentations: "Vial de 60 mg de retatrutida. Inyección subcutánea una vez por semana; dosis inicial y titulación determinadas por un profesional de la salud según las características del paciente.",
+    conservation: "Refrigerar a 2 °C - 8 °C. No congelar.",
+    receta: "Sí. Para uso médico profesional únicamente.",
+  },
+};
 
 const normalizeValue = (value) => String(value || "").trim();
-
-const PRODUCT_METADATA = [
-  { pattern: /neotrex/i, categoria: "Dermatología", producto: "Neotrex", presentacion: "10 mg / 20 mg", principioActivo: "Isotretinoína" },
-  { pattern: /epuris/i, categoria: "Dermatología", producto: "Epuris", presentacion: "10 mg / 20 mg", principioActivo: "Isotretinoína" },
-  { pattern: /vastionin/i, categoria: "Dermatología", producto: "Vastionin", presentacion: "10 mg / 20 mg", principioActivo: "Isotretinoína" },
-  { pattern: /trevisage/i, categoria: "Dermatología", producto: "Trevisage", presentacion: "Bajo cotización", principioActivo: "Isotretinoína" },
-  { pattern: /dysport/i, categoria: "Medicina estética", producto: "Dysport", presentacion: "300 U / 500 U", principioActivo: "Toxina botulínica tipo A" },
-  { pattern: /sculptra/i, categoria: "Medicina estética", producto: "Sculptra", presentacion: "Bajo cotización", principioActivo: "Ácido poli-L-láctico" },
-  { pattern: /restylane|skinboosters/i, categoria: "Medicina estética", producto: "Línea Restylane", presentacion: "Según referencia", principioActivo: "Ácido hialurónico" },
-    { pattern: /tirzepatida|terzipatida/i, categoria: "Control de peso y metabolismo", producto: "Tirzepatida", presentacion: "60 mg", principioActivo: "Tirzepatida" },
-    { pattern: /retatrutida|retratuide/i, categoria: "Control de peso y metabolismo", producto: "Retatrutida", presentacion: "60 mg", principioActivo: "Retatrutida" },
-  { pattern: /glp-?1/i, categoria: "Control de peso y metabolismo", producto: "GLP-1", presentacion: "Bajo cotización", principioActivo: "Agonista GLP-1" },
-];
-
-const inferProductMetadata = (value) => {
-  const source = normalizeValue(value);
-  const match = PRODUCT_METADATA.find((item) => item.pattern.test(source));
-
-  return match
-    ? {
-        categoria: match.categoria,
-        producto: match.producto,
-        presentacion: match.presentacion,
-        principioActivo: match.principioActivo,
-      }
-    : {
-        categoria: "",
-        producto: source,
-        presentacion: "",
-        principioActivo: "",
-      };
-};
 
 const configureWhatsApp = () => {
   const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
@@ -140,13 +348,8 @@ const updateTimeline = () => {
 };
 
 const updateHeroParallax = () => {
-  if (!heroImage || prefersReducedMotion.matches || mobileViewport.matches) {
-    if (heroImage) heroImage.style.transform = "";
-    return;
-  }
-
-  const offset = Math.min(window.scrollY * 0.035, 18);
-  heroImage.style.transform = `scale(1.045) translate3d(0, ${offset}px, 0)`;
+  if (!heroImage) return;
+  heroImage.style.transform = "";
 };
 
 const scrollToHash = () => {
@@ -257,9 +460,7 @@ const resetTurnstile = () => {
 
 const buildContactPayload = (data) => {
   const tipoCliente = normalizeValue(data.get("tipo_cliente"));
-  const productoLinea = normalizeValue(data.get("producto_linea"));
-  const metadata = inferProductMetadata(productoLinea);
-  const producto = metadata.producto || productoLinea;
+  const producto = normalizeValue(data.get("producto_linea"));
   const cantidad = normalizeValue(data.get("volumen"));
   const receta = tipoCliente === "Compra individual" ? normalizeValue(data.get("receta")) : "";
   const recetaMessage = receta ? ` Receta médica: ${receta}.` : "";
@@ -268,15 +469,11 @@ const buildContactPayload = (data) => {
     nombre: normalizeValue(data.get("nombre")),
     whatsapp: normalizeValue(data.get("whatsapp")),
     tipoCliente,
-    categoria: metadata.categoria,
     producto,
-    productoLinea,
-    presentacion: metadata.presentacion,
-    principioActivo: metadata.principioActivo,
     cantidad,
     receta,
     "cf-turnstile-response": normalizeValue(data.get("cf-turnstile-response")) || getTurnstileToken(),
-    mensaje: `Solicitud desde formulario de cotización. Tipo de cliente: ${tipoCliente}. Producto o línea: ${productoLinea || producto}. Cantidad aproximada: ${cantidad}.${recetaMessage}`,
+    mensaje: `Solicitud desde formulario de cotización. Tipo de cliente: ${tipoCliente}. Producto o línea: ${producto}. Cantidad aproximada: ${cantidad}.${recetaMessage}`,
     ...getTrackingParams(),
   };
 };
@@ -422,6 +619,348 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+const productModal = document.querySelector("#product-modal");
+let lastOpenedProductId = null;
+
+const fillList = (listElement, items) => {
+  if (!listElement) return;
+  listElement.innerHTML = "";
+  items.forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    listElement.appendChild(li);
+  });
+};
+
+const openProductModal = (productId, trigger) => {
+  const details = PRODUCT_DETAILS[productId];
+  if (!productModal || !details) return;
+
+  const image = productModal.querySelector("[data-modal-image]");
+  const figureElement = productModal.querySelector(".product-modal-figure");
+  const gridElement = productModal.querySelector(".product-modal-grid");
+
+  if (details.image) {
+    if (image) {
+      image.src = details.image;
+      image.alt = details.name;
+    }
+    if (figureElement) figureElement.hidden = false;
+    if (gridElement) gridElement.classList.remove("no-image");
+  } else {
+    if (image) {
+      image.removeAttribute("src");
+      image.alt = "";
+    }
+    if (figureElement) figureElement.hidden = true;
+    if (gridElement) gridElement.classList.add("no-image");
+  }
+
+  const setText = (selector, value) => {
+    const element = productModal.querySelector(selector);
+    if (element) element.textContent = value;
+  };
+
+  setText("[data-modal-category]", details.category);
+  setText("[data-modal-name]", details.name);
+  setText("[data-modal-active]", details.active);
+  setText("[data-modal-desc]", details.desc);
+  setText("[data-modal-presentations]", details.presentations);
+  setText("[data-modal-conservation]", details.conservation);
+  setText("[data-modal-receta]", details.receta);
+
+  fillList(productModal.querySelector("[data-modal-benefits]"), details.benefits || []);
+  fillList(productModal.querySelector("[data-modal-indications]"), details.indications || []);
+
+  lastProductTrigger = trigger || null;
+  lastOpenedProductId = productId;
+
+  if (typeof productModal.showModal === "function") {
+    productModal.showModal();
+  } else {
+    productModal.setAttribute("open", "");
+  }
+
+  trackEvent("product_view_detail", { product: productId });
+};
+
+const closeProductModal = () => {
+  if (!productModal) return;
+
+  if (typeof productModal.close === "function" && productModal.open) {
+    productModal.close();
+  } else {
+    productModal.removeAttribute("open");
+  }
+
+  if (lastProductTrigger && typeof lastProductTrigger.focus === "function") {
+    lastProductTrigger.focus({ preventScroll: true });
+  }
+  lastProductTrigger = null;
+};
+
+if (productModal) {
+  document.querySelectorAll("[data-open-product]").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      openProductModal(trigger.dataset.openProduct, trigger);
+    });
+  });
+
+  document.querySelectorAll(".product-card figure, .product-card .product-info").forEach((area) => {
+    area.style.cursor = "pointer";
+    area.addEventListener("click", () => {
+      const card = area.closest(".product-card");
+      if (!card) return;
+      openProductModal(card.dataset.product, card.querySelector("[data-open-product]"));
+    });
+  });
+
+  productModal.querySelectorAll("[data-close-product-modal]").forEach((closeTrigger) => {
+    closeTrigger.addEventListener("click", (event) => {
+      if (closeTrigger.tagName === "A") {
+        closeProductModal();
+        return;
+      }
+      event.preventDefault();
+      closeProductModal();
+    });
+  });
+
+  productModal.addEventListener("click", (event) => {
+    if (event.target === productModal) {
+      closeProductModal();
+    }
+  });
+
+  productModal.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    closeProductModal();
+  });
+}
+
+/* CTA dinámico: identifica el producto de interés en el formulario de cotización */
+const PRODUCT_TO_QUOTE_OPTION = {
+  "neotrex-10": "Dermatología: Neotrex, Epuris o Vastionin",
+  "neotrex-20": "Dermatología: Neotrex, Epuris o Vastionin",
+  "epuris-10": "Dermatología: Neotrex, Epuris o Vastionin",
+  "epuris-20": "Dermatología: Neotrex, Epuris o Vastionin",
+  "vastionin-10": "Dermatología: Neotrex, Epuris o Vastionin",
+  "vastionin-20": "Dermatología: Neotrex, Epuris o Vastionin",
+  "dysport-300": "Dysport 300 U / 500 U",
+  "dysport-500": "Dysport 300 U / 500 U",
+  sculptra: "Sculptra",
+  "restylane-kysse": "Línea Restylane",
+  "restylane-lyft": "Línea Restylane",
+  "restylane-refyne": "Línea Restylane",
+  "restylane-defyne": "Línea Restylane",
+  "restylane-contour": "Línea Restylane",
+  "restylane-eyelight": "Línea Restylane",
+  "restylane-skinboosters-vital": "Restylane Skinboosters",
+  "restylane-skinboosters-vital-light": "Restylane Skinboosters",
+  tirzepatida: "Tirzepatida 60 mg",
+  retatrutida: "Retatrutida 60 mg",
+};
+
+const preselectProductoLinea = (productId) => {
+  const optionText = PRODUCT_TO_QUOTE_OPTION[productId];
+  const select = document.querySelector('select[name="producto_linea"]');
+  if (!optionText || !select) return;
+
+  const matchingOption = Array.from(select.options).find((option) => option.textContent.trim() === optionText);
+  if (!matchingOption) return;
+
+  select.value = matchingOption.value;
+  trackEvent("cta_product_preselect", { product: productId, option: optionText });
+};
+
+document.querySelectorAll(".product-card").forEach((card) => {
+  const cotizarLink = card.querySelector(".product-actions .text-button");
+  if (!cotizarLink) return;
+
+  cotizarLink.addEventListener("click", () => {
+    preselectProductoLinea(card.dataset.product);
+  });
+});
+
+if (productModal) {
+  productModal.querySelectorAll(".product-modal-cta").forEach((ctaLink) => {
+    ctaLink.addEventListener("click", () => {
+      preselectProductoLinea(lastOpenedProductId);
+    });
+  });
+}
+
+/* Selector de líneas y tabs del catálogo: paneles dinámicos por categoría */
+const catalogFamilies = document.querySelectorAll(".catalog-family");
+const catalogTabTriggers = document.querySelectorAll("[data-catalog-target]");
+
+const forceRevealVisible = (root) => {
+  if (!root) return;
+  root.classList.add("is-visible");
+  root.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
+};
+
+const activateCatalogPanel = (targetId, { scroll = true } = {}) => {
+  if (!targetId || !catalogFamilies.length) return;
+
+  const targetPanel = Array.from(catalogFamilies).find((panel) => panel.id === targetId);
+  if (!targetPanel) return;
+
+  const isAlreadyActive = !targetPanel.classList.contains("is-hidden");
+
+  catalogFamilies.forEach((panel) => {
+    if (panel === targetPanel) return;
+
+    if (!panel.classList.contains("is-hidden")) {
+      // Panel visible actualmente: se desvanece antes de ocultarse (crossfade)
+      panel.classList.add("is-fading");
+      window.setTimeout(() => {
+        panel.classList.add("is-hidden");
+        panel.classList.remove("is-fading");
+      }, prefersReducedMotion.matches ? 0 : 200);
+    } else {
+      panel.classList.add("is-hidden");
+    }
+  });
+
+  targetPanel.classList.remove("is-hidden", "is-fading");
+  forceRevealVisible(document.querySelector("#catalogo"));
+  forceRevealVisible(targetPanel);
+
+  catalogTabTriggers.forEach((trigger) => {
+    const isMatch = trigger.dataset.catalogTarget === targetId;
+    trigger.classList.toggle("is-active", isMatch);
+    if (trigger.closest(".catalog-tabs")) {
+      trigger.setAttribute("aria-current", isMatch ? "true" : "false");
+    }
+    if (trigger.getAttribute("role") === "tab") {
+      trigger.setAttribute("aria-selected", isMatch ? "true" : "false");
+    }
+  });
+
+  if (scroll && !isAlreadyActive) {
+    const catalogSection = document.querySelector("#catalogo");
+    if (catalogSection) {
+      window.setTimeout(() => {
+        catalogSection.scrollIntoView({
+          behavior: prefersReducedMotion.matches ? "auto" : "smooth",
+          block: "start",
+        });
+      }, 30);
+    }
+  }
+};
+
+if (catalogFamilies.length && catalogTabTriggers.length) {
+  catalogTabTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      const targetId = trigger.dataset.catalogTarget;
+      if (!targetId) return;
+
+      event.preventDefault();
+      trackEvent("catalog_category_select", { category: targetId });
+
+      if (window.history && typeof window.history.replaceState === "function") {
+        window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+
+      activateCatalogPanel(targetId, { scroll: !trigger.closest(".catalog-tabs") });
+    });
+  });
+
+  const initialHash = window.location.hash.replace("#", "");
+  const initialTargetExists = Array.from(catalogFamilies).some((panel) => panel.id === initialHash);
+
+  if (initialTargetExists) {
+    // Llegó directo a un link de categoría específica: mostrar solo esa
+    activateCatalogPanel(initialHash, { scroll: false });
+    document.body.classList.add("catalog-view-active");
+    forceRevealVisible(document.querySelector("#catalogo"));
+  } else {
+    // Entrada normal a la página: no mostrar ninguna categoría hasta que el usuario elija
+    catalogFamilies.forEach((panel) => panel.classList.add("is-hidden"));
+  }
+}
+
+/* Enlace "Volver al inicio": sale de la vista dedicada de categoría */
+const catalogBackLink = document.querySelector("[data-catalog-back]");
+if (catalogBackLink) {
+  catalogBackLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    document.body.classList.remove("catalog-view-active");
+
+    // Restablece el catálogo a su estado vacío: ninguna categoría seleccionada
+    catalogFamilies.forEach((panel) => {
+      panel.classList.add("is-hidden");
+      panel.classList.remove("is-fading");
+    });
+    catalogTabTriggers.forEach((trigger) => {
+      trigger.classList.remove("is-active");
+      if (trigger.closest(".catalog-tabs")) {
+        trigger.setAttribute("aria-current", "false");
+      }
+      if (trigger.getAttribute("role") === "tab") {
+        trigger.setAttribute("aria-selected", "false");
+      }
+    });
+
+    if (window.history && typeof window.history.replaceState === "function") {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+
+    window.setTimeout(() => {
+      const heroSection = document.querySelector("#inicio");
+      if (heroSection) {
+        heroSection.scrollIntoView({
+          behavior: prefersReducedMotion.matches ? "auto" : "smooth",
+          block: "start",
+        });
+      } else {
+        window.scrollTo({ top: 0, behavior: prefersReducedMotion.matches ? "auto" : "smooth" });
+      }
+    }, 10);
+  });
+}
+
+/* Si el usuario navega a una sección normalmente oculta en la vista de categoría, sal de ese modo primero */
+const SECTIONS_HIDDEN_IN_CATALOG_VIEW = [
+  "inicio",
+  "lineas",
+  "laboratorios",
+  "medicos",
+  "farmacias",
+  "nosotros",
+  "faq",
+];
+
+const resetCatalogView = () => {
+  document.body.classList.remove("catalog-view-active");
+  catalogFamilies.forEach((panel) => {
+    panel.classList.add("is-hidden");
+    panel.classList.remove("is-fading");
+  });
+  catalogTabTriggers.forEach((trigger) => {
+    trigger.classList.remove("is-active");
+    if (trigger.closest(".catalog-tabs")) {
+      trigger.setAttribute("aria-current", "false");
+    }
+    if (trigger.getAttribute("role") === "tab") {
+      trigger.setAttribute("aria-selected", "false");
+    }
+  });
+};
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  const hash = link.getAttribute("href").slice(1);
+  if (!SECTIONS_HIDDEN_IN_CATALOG_VIEW.includes(hash)) return;
+
+  link.addEventListener("click", () => {
+    if (document.body.classList.contains("catalog-view-active")) {
+      resetCatalogView();
+    }
+  });
+});
+
 window.addEventListener("scroll", () => {
   if (ticking) return;
 
@@ -448,3 +987,125 @@ updateHeroParallax();
 configureWhatsApp();
 initTurnstile();
 scrollToHash();
+
+/* Efecto parallax con GSAP + ScrollTrigger: las fotografías grandes se
+   expanden suavemente mientras el usuario hace scroll a través de ellas. */
+if (
+  typeof window.gsap !== "undefined" &&
+  typeof window.ScrollTrigger !== "undefined" &&
+  !prefersReducedMotion.matches
+) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll("[data-parallax-image]").forEach((image) => {
+    gsap.fromTo(
+      image,
+      { scale: 1.18, transformOrigin: "center center" },
+      {
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: image,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.6,
+        },
+      }
+    );
+  });
+}
+
+/* Spotlight de cursor: la tarjeta de producto se ilumina con el acento de
+   marca justo donde está el cursor, en vez de un simple color de borde. */
+if (!prefersReducedMotion.matches && window.matchMedia("(hover: hover)").matches) {
+  document.querySelectorAll(".product-card").forEach((card) => {
+    card.addEventListener("mousemove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty("--spot-x", `${x}%`);
+      card.style.setProperty("--spot-y", `${y}%`);
+    });
+  });
+}
+
+/* Carrusel de productos destacados: loop continuo, sutil y sin salto visual. */
+document.querySelectorAll("[data-carousel-track]").forEach((track) => {
+  const wrapper = track.closest(".spotlight-carousel");
+  if (!wrapper) return;
+
+  const prevBtn = wrapper.querySelector("[data-carousel-prev]");
+  const nextBtn = wrapper.querySelector("[data-carousel-next]");
+  if (!prevBtn || !nextBtn) return;
+
+  const originalCards = Array.from(track.children);
+  const loopSets = 6;
+  track.style.setProperty("--spotlight-loop-shift", `${100 / loopSets}%`);
+
+  for (let setIndex = 1; setIndex < loopSets; setIndex += 1) {
+    originalCards.forEach((card) => {
+      const clone = card.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.querySelectorAll("a, button, input, select, textarea").forEach((element) => {
+        element.setAttribute("tabindex", "-1");
+        element.setAttribute("aria-hidden", "true");
+      });
+      track.appendChild(clone);
+    });
+  }
+  track.classList.add("is-looping");
+
+  const getStep = () => {
+    const card = track.querySelector(".spotlight-card");
+    const gap = 18;
+    return card ? card.getBoundingClientRect().width + gap : 300;
+  };
+
+  const scrollByCard = (direction) => {
+    track.classList.add("is-manually-paused");
+    track.scrollBy({
+      left: direction * getStep(),
+      behavior: prefersReducedMotion.matches ? "auto" : "smooth",
+    });
+    window.setTimeout(() => {
+      track.classList.remove("is-manually-paused");
+    }, 1800);
+  };
+
+  const updateArrowState = () => {
+    const hasOverflow = track.scrollWidth > track.clientWidth + 8;
+    prevBtn.disabled = !hasOverflow;
+    nextBtn.disabled = !hasOverflow;
+  };
+
+  prevBtn.addEventListener("click", () => scrollByCard(-1));
+  nextBtn.addEventListener("click", () => scrollByCard(1));
+
+  let scrollTicking = false;
+  track.addEventListener("scroll", () => {
+    if (scrollTicking) return;
+    window.requestAnimationFrame(() => {
+      updateArrowState();
+      scrollTicking = false;
+    });
+    scrollTicking = true;
+  });
+
+  window.addEventListener("resize", updateArrowState);
+  updateArrowState();
+
+  wrapper.addEventListener("touchstart", () => {
+    track.classList.add("is-manually-paused");
+  }, { passive: true });
+  wrapper.addEventListener("touchend", () => {
+    window.setTimeout(() => {
+      track.classList.remove("is-manually-paused");
+    }, 2500);
+  }, { passive: true });
+  wrapper.addEventListener("focusin", () => {
+    track.classList.add("is-manually-paused");
+  });
+  wrapper.addEventListener("focusout", () => {
+    track.classList.remove("is-manually-paused");
+  });
+});
