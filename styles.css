@@ -4176,6 +4176,13 @@ img {
   scroll-snap-align: none;
 }
 
+.spotlight-track.is-mobile-native {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  animation: none;
+}
+
 .spotlight-track.is-looping.is-manually-paused {
   animation-play-state: paused;
 }
@@ -4307,8 +4314,23 @@ img {
 }
 
 @media (max-width: 760px) {
+  .spotlight-carousel {
+    display: flex;
+    overflow: hidden;
+    padding-inline: 0;
+  }
+
+  .spotlight-track.is-mobile-native {
+    width: 100%;
+    padding: 4px 22px 22px;
+  }
+
+  .spotlight-card {
+    flex-basis: min(82vw, 340px);
+  }
+
   .spotlight-track.is-looping {
-    animation-duration: 58s;
+    animation: none;
   }
 
   .brand-marquee-track {

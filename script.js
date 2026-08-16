@@ -30,7 +30,7 @@ const PRODUCT_DETAILS = {
     category: "Dermatología",
     name: "Neotrex 10 mg",
     active: "Isotretinoína",
-    image: "assets/neotrex-10-premium.png",
+    image: "assets/neotrex-10-premium-optimized.jpg",
     desc: "Tratamiento sistémico indicado para el acné severo y resistente, reduciendo la producción de sebo y previniendo nuevas lesiones.",
     benefits: ["Reduce la producción de sebo", "Actúa sobre las lesiones inflamatorias", "Ayuda a prevenir cicatrices por acné"],
     indications: ["Acné severo", "Acné resistente a otros tratamientos"],
@@ -42,7 +42,7 @@ const PRODUCT_DETAILS = {
     category: "Dermatología",
     name: "Neotrex 20 mg",
     active: "Isotretinoína",
-    image: "assets/neotrex-20-premium.png",
+    image: "assets/neotrex-20-premium-optimized.jpg",
     desc: "Tratamiento sistémico indicado para el acné severo y resistente, reduciendo la producción de sebo y previniendo nuevas lesiones.",
     benefits: ["Reduce la producción de sebo", "Actúa sobre las lesiones inflamatorias", "Ayuda a prevenir cicatrices por acné"],
     indications: ["Acné severo", "Acné resistente a otros tratamientos"],
@@ -66,7 +66,7 @@ const PRODUCT_DETAILS = {
     category: "Dermatología",
     name: "Epuris 20 mg",
     active: "Isotretinoína",
-    image: "assets/epuris-20-premium.png",
+    image: "assets/epuris-20-premium-optimized.jpg",
     desc: "Isotretinoína de absorción optimizada para el tratamiento del acné severo bajo supervisión médica.",
     benefits: ["Absorción optimizada", "Reduce la producción de sebo", "Previene nuevas lesiones"],
     indications: ["Acné severo"],
@@ -90,7 +90,7 @@ const PRODUCT_DETAILS = {
     category: "Dermatología",
     name: "Vastionin 20 mg",
     active: "Isotretinoína",
-    image: "assets/vastionin-20-premium.png",
+    image: "assets/vastionin-20-premium-optimized.jpg",
     desc: "Isotretinoína indicada para pacientes con acné moderado a severo resistente a tratamientos convencionales.",
     benefits: ["Indicada en casos resistentes", "Reduce la producción de sebo", "Previene nuevas lesiones"],
     indications: ["Acné moderado a severo", "Acné resistente a tratamientos convencionales"],
@@ -1012,26 +1012,32 @@ document.querySelectorAll("[data-carousel-track]").forEach((track) => {
   if (!prevBtn || !nextBtn) return;
 
   const originalCards = Array.from(track.children);
-  const loopSets = 6;
-  track.style.setProperty("--spotlight-loop-shift", `${100 / loopSets}%`);
+  const shouldLoop = !mobileViewport.matches;
 
-  for (let setIndex = 1; setIndex < loopSets; setIndex += 1) {
-    originalCards.forEach((card) => {
-      const clone = card.cloneNode(true);
-      clone.setAttribute("aria-hidden", "true");
-      clone.querySelectorAll("a, button, input, select, textarea").forEach((element) => {
-        element.setAttribute("tabindex", "-1");
-        element.setAttribute("aria-hidden", "true");
+  if (shouldLoop) {
+    const loopSets = 5;
+    track.style.setProperty("--spotlight-loop-shift", `${100 / loopSets}%`);
+
+    for (let setIndex = 1; setIndex < loopSets; setIndex += 1) {
+      originalCards.forEach((card) => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        clone.querySelectorAll("a, button, input, select, textarea").forEach((element) => {
+          element.setAttribute("tabindex", "-1");
+          element.setAttribute("aria-hidden", "true");
+        });
+        clone.querySelectorAll("img").forEach((image) => {
+          image.loading = "lazy";
+          image.decoding = "async";
+          image.removeAttribute("fetchpriority");
+        });
+        track.appendChild(clone);
       });
-      clone.querySelectorAll("img").forEach((image) => {
-        image.loading = "lazy";
-        image.decoding = "async";
-        image.removeAttribute("fetchpriority");
-      });
-      track.appendChild(clone);
-    });
+    }
+    track.classList.add("is-looping");
+  } else {
+    track.classList.add("is-mobile-native");
   }
-  track.classList.add("is-looping");
 
   const getStep = () => {
     const card = track.querySelector(".spotlight-card");
