@@ -783,8 +783,22 @@ document.querySelectorAll(".product-card").forEach((card) => {
 });
 
 document.querySelectorAll("[data-product-quote]").forEach((link) => {
-  link.addEventListener("click", () => {
-    preselectProductoLinea(link.dataset.productQuote);
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    const productId = link.dataset.productQuote;
+    preselectProductoLinea(productId);
+
+    const panel = link.closest("[data-line-preview]");
+    const status = panel ? panel.querySelector("[data-line-quote-status]") : null;
+    const label = link.querySelector("strong")?.textContent?.trim() || "Producto";
+
+    if (status) {
+      status.hidden = false;
+      const message = status.querySelector("span");
+      if (message) {
+        message.textContent = `${label} seleccionado para cotización. Puedes solicitarlo por WhatsApp o continuar al formulario cuando quieras.`;
+      }
+    }
   });
 });
 
