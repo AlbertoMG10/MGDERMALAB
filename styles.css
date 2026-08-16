@@ -1952,7 +1952,7 @@ body.catalog-view-active .catalog-section {
   border-radius: var(--radius);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(22, 24, 27, 0.76)),
-    url("assets/mg-dermalab-productos-reales.png") center/cover;
+    url("assets/mg-dermalab-productos-reales-optimized.jpg") center/cover;
   color: var(--white);
 }
 
@@ -1972,31 +1972,31 @@ body.catalog-view-active .catalog-section {
 .evidence-card-preparation {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(22, 24, 27, 0.78)),
-    url("assets/mg-dermalab-preparacion-pedidos.png") center/cover;
+    url("assets/mg-dermalab-preparacion-pedidos-optimized.jpg") center/cover;
 }
 
 .evidence-card-packaging {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(22, 24, 27, 0.78)),
-    url("assets/mg-dermalab-empaque-proteccion.png") center/cover;
+    url("assets/mg-dermalab-empaque-proteccion-optimized.jpg") center/cover;
 }
 
 .evidence-card-shipping {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(22, 24, 27, 0.78)),
-    url("assets/mg-dermalab-guias-envio.png") center/cover;
+    url("assets/mg-dermalab-guias-envio-optimized.jpg") center/cover;
 }
 
 .evidence-card-invoices {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(22, 24, 27, 0.78)),
-    url("assets/mg-dermalab-facturas-protegidas.png") center/cover;
+    url("assets/mg-dermalab-facturas-protegidas-optimized.jpg") center/cover;
 }
 
 .evidence-card-quality {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(22, 24, 27, 0.78)),
-    url("assets/mg-dermalab-control-calidad.png") center/cover;
+    url("assets/mg-dermalab-control-calidad-optimized.jpg") center/cover;
 }
 
 .evidence-card span {
@@ -2598,13 +2598,13 @@ details p {
   padding: 44px;
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.7)),
-    url("assets/laboratorios-marcas-premium.png") center/cover;
+    url("assets/laboratorios-marcas-premium-optimized.jpg") center/cover;
 }
 
 .catalog-card.accent {
   background:
     linear-gradient(145deg, rgba(22, 24, 27, 0.94), rgba(22, 24, 27, 0.7)),
-    url("assets/distribucion-medica-premium.png") center/cover;
+    url("assets/distribucion-medica-premium-optimized.jpg") center/cover;
 }
 
 .program {
@@ -2654,7 +2654,7 @@ details p {
 .contact-section {
   background:
     linear-gradient(115deg, rgba(22, 24, 27, 0.97), rgba(22, 24, 27, 0.9)),
-    url("assets/distribucion-medica-premium.png") center/cover;
+    url("assets/distribucion-medica-premium-optimized.jpg") center/cover;
 }
 
 .contact-assurance {
@@ -4288,5 +4288,37 @@ img {
     min-height: 62px;
     padding: 12px 20px;
     font-size: 21px;
+  }
+}
+
+/* Rendering performance */
+@supports (content-visibility: auto) {
+  .brand-ribbon,
+  .catalog-section,
+  .labs-section,
+  .proof-section,
+  .pharmacy,
+  .faq-section,
+  .contact-section,
+  .site-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 760px;
+  }
+}
+
+@media (max-width: 760px) {
+  .spotlight-track.is-looping {
+    animation-duration: 58s;
+  }
+
+  .brand-marquee-track {
+    animation-duration: 36s;
+  }
+
+  .product-card:hover,
+  .product-card:hover img,
+  .line-card:hover,
+  .line-card:focus-visible {
+    transform: none;
   }
 }

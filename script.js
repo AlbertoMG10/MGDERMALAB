@@ -988,33 +988,6 @@ configureWhatsApp();
 initTurnstile();
 scrollToHash();
 
-/* Efecto parallax con GSAP + ScrollTrigger: las fotografías grandes se
-   expanden suavemente mientras el usuario hace scroll a través de ellas. */
-if (
-  typeof window.gsap !== "undefined" &&
-  typeof window.ScrollTrigger !== "undefined" &&
-  !prefersReducedMotion.matches
-) {
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.querySelectorAll("[data-parallax-image]").forEach((image) => {
-    gsap.fromTo(
-      image,
-      { scale: 1.18, transformOrigin: "center center" },
-      {
-        scale: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: image,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 0.6,
-        },
-      }
-    );
-  });
-}
-
 /* Spotlight de cursor: la tarjeta de producto se ilumina con el acento de
    marca justo donde está el cursor, en vez de un simple color de borde. */
 if (!prefersReducedMotion.matches && window.matchMedia("(hover: hover)").matches) {
@@ -1049,6 +1022,11 @@ document.querySelectorAll("[data-carousel-track]").forEach((track) => {
       clone.querySelectorAll("a, button, input, select, textarea").forEach((element) => {
         element.setAttribute("tabindex", "-1");
         element.setAttribute("aria-hidden", "true");
+      });
+      clone.querySelectorAll("img").forEach((image) => {
+        image.loading = "lazy";
+        image.decoding = "async";
+        image.removeAttribute("fetchpriority");
       });
       track.appendChild(clone);
     });
