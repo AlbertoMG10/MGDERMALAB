@@ -800,13 +800,24 @@ const forceRevealVisible = (root) => {
   root.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
 };
 
-const activateCatalogPanel = (targetId, { scroll = true } = {}) => {
+const scrollToCatalogProducts = (targetPanel, behavior = "auto") => {
+  const scrollTarget = targetPanel.querySelector(".product-grid") || targetPanel;
+  if (!scrollTarget) return;
+
+  const headerHeight = header ? header.getBoundingClientRect().height : 96;
+  const top = Math.max(0, window.scrollY + scrollTarget.getBoundingClientRect().top - headerHeight - 22);
+
+  window.scrollTo({
+    top,
+    behavior: prefersReducedMotion.matches ? "auto" : behavior,
+  });
+};
+
+const activateCatalogPanel = (targetId, { scroll = true, scrollBehavior = "auto" } = {}) => {
   if (!targetId || !catalogFamilies.length) return;
 
   const targetPanel = Array.from(catalogFamilies).find((panel) => panel.id === targetId);
   if (!targetPanel) return;
-
-  const isAlreadyActive = !targetPanel.classList.contains("is-hidden");
 
   catalogFamilies.forEach((panel) => {
     if (panel === targetPanel) return;
@@ -838,16 +849,8 @@ const activateCatalogPanel = (targetId, { scroll = true } = {}) => {
     }
   });
 
-  if (scroll && !isAlreadyActive) {
-    const scrollTarget = targetPanel.querySelector(".product-grid") || targetPanel;
-    if (scrollTarget) {
-      window.setTimeout(() => {
-        scrollTarget.scrollIntoView({
-          behavior: prefersReducedMotion.matches ? "auto" : "smooth",
-          block: "start",
-        });
-      }, 30);
-    }
+  if (scroll) {
+    window.setTimeout(() => scrollToCatalogProducts(targetPanel, scrollBehavior), 30);
   }
 };
 
@@ -864,7 +867,10 @@ if (catalogFamilies.length && catalogTabTriggers.length) {
         window.history.replaceState(null, "", window.location.pathname + window.location.search);
       }
 
-      activateCatalogPanel(targetId, { scroll: !trigger.closest(".catalog-tabs") });
+      activateCatalogPanel(targetId, {
+        scroll: !trigger.closest(".catalog-tabs"),
+        scrollBehavior: "auto",
+      });
     });
   });
 
