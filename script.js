@@ -784,7 +784,6 @@ document.querySelectorAll(".product-card").forEach((card) => {
 
 document.querySelectorAll("[data-product-quote]").forEach((link) => {
   link.addEventListener("click", (event) => {
-    event.preventDefault();
     const productId = link.dataset.productQuote;
     preselectProductoLinea(productId);
 

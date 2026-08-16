@@ -959,7 +959,7 @@ p {
   gap: 12px;
 }
 
-.line-preview-grid a {
+.line-preview-grid button {
   display: grid;
   gap: 8px;
   min-height: 118px;
@@ -968,12 +968,15 @@ p {
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.055);
   color: var(--white);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
   text-decoration: none;
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
 
-.line-preview-grid a:hover,
-.line-preview-grid a:focus-visible {
+.line-preview-grid button:hover,
+.line-preview-grid button:focus-visible {
   transform: translateY(-2px);
   border-color: rgba(255, 90, 31, 0.55);
   background: rgba(255, 90, 31, 0.12);
