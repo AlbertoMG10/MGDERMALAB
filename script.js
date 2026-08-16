@@ -782,6 +782,12 @@ document.querySelectorAll(".product-card").forEach((card) => {
   });
 });
 
+document.querySelectorAll("[data-product-quote]").forEach((link) => {
+  link.addEventListener("click", () => {
+    preselectProductoLinea(link.dataset.productQuote);
+  });
+});
+
 if (productModal) {
   productModal.querySelectorAll(".product-modal-cta").forEach((ctaLink) => {
     ctaLink.addEventListener("click", () => {
@@ -793,6 +799,8 @@ if (productModal) {
 /* Selector de líneas y tabs del catálogo: paneles dinámicos por categoría */
 const catalogFamilies = document.querySelectorAll(".catalog-family");
 const catalogTabTriggers = document.querySelectorAll("[data-catalog-target]");
+const lineProductsPreview = document.querySelector("[data-line-products-preview]");
+const linePreviewPanels = document.querySelectorAll("[data-line-preview]");
 
 const forceRevealVisible = (root) => {
   if (!root) return;
@@ -867,10 +875,17 @@ if (catalogFamilies.length && catalogTabTriggers.length) {
         window.history.replaceState(null, "", window.location.pathname + window.location.search);
       }
 
-      activateCatalogPanel(targetId, {
-        scroll: !trigger.closest(".catalog-tabs"),
-        scrollBehavior: "auto",
-      });
+      if (trigger.closest(".line-grid")) {
+        activateCatalogPanel(targetId, { scroll: false });
+        if (lineProductsPreview) lineProductsPreview.hidden = false;
+        linePreviewPanels.forEach((panel) => {
+          panel.hidden = panel.dataset.linePreview !== targetId;
+        });
+        forceRevealVisible(lineProductsPreview);
+        return;
+      }
+
+      activateCatalogPanel(targetId, { scroll: false });
     });
   });
 
