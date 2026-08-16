@@ -839,10 +839,10 @@ const activateCatalogPanel = (targetId, { scroll = true } = {}) => {
   });
 
   if (scroll && !isAlreadyActive) {
-    const catalogSection = document.querySelector("#catalogo");
-    if (catalogSection) {
+    const scrollTarget = targetPanel.querySelector(".product-grid") || targetPanel;
+    if (scrollTarget) {
       window.setTimeout(() => {
-        catalogSection.scrollIntoView({
+        scrollTarget.scrollIntoView({
           behavior: prefersReducedMotion.matches ? "auto" : "smooth",
           block: "start",
         });
