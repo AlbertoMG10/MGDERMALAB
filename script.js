@@ -329,7 +329,9 @@ const revealObserver =
       )
     : null;
 
-if (revealObserver) {
+if (mobileViewport.matches) {
+  reveals.forEach((element) => element.classList.add("is-visible"));
+} else if (revealObserver) {
   reveals.forEach((element) => revealObserver.observe(element));
 } else {
   reveals.forEach((element) => element.classList.add("is-visible"));
@@ -352,6 +354,29 @@ const updateHeroParallax = () => {
   heroImage.style.transform = "";
 };
 
+const jumpToSectionInstant = (target, extraOffset = 18) => {
+  if (!target) return;
+
+  const headerHeight = header ? header.getBoundingClientRect().height : 96;
+  const top = Math.max(0, window.scrollY + target.getBoundingClientRect().top - headerHeight - extraOffset);
+  const root = document.documentElement;
+  const previousScrollBehavior = root.style.scrollBehavior;
+
+  root.style.scrollBehavior = "auto";
+  window.scrollTo({ top, behavior: "auto" });
+
+  window.setTimeout(() => {
+    root.style.scrollBehavior = previousScrollBehavior;
+  }, 80);
+};
+
+const jumpToContactInstant = () => {
+  const contactSection = document.querySelector("#contacto");
+  if (!contactSection) return;
+  forceRevealVisible(contactSection);
+  jumpToSectionInstant(contactSection, 14);
+};
+
 const scrollToHash = () => {
   const hash = window.location.hash;
   if (!hash) return;
@@ -360,7 +385,7 @@ const scrollToHash = () => {
   if (!target) return;
 
   window.setTimeout(() => {
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    jumpToSectionInstant(target);
   }, 80);
 };
 
@@ -761,6 +786,12 @@ const PRODUCT_TO_QUOTE_OPTION = {
   retatrutida: "Retatrutida 60 mg",
 };
 
+const CATEGORY_TO_DEFAULT_PRODUCT = {
+  "catalogo-medicina-estetica": "dysport-300",
+  "catalogo-dermatologia": "neotrex-10",
+  "catalogo-control-peso": "tirzepatida",
+};
+
 const preselectProductoLinea = (productId) => {
   const optionText = PRODUCT_TO_QUOTE_OPTION[productId];
   const select = document.querySelector('select[name="producto_linea"]');
@@ -787,6 +818,11 @@ document.querySelectorAll("[data-product-quote]").forEach((link) => {
     const productId = link.dataset.productQuote;
     preselectProductoLinea(productId);
 
+    if (mobileViewport.matches) {
+      jumpToContactInstant();
+      return;
+    }
+
     const panel = link.closest("[data-line-preview]");
     const status = panel ? panel.querySelector("[data-line-quote-status]") : null;
     const label = link.querySelector("strong")?.textContent?.trim() || "Producto";
@@ -798,6 +834,19 @@ document.querySelectorAll("[data-product-quote]").forEach((link) => {
         message.textContent = `${label} seleccionado para cotización. Puedes solicitarlo por WhatsApp o continuar al formulario cuando quieras.`;
       }
     }
+  });
+});
+
+document.querySelectorAll('a[href="#contacto"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const modalTrigger = link.closest("[data-close-product-modal]");
+    if (modalTrigger && typeof closeProductModal === "function") {
+      closeProductModal();
+    }
+
+    jumpToContactInstant();
   });
 });
 
@@ -890,6 +939,14 @@ if (catalogFamilies.length && catalogTabTriggers.length) {
 
       if (trigger.closest(".line-grid")) {
         activateCatalogPanel(targetId, { scroll: false });
+
+        if (mobileViewport.matches) {
+          if (lineProductsPreview) lineProductsPreview.hidden = true;
+          preselectProductoLinea(CATEGORY_TO_DEFAULT_PRODUCT[targetId]);
+          jumpToContactInstant();
+          return;
+        }
+
         if (lineProductsPreview) lineProductsPreview.hidden = false;
         linePreviewPanels.forEach((panel) => {
           panel.hidden = panel.dataset.linePreview !== targetId;
