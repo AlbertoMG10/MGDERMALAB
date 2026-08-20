@@ -11,7 +11,7 @@ const clientTypeSelect = document.querySelector("[data-client-type]");
 const recetaField = document.querySelector("[data-receta-field]");
 const recetaSelect = document.querySelector("[data-receta-select]");
 
-const WHATSAPP_NUMBER = "525523348746";
+const WHATSAPP_NUMBER = "525654434495";
 const WHATSAPP_MESSAGE =
   "Hola, me interesa solicitar disponibilidad y cotización de productos de MG Dermalab.";
 const LEADS_ENDPOINT = "https://mgdermalab-backend.onrender.com/api/leads";
