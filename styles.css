@@ -1425,7 +1425,7 @@ body.catalog-view-active .catalog-section {
 .product-glp-image {
   display: grid;
   place-items: center;
-  height: 220px;
+  height: 218px;
   margin: 0;
   overflow: visible;
   border: 1px solid rgba(255, 90, 31, 0.2);
@@ -1437,11 +1437,11 @@ body.catalog-view-active .catalog-section {
 
 .product-glp-image img {
   width: auto;
-  height: calc(100% - 10px);
-  max-width: 70%;
+  height: calc(100% - 8px);
+  max-width: 76%;
   padding: 0;
   object-fit: contain;
-  border-radius: 10px;
+  border-radius: 0;
   filter: drop-shadow(0 20px 28px rgba(0, 0, 0, 0.34));
 }
 
@@ -1450,26 +1450,26 @@ body.catalog-view-active .catalog-section {
 }
 
 .product-card.spotlight-card .product-glp-image {
-  height: 214px;
+  height: 176px;
   background:
     radial-gradient(circle at 50% 14%, rgba(255, 90, 31, 0.18), transparent 64%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
 }
 
 .product-card.spotlight-card .product-glp-image img {
-  max-width: 66%;
+  max-width: 78%;
 }
 
 .glp-interactive {
   position: relative;
   display: grid;
-  min-height: 520px;
+  min-height: 500px;
   place-items: center;
   margin-bottom: 8px;
   border: 1px solid rgba(255, 90, 31, 0.32);
   border-radius: 24px;
   background:
-    radial-gradient(circle at 50% 42%, rgba(255, 90, 31, 0.22), transparent 34%),
+    radial-gradient(circle at 50% 42%, rgba(255, 90, 31, 0.18), transparent 34%),
     radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08), transparent 48%),
     linear-gradient(160deg, #1f2125 0%, #16181B 54%, #0f1012 100%);
   box-shadow:
@@ -1481,7 +1481,7 @@ body.catalog-view-active .catalog-section {
 .glp-interactive::before {
   content: "";
   position: absolute;
-  width: min(72%, 430px);
+  width: min(66%, 390px);
   aspect-ratio: 1;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 50%;
@@ -1492,8 +1492,8 @@ body.catalog-view-active .catalog-section {
 
 .glp-interactive-vial {
   z-index: 2;
-  width: min(30%, 170px);
-  height: 380px;
+  width: min(34%, 210px);
+  height: 390px;
   border-color: transparent;
   background:
     radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08), transparent 54%);
@@ -1501,11 +1501,11 @@ body.catalog-view-active .catalog-section {
 }
 
 .product-card .glp-interactive-vial {
-  height: 380px;
+  height: 390px;
 }
 
 .glp-interactive-vial img {
-  height: calc(100% - 18px);
+  height: calc(100% - 10px);
   max-width: 100%;
 }
 
@@ -1516,8 +1516,8 @@ body.catalog-view-active .catalog-section {
   align-items: center;
   justify-content: center;
   min-width: 132px;
-  min-height: 46px;
-  padding: 10px 14px;
+  min-height: 48px;
+  padding: 11px 16px;
   border: 1px solid rgba(255, 90, 31, 0.38);
   border-radius: 999px;
   background:
@@ -1528,7 +1528,7 @@ body.catalog-view-active .catalog-section {
     0 10px 24px rgba(22, 24, 27, 0.2),
     0 0 20px rgba(255, 90, 31, 0.16);
   font-family: inherit;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 900;
   letter-spacing: 0.01em;
   text-align: center;
@@ -1604,32 +1604,32 @@ body.catalog-view-active .catalog-section {
 
 .glp-benefit-1 {
   top: 15%;
-  left: 5%;
+  left: 4%;
 }
 
 .glp-benefit-2 {
   top: 15%;
-  right: 5%;
+  right: 4%;
 }
 
 .glp-benefit-3 {
   top: 45%;
-  right: 5%;
+  right: 4%;
 }
 
 .glp-benefit-4 {
-  right: 7%;
+  right: 6%;
   bottom: 14%;
 }
 
 .glp-benefit-5 {
-  left: 7%;
+  left: 6%;
   bottom: 14%;
 }
 
 .glp-benefit-6 {
   top: 45%;
-  left: 5%;
+  left: 4%;
 }
 
 .product-glp-stat {
@@ -4821,7 +4821,7 @@ img {
   }
 
   .product-card-glp .product-glp-image {
-    height: 184px;
+    height: 172px;
   }
 
   .glp-interactive {
@@ -4840,8 +4840,8 @@ img {
   }
 
   .glp-interactive-vial {
-    width: min(46%, 132px);
-    height: 238px;
+    width: min(54%, 170px);
+    height: 244px;
     margin-bottom: 8px;
   }
 
@@ -4887,11 +4887,11 @@ img {
   }
 
   .product-card.spotlight-card .product-glp-image {
-    height: 178px;
+    height: 164px;
   }
 
   .product-glp-image img {
-    max-width: 68%;
+    max-width: 82%;
   }
 
   .product-card.spotlight-card .product-title-row {
@@ -5003,7 +5003,7 @@ img {
   }
 
   .product-card-glp .product-glp-image {
-    height: 172px;
+    height: 158px;
   }
 
   .glp-interactive {
@@ -5011,11 +5011,11 @@ img {
   }
 
   .glp-interactive-vial {
-    width: min(50%, 128px);
-    height: 218px;
+    width: min(58%, 164px);
+    height: 230px;
   }
 
   .product-card.spotlight-card .product-glp-image {
-    height: 170px;
+    height: 156px;
   }
 }
