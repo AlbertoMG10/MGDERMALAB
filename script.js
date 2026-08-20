@@ -20,6 +20,7 @@ const TURNSTILE_SITE_KEY_ENDPOINT = "https://mgdermalab-backend.onrender.com/api
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const mobileViewport = window.matchMedia("(max-width: 980px)");
+const FORM_MIN_SUBMIT_MS = 2500;
 
 let ticking = false;
 let turnstileWidgetId = null;
@@ -234,7 +235,7 @@ const PRODUCT_DETAILS = {
     category: "Control de peso y metabolismo",
     name: "Tirzepatida 60 mg",
     active: "Agonista DUAL — GLP-1 / GIP (2 hormonas)",
-    image: "",
+    image: "assets/tirzepatida-60mg-vial.jpg",
     desc: "Actúa sobre 2 receptores de incretinas (GLP-1 y GIP). Es el tratamiento indicado específicamente para diabetes mellitus tipo 2, con efecto asociado en el control de peso. Contamos con presentación de 60 mg.",
     benefits: [
       "Actúa sobre dos receptores de incretinas (GLP-1 y GIP)",
@@ -245,22 +246,6 @@ const PRODUCT_DETAILS = {
     presentations: "Vial de 60 mg. Vía de administración subcutánea. Dosis inicial recomendada de 2.5 mg una vez por semana, ajustable a 5 mg, 10 mg o 15 mg semanales según indicación médica.",
     conservation: "Refrigerar a 2 °C - 8 °C. No congelar.",
     receta: "Sí. Uso exclusivo en adultos, bajo supervisión médica.",
-  },
-  retatrutida: {
-    category: "Control de peso y metabolismo",
-    name: "Retatrutida 60 mg",
-    active: "Agonista TRIPLE — GLP-1 / GIP / Glucagón (3 hormonas)",
-    image: "",
-    desc: "Actúa sobre 3 receptores (GLP-1, GIP y glucagón), sumando el efecto del glucagón para aumentar el uso de energía corporal. Es el tratamiento enfocado principalmente en pérdida de peso, con beneficio adicional en control glucémico. Contamos con presentación de 60 mg.",
-    benefits: [
-      "Actúa sobre tres receptores: GLP-1, GIP y glucagón",
-      "Promueve la secreción de insulina y mejora el control glucémico",
-      "Aumenta la utilización de energía y facilita la pérdida de peso",
-    ],
-    indications: ["Sobrepeso y obesidad", "Pérdida de peso sostenida", "Control glucémico en diabetes tipo 2"],
-    presentations: "Vial de 60 mg de retatrutida. Inyección subcutánea una vez por semana; dosis inicial y titulación determinadas por un profesional de la salud según las características del paciente.",
-    conservation: "Refrigerar a 2 °C - 8 °C. No congelar.",
-    receta: "Sí. Para uso médico profesional únicamente.",
   },
 };
 
@@ -489,6 +474,7 @@ const buildContactPayload = (data) => {
   const cantidad = normalizeValue(data.get("volumen"));
   const receta = tipoCliente === "Compra individual" ? normalizeValue(data.get("receta")) : "";
   const recetaMessage = receta ? ` Receta médica: ${receta}.` : "";
+  const leadStartedAt = normalizeValue(data.get("lead_started_at"));
 
   return {
     nombre: normalizeValue(data.get("nombre")),
@@ -497,6 +483,9 @@ const buildContactPayload = (data) => {
     producto,
     cantidad,
     receta,
+    "bot-field": normalizeValue(data.get("bot-field")),
+    lead_started_at: leadStartedAt,
+    lead_elapsed_ms: leadStartedAt ? String(Math.max(0, Date.now() - Number(leadStartedAt))) : "",
     "cf-turnstile-response": normalizeValue(data.get("cf-turnstile-response")) || getTurnstileToken(),
     mensaje: `Solicitud desde formulario de cotización. Tipo de cliente: ${tipoCliente}. Producto o línea: ${producto}. Cantidad aproximada: ${cantidad}.${recetaMessage}`,
     ...getTrackingParams(),
@@ -505,6 +494,13 @@ const buildContactPayload = (data) => {
 
 const buildPayload = (form, data) => {
   return buildContactPayload(data);
+};
+
+const setLeadStartedAt = (form) => {
+  const leadStartedAtField = form.querySelector("[data-lead-started-at]");
+  if (leadStartedAtField) {
+    leadStartedAtField.value = String(Date.now());
+  }
 };
 
 const updateRecetaField = () => {
@@ -536,6 +532,12 @@ const setFormStatus = (form, message, state = "") => {
 
 const submitLeadForm = async (form, event) => {
   event.preventDefault();
+
+  const leadStartedAt = Number(form.querySelector("[data-lead-started-at]")?.value || 0);
+  if (leadStartedAt && Date.now() - leadStartedAt < FORM_MIN_SUBMIT_MS) {
+    setFormStatus(form, "Espera un momento y vuelve a enviar la solicitud.", "error");
+    return;
+  }
 
   if (!form.checkValidity()) {
     form.reportValidity();
@@ -577,6 +579,7 @@ const submitLeadForm = async (form, event) => {
     }
 
     form.reset();
+    setLeadStartedAt(form);
     updateRecetaField();
     resetTurnstile();
     setFormStatus(form, "Solicitud enviada correctamente.", "success");
@@ -612,6 +615,7 @@ const submitLeadForm = async (form, event) => {
 };
 
 leadForms.forEach((form) => {
+  setLeadStartedAt(form);
   form.addEventListener("submit", (event) => submitLeadForm(form, event));
 });
 
@@ -783,7 +787,6 @@ const PRODUCT_TO_QUOTE_OPTION = {
   "restylane-skinboosters-vital": "Restylane Skinboosters",
   "restylane-skinboosters-vital-light": "Restylane Skinboosters",
   tirzepatida: "Tirzepatida 60 mg",
-  retatrutida: "Retatrutida 60 mg",
 };
 
 const CATEGORY_TO_DEFAULT_PRODUCT = {
