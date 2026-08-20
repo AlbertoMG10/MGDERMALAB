@@ -235,7 +235,7 @@ const PRODUCT_DETAILS = {
     category: "Control de peso y metabolismo",
     name: "Tirzepatida 60 mg",
     active: "Agonista DUAL — GLP-1 / GIP (2 hormonas)",
-    image: "assets/tirzepatida-60mg-vial.jpg",
+    image: "assets/tirzepatida-nythera-60mg.jpg",
     desc: "Actúa sobre 2 receptores de incretinas (GLP-1 y GIP). Es el tratamiento indicado específicamente para diabetes mellitus tipo 2, con efecto asociado en el control de peso. Contamos con presentación de 60 mg.",
     benefits: [
       "Actúa sobre dos receptores de incretinas (GLP-1 y GIP)",
