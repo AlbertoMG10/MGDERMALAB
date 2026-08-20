@@ -1450,14 +1450,20 @@ body.catalog-view-active .catalog-section {
 }
 
 .product-card.spotlight-card .product-glp-image {
-  height: 176px;
+  height: 216px;
+  overflow: hidden;
+  border-color: rgba(22, 24, 27, 0.08);
   background:
-    radial-gradient(circle at 50% 14%, rgba(255, 90, 31, 0.18), transparent 64%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    radial-gradient(circle at 50% 44%, rgba(255, 90, 31, 0.08), transparent 62%),
+    linear-gradient(180deg, #ffffff 0%, #f4f5f6 100%);
 }
 
 .product-card.spotlight-card .product-glp-image img {
-  max-width: 78%;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  padding: 12px 16px;
+  object-fit: contain;
 }
 
 .glp-interactive {
@@ -1502,11 +1508,15 @@ body.catalog-view-active .catalog-section {
 
 .product-card .glp-interactive-vial {
   height: 390px;
+  overflow: visible;
+  border: 0;
+  background: transparent;
 }
 
 .glp-interactive-vial img {
   height: calc(100% - 10px);
   max-width: 100%;
+  padding: 0;
 }
 
 .glp-benefit {
@@ -4845,6 +4855,10 @@ img {
     margin-bottom: 8px;
   }
 
+  .product-card .glp-interactive-vial {
+    height: 244px;
+  }
+
   .glp-benefit {
     position: relative;
     inset: auto;
@@ -4887,7 +4901,7 @@ img {
   }
 
   .product-card.spotlight-card .product-glp-image {
-    height: 164px;
+    height: 198px;
   }
 
   .product-glp-image img {
@@ -5015,7 +5029,127 @@ img {
     height: 230px;
   }
 
+  .product-card .glp-interactive-vial {
+    height: 230px;
+  }
+
   .product-card.spotlight-card .product-glp-image {
-    height: 156px;
+    height: 188px;
+  }
+}
+
+/* Tirzepatida refinements */
+.product-card.product-card-glp.spotlight-card .product-glp-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 236px;
+  padding: 12px;
+  background:
+    radial-gradient(circle at 50% 44%, rgba(255, 90, 31, 0.08), transparent 62%),
+    linear-gradient(180deg, #ffffff 0%, #f5f6f7 100%);
+}
+
+.product-card.product-card-glp.spotlight-card .product-glp-image img {
+  width: auto;
+  height: auto;
+  max-width: 40%;
+  max-height: 82%;
+  padding: 0;
+  object-fit: contain;
+  object-position: center;
+}
+
+.product-card.product-card-glp.spotlight-card:hover .product-glp-image img {
+  transform: none;
+}
+
+@media (min-width: 761px) {
+  .glp-benefit {
+    isolation: isolate;
+  }
+
+  .glp-benefit::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    z-index: -1;
+    height: 1px;
+    width: clamp(118px, 12vw, 210px);
+    background: linear-gradient(90deg, rgba(255, 90, 31, 0.86), rgba(255, 90, 31, 0.18), transparent);
+    box-shadow:
+      0 0 8px rgba(255, 90, 31, 0.62),
+      0 0 18px rgba(255, 90, 31, 0.2);
+    pointer-events: none;
+  }
+
+  .glp-benefit-1::after,
+  .glp-benefit-5::after,
+  .glp-benefit-6::after {
+    left: calc(100% - 2px);
+    transform-origin: left center;
+  }
+
+  .glp-benefit-2::after,
+  .glp-benefit-3::after,
+  .glp-benefit-4::after {
+    right: calc(100% - 2px);
+    transform-origin: right center;
+    background: linear-gradient(270deg, rgba(255, 90, 31, 0.86), rgba(255, 90, 31, 0.18), transparent);
+  }
+
+  .glp-benefit-1::after {
+    transform: rotate(19deg);
+  }
+
+  .glp-benefit-2::after {
+    transform: rotate(-19deg);
+  }
+
+  .glp-benefit-3::after,
+  .glp-benefit-6::after {
+    width: clamp(96px, 10vw, 170px);
+    transform: rotate(0deg);
+  }
+
+  .glp-benefit-4::after {
+    transform: rotate(20deg);
+  }
+
+  .glp-benefit-5::after {
+    transform: rotate(-20deg);
+  }
+
+  .glp-benefit-1 small,
+  .glp-benefit-6 small {
+    top: 50%;
+    bottom: auto;
+    left: calc(100% + 14px);
+    width: 260px;
+    transform: translate3d(8px, -50%, 0);
+  }
+
+  .glp-benefit-2 small,
+  .glp-benefit-3 small {
+    top: 50%;
+    right: calc(100% + 14px);
+    bottom: auto;
+    left: auto;
+    width: 260px;
+    transform: translate3d(-8px, -50%, 0);
+  }
+
+  .glp-benefit-1:hover small,
+  .glp-benefit-1:focus-visible small,
+  .glp-benefit-6:hover small,
+  .glp-benefit-6:focus-visible small {
+    transform: translate3d(0, -50%, 0);
+  }
+
+  .glp-benefit-2:hover small,
+  .glp-benefit-2:focus-visible small,
+  .glp-benefit-3:hover small,
+  .glp-benefit-3:focus-visible small {
+    transform: translate3d(0, -50%, 0);
   }
 }
