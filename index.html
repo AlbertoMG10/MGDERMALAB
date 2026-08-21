@@ -3,11 +3,22 @@
   <head>
     <!-- Google Tag Manager -->
     <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":
-      new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
-      "https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,"script","dataLayer","GTM-T9MFWNKW");
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      window.__loadGtm = function () {
+        if (window.__gtmLoaded) return;
+        window.__gtmLoaded = true;
+        var f = document.getElementsByTagName("script")[0];
+        var j = document.createElement("script");
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=GTM-T9MFWNKW";
+        f.parentNode.insertBefore(j, f);
+      };
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(window.__loadGtm, { timeout: 2600 });
+      } else {
+        setTimeout(window.__loadGtm, 1800);
+      }
     </script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
@@ -44,8 +55,7 @@
       rel="stylesheet"
     />
     <link rel="preload" as="image" href="assets/hero-mg-dermalab-grafito-1600.jpg" imagesrcset="assets/hero-mg-dermalab-grafito-900.jpg 900w, assets/hero-mg-dermalab-grafito-1600.jpg 1600w" imagesizes="100vw" />
-    <link rel="stylesheet" href="styles.css?v=20260821-1438" />
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260821-1452" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -324,7 +334,7 @@
 
             <article class="product-card product-card-glp spotlight-card" data-product="tirzepatida">
               <figure class="product-glp-image">
-                <img loading="lazy" decoding="async" src="assets/tirzepatida-nythera-transparent.png?v=20260819-2340" width="750" height="1000" alt="Vial de Tirzepatida 60 mg" />
+                <img loading="lazy" decoding="async" src="assets/tirzepatida-nythera-transparent-560.png?v=20260821-1452" width="420" height="560" alt="Vial de Tirzepatida 60 mg" />
               </figure>
               <div class="product-glp-stat">
                 <span class="product-glp-number">2</span>
@@ -412,7 +422,7 @@
 
           <article class="catalog-family reveal" id="catalogo-dermatologia">
             <figure class="catalog-family-hero">
-              <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-linea-dermatologia-1200.jpg" width="1536" height="1024" alt="Dermatología con atención por perfil médico" />
+              <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-linea-dermatologia-900.jpg" srcset="assets/mg-dermalab-linea-dermatologia-900.jpg 900w, assets/mg-dermalab-linea-dermatologia-1200.jpg 1536w" sizes="(max-width: 760px) 100vw, 42vw" width="900" height="600" alt="Dermatología con atención por perfil médico" />
             </figure>
             <div class="family-heading">
               <span class="family-index" aria-hidden="true">02</span>
@@ -542,7 +552,7 @@
 
           <article class="catalog-family reveal dark" id="catalogo-medicina-estetica">
             <figure class="catalog-family-hero">
-              <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-laboratorios-restylane-1200.jpg" width="1536" height="1024" alt="Portafolio de medicina estética con Restylane" />
+              <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-laboratorios-restylane-900.jpg" srcset="assets/mg-dermalab-laboratorios-restylane-900.jpg 900w, assets/mg-dermalab-laboratorios-restylane-1200.jpg 1536w" sizes="(max-width: 760px) 100vw, 42vw" width="900" height="600" alt="Portafolio de medicina estética con Restylane" />
             </figure>
             <div class="family-heading">
               <span class="family-index" aria-hidden="true">01</span>
@@ -784,7 +794,7 @@
               <article class="product-card product-card-glp" data-product="tirzepatida">
                 <div class="glp-interactive" aria-label="Beneficios informativos de Tirzepatida">
                   <figure class="product-glp-image glp-interactive-vial">
-                    <img loading="lazy" decoding="async" src="assets/tirzepatida-nythera-transparent.png?v=20260819-2340" width="750" height="1000" alt="Vial de Tirzepatida 60 mg" />
+                    <img loading="lazy" decoding="async" src="assets/tirzepatida-nythera-transparent-560.png?v=20260821-1452" width="420" height="560" alt="Vial de Tirzepatida 60 mg" />
                   </figure>
 
                   <button class="glp-benefit glp-benefit-1" type="button" aria-describedby="glp-benefit-control">
@@ -907,7 +917,7 @@
 
       <section class="section labs-section" id="laboratorios">
         <div class="labs-media reveal">
-          <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-laboratorios-restylane-1200.jpg" width="1536" height="1024" alt="Portafolio Restylane con empaque profesional de MG Dermalab" />
+          <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-laboratorios-restylane-900.jpg" srcset="assets/mg-dermalab-laboratorios-restylane-900.jpg 900w, assets/mg-dermalab-laboratorios-restylane-1200.jpg 1536w" sizes="(max-width: 760px) 100vw, 42vw" width="900" height="600" alt="Portafolio Restylane con empaque profesional de MG Dermalab" />
         </div>
         <div class="labs-copy reveal">
           <p class="eyebrow">Laboratorios</p>
@@ -959,7 +969,7 @@
           <a class="section-cta" href="#contacto">Abrir cuenta comercial</a>
         </div>
         <figure class="pharmacy-photo reveal">
-          <img data-parallax-image loading="lazy" decoding="async" src="assets/hero-mg-dermalab-grafito-1600.jpg" width="1535" height="1024" alt="Área de distribución médica especializada de MG Dermalab con identidad grafito y naranja" />
+          <img data-parallax-image loading="lazy" decoding="async" src="assets/hero-mg-dermalab-grafito-reuse-900.jpg" srcset="assets/hero-mg-dermalab-grafito-reuse-900.jpg 900w, assets/hero-mg-dermalab-grafito-1600.jpg 1535w" sizes="(max-width: 760px) 100vw, 42vw" width="900" height="600" alt="Área de distribución médica especializada de MG Dermalab con identidad grafito y naranja" />
         </figure>
         <div class="pharmacy-metrics reveal">
           <div><strong>01</strong><span>Cuenta comercial dedicada</span></div>
@@ -1139,6 +1149,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=20260821-1438" defer></script>
+    <script src="script.js?v=20260821-1452" defer></script>
   </body>
 </html>

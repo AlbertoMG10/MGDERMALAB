@@ -24,6 +24,7 @@ const FORM_MIN_SUBMIT_MS = 2500;
 
 let ticking = false;
 let turnstileWidgetId = null;
+let turnstileScriptPromise = null;
 let lastProductTrigger = null;
 
 const PRODUCT_DETAILS = {
@@ -235,7 +236,7 @@ const PRODUCT_DETAILS = {
     category: "Control de peso y metabolismo",
     name: "Tirzepatida 60 mg",
     active: "Agonista DUAL — GLP-1 / GIP (2 hormonas)",
-    image: "assets/tirzepatida-nythera-transparent.png?v=20260819-2340",
+    image: "assets/tirzepatida-nythera-transparent-560.png?v=20260821-1452",
     desc: "Actúa sobre 2 receptores de incretinas (GLP-1 y GIP). Es el tratamiento indicado específicamente para diabetes mellitus tipo 2, con efecto asociado en el control de peso. Contamos con presentación de 60 mg.",
     benefits: [
       "Actúa sobre dos receptores de incretinas (GLP-1 y GIP)",
@@ -436,11 +437,41 @@ const waitForTurnstile = () =>
     check();
   });
 
+const loadTurnstileScript = () => {
+  if (window.turnstile && typeof window.turnstile.render === "function") {
+    return Promise.resolve();
+  }
+
+  if (turnstileScriptPromise) return turnstileScriptPromise;
+
+  turnstileScriptPromise = new Promise((resolve, reject) => {
+    const existingScript = document.querySelector('script[src*="challenges.cloudflare.com/turnstile"]');
+    if (existingScript) {
+      existingScript.addEventListener("load", () => resolve(), { once: true });
+      existingScript.addEventListener("error", () => reject(new Error("No se pudo cargar Turnstile.")), { once: true });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+    script.async = true;
+    script.defer = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("No se pudo cargar Turnstile."));
+    document.head.appendChild(script);
+  });
+
+  return turnstileScriptPromise;
+};
+
 const initTurnstile = async () => {
   const widget = getTurnstileWidget();
   if (!widget || turnstileWidgetId !== null) return;
 
   try {
+    widget.dataset.state = "loading";
+    widget.textContent = "Cargando verificación de seguridad...";
+    await loadTurnstileScript();
     const [siteKey, turnstile] = await Promise.all([getTurnstileSiteKey(), waitForTurnstile()]);
 
     if (!siteKey) {
@@ -451,6 +482,7 @@ const initTurnstile = async () => {
       sitekey: siteKey,
       theme: "light",
     });
+    widget.dataset.state = "";
   } catch (error) {
     setTurnstileError("No se pudo cargar la verificación de seguridad. Inténtalo nuevamente o contáctanos por WhatsApp.");
     trackEvent("turnstile_load_error", { message: error.message });
@@ -546,16 +578,27 @@ const submitLeadForm = async (form, event) => {
 
   const button = form.querySelector('button[type="submit"]');
   const originalText = button ? button.textContent : "";
+
+  if (button) {
+    button.disabled = true;
+    button.textContent = "Preparando...";
+  }
+
+  await initTurnstile();
+
   const data = new FormData(form);
   const payload = buildPayload(form, data);
 
   if (!payload["cf-turnstile-response"]) {
+    if (button) {
+      button.disabled = false;
+      button.textContent = originalText;
+    }
     setFormStatus(form, "Completa la verificación de seguridad antes de enviar.", "error");
     return;
   }
 
   if (button) {
-    button.disabled = true;
     button.textContent = "Enviando...";
   }
   form.setAttribute("aria-busy", "true");
@@ -1061,17 +1104,16 @@ window.addEventListener("scroll", () => {
   window.requestAnimationFrame(() => {
     updateHeader();
     updateTimeline();
-    updateHeroParallax();
     ticking = false;
   });
 
   ticking = true;
-});
+}, { passive: true });
 
 window.addEventListener("resize", () => {
   updateTimeline();
   updateHeroParallax();
-});
+}, { passive: true });
 
 window.addEventListener("hashchange", closeMobileMenu);
 
@@ -1079,8 +1121,30 @@ updateHeader();
 updateTimeline();
 updateHeroParallax();
 configureWhatsApp();
-initTurnstile();
 scrollToHash();
+
+if (contactForm) {
+  const warmTurnstile = () => {
+    initTurnstile();
+  };
+
+  contactForm.addEventListener("focusin", warmTurnstile, { once: true });
+  contactForm.addEventListener("pointerenter", warmTurnstile, { once: true });
+
+  if ("IntersectionObserver" in window) {
+    const turnstileObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          warmTurnstile();
+          turnstileObserver.disconnect();
+        });
+      },
+      { rootMargin: "360px 0px" }
+    );
+    turnstileObserver.observe(contactForm);
+  }
+}
 
 /* Spotlight de cursor: la tarjeta de producto se ilumina con el acento de
    marca justo donde está el cursor, en vez de un simple color de borde. */
