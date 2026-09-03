@@ -233,20 +233,20 @@ const PRODUCT_DETAILS = {
     receta: "Sí (aplicación por profesional autorizado)",
   },
   tirzepatida: {
-    category: "Control de peso y metabolismo",
-    name: "Tirzepatida 60 mg",
+    category: "Control de peso MG Dermalab",
+    name: "MG Tirzepatida 60 mg",
     active: "Agonista DUAL — GLP-1 / GIP (2 hormonas)",
-    image: "assets/tirzepatida-nythera-transparent.png?v=20260821-1514",
-    desc: "Actúa sobre 2 receptores de incretinas (GLP-1 y GIP). Es el tratamiento indicado específicamente para diabetes mellitus tipo 2, con efecto asociado en el control de peso. Contamos con presentación de 60 mg.",
+    image: "assets/mg-tirzepatida-vial-alpha.png",
+    desc: "Línea de control de peso MG Dermalab para cotización profesional. Presentación cuidada, atención directa y disponibilidad sujeta a confirmación.",
     benefits: [
-      "Actúa sobre dos receptores de incretinas (GLP-1 y GIP)",
-      "Ayuda a regular la glucosa en sangre",
-      "Dosis ajustable según respuesta y tolerancia del paciente",
+      "Presentación de 60 mg",
+      "Cotización profesional",
+      "Atención directa por WhatsApp",
     ],
-    indications: ["Diabetes mellitus tipo 2", "Apoyo en control de peso"],
-    presentations: "Vial de 60 mg. Vía de administración subcutánea. Dosis inicial recomendada de 2.5 mg una vez por semana, ajustable a 5 mg, 10 mg o 15 mg semanales según indicación médica.",
-    conservation: "Refrigerar a 2 °C - 8 °C. No congelar.",
-    receta: "Sí. Uso exclusivo en adultos, bajo supervisión médica.",
+    indications: ["Médicos y clínicas", "Programas de control de peso"],
+    presentations: "Vial liofilizado de 60 mg para cotización profesional.",
+    conservation: "Confirmar condiciones de conservación y disponibilidad al cotizar.",
+    receta: "Uso bajo valoración y supervisión de profesionales de la salud.",
   },
 };
 
@@ -263,6 +263,12 @@ const configureWhatsApp = () => {
 };
 
 const trackEvent = (eventName, params = {}) => {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: eventName,
+    ...params,
+  });
+
   if (typeof window.gtag === "function") {
     window.gtag("event", eventName, params);
   }
@@ -549,12 +555,22 @@ const updateRecetaField = () => {
 
 const setFormStatus = (form, message, state = "") => {
   const status = form.querySelector(".form-status");
+  const successCard = form.querySelector("[data-form-success]");
+
+  if (successCard) {
+    successCard.hidden = state !== "success";
+  }
+
+  form.dataset.state = state;
+
   if (!status) return;
 
   status.textContent = message;
   status.dataset.state = state;
 
-  if (message) {
+  if (state === "success" && successCard) {
+    successCard.focus({ preventScroll: false });
+  } else if (message) {
     status.setAttribute("tabindex", "-1");
     status.focus({ preventScroll: true });
   } else {
@@ -625,7 +641,11 @@ const submitLeadForm = async (form, event) => {
     setLeadStartedAt(form);
     updateRecetaField();
     resetTurnstile();
-    setFormStatus(form, "Solicitud enviada correctamente.", "success");
+    setFormStatus(
+      form,
+      "Hemos recibido tus datos. Pronto estaremos contactándote. Gracias. MG Dermalab te desea un excelente día.",
+      "success"
+    );
     pushGenerateLeadEvent();
     trackEvent("lead_form_submit", {
       form_name: form.getAttribute("name") || "lead",
@@ -783,6 +803,10 @@ if (productModal) {
     area.addEventListener("click", () => {
       const card = area.closest(".product-card");
       if (!card) return;
+      if (card.dataset.productPage) {
+        window.location.href = card.dataset.productPage;
+        return;
+      }
       openProductModal(card.dataset.product, card.querySelector("[data-open-product]"));
     });
   });
@@ -829,13 +853,12 @@ const PRODUCT_TO_QUOTE_OPTION = {
   "restylane-eyelight": "Línea Restylane",
   "restylane-skinboosters-vital": "Restylane Skinboosters",
   "restylane-skinboosters-vital-light": "Restylane Skinboosters",
-  tirzepatida: "Tirzepatida 60 mg",
+  tirzepatida: "Control de peso MG Dermalab: Tirzepatida 60 mg",
 };
 
 const CATEGORY_TO_DEFAULT_PRODUCT = {
   "catalogo-medicina-estetica": "dysport-300",
   "catalogo-dermatologia": "neotrex-10",
-  "catalogo-control-peso": "tirzepatida",
 };
 
 const preselectProductoLinea = (productId) => {
@@ -864,6 +887,13 @@ document.querySelectorAll("[data-product-quote]").forEach((link) => {
     const productId = link.dataset.productQuote;
     preselectProductoLinea(productId);
 
+    if (productId === "tirzepatida") {
+      trackEvent("mg_tirzepatida_quote_click", {
+        product: productId,
+        line: "Control de peso MG Dermalab",
+      });
+    }
+
     if (mobileViewport.matches) {
       jumpToContactInstant();
       return;
@@ -883,6 +913,15 @@ document.querySelectorAll("[data-product-quote]").forEach((link) => {
   });
 });
 
+document.querySelectorAll("[data-mg-whatsapp]").forEach((link) => {
+  link.addEventListener("click", () => {
+    trackEvent("mg_tirzepatida_whatsapp_click", {
+      product: "tirzepatida",
+      line: "Control de peso MG Dermalab",
+    });
+  });
+});
+
 document.querySelectorAll('a[href="#contacto"]').forEach((link) => {
   link.addEventListener("click", (event) => {
     event.preventDefault();
@@ -895,6 +934,14 @@ document.querySelectorAll('a[href="#contacto"]').forEach((link) => {
     jumpToContactInstant();
   });
 });
+
+const requestedProduct = new URLSearchParams(window.location.search).get("producto");
+if (requestedProduct && PRODUCT_TO_QUOTE_OPTION[requestedProduct]) {
+  preselectProductoLinea(requestedProduct);
+  if (window.location.hash === "#contacto") {
+    window.setTimeout(jumpToContactInstant, 60);
+  }
+}
 
 if (productModal) {
   productModal.querySelectorAll(".product-modal-cta").forEach((ctaLink) => {

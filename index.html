@@ -3,22 +3,11 @@
   <head>
     <!-- Google Tag Manager -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-      window.__loadGtm = function () {
-        if (window.__gtmLoaded) return;
-        window.__gtmLoaded = true;
-        var f = document.getElementsByTagName("script")[0];
-        var j = document.createElement("script");
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=GTM-T9MFWNKW";
-        f.parentNode.insertBefore(j, f);
-      };
-      if ("requestIdleCallback" in window) {
-        requestIdleCallback(window.__loadGtm, { timeout: 2600 });
-      } else {
-        setTimeout(window.__loadGtm, 1800);
-      }
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":
+      new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
+      "https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,"script","dataLayer","GTM-T9MFWNKW");
     </script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
@@ -34,19 +23,19 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link rel="manifest" href="site.webmanifest" />
     <meta name="msapplication-config" content="browserconfig.xml" />
-    <meta name="msapplication-TileColor" content="#16181B" />
-    <meta name="theme-color" content="#16181B" />
+    <meta name="msapplication-TileColor" content="#0A2540" />
+    <meta name="theme-color" content="#0A2540" />
     <meta property="og:site_name" content="MG Dermalab" />
     <meta property="og:title" content="MG Dermalab | Distribuidor de Productos Dermatológicos y Medicina Estética en México" />
     <meta property="og:description" content="Distribución especializada de Dysport, Sculptra, Restylane e isotretinoína para médicos, clínicas y farmacias. Envíos a todo México." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://mgdermalab.mx/" />
-    <meta property="og:image" content="https://mgdermalab.mx/assets/hero-mg-dermalab-grafito-1600.jpg" />
-    <meta property="og:image:alt" content="Oficina y empaque premium de MG Dermalab con identidad grafito y naranja" />
+    <meta property="og:image" content="https://mgdermalab.mx/assets/hero-operacion-1600.jpg" />
+    <meta property="og:image:alt" content="Operación comercial de MG Dermalab para distribución médica especializada" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="MG Dermalab | Distribuidor de Productos Dermatológicos y Medicina Estética en México" />
     <meta name="twitter:description" content="Distribución especializada de Dysport, Sculptra, Restylane e isotretinoína para médicos, clínicas y farmacias. Envíos a todo México." />
-    <meta name="twitter:image" content="https://mgdermalab.mx/assets/hero-mg-dermalab-grafito-1600.jpg" />
+    <meta name="twitter:image" content="https://mgdermalab.mx/assets/hero-operacion-1600.jpg" />
     <title>MG Dermalab | Distribuidor de Productos Dermatológicos y Medicina Estética en México</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -55,7 +44,8 @@
       rel="stylesheet"
     />
     <link rel="preload" as="image" href="assets/hero-mg-dermalab-grafito-1600.jpg" imagesrcset="assets/hero-mg-dermalab-grafito-900.jpg 900w, assets/hero-mg-dermalab-grafito-1600.jpg 1600w" imagesizes="100vw" />
-    <link rel="stylesheet" href="styles.css?v=20260821-1514" />
+    <link rel="stylesheet" href="styles.css?v=20260823-1925" />
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -134,34 +124,19 @@
           </p>
           <div class="hero-primary-actions">
             <a class="profile-button primary" href="#lineas">Ver productos</a>
+            <a class="profile-button hero-control-cta" href="control-peso-mg-dermalab.html">Control de peso MG Dermalab</a>
             <a class="profile-button" href="#contacto">Solicitar cotización</a>
           </div>
           <div class="hero-trust" aria-label="Beneficios comerciales">
-            <article>
-              <span aria-hidden="true">⚡</span>
-              <strong>Disponibilidad</strong>
-              <small>Producto cuando lo necesitas.</small>
-            </article>
-            <article>
-              <span aria-hidden="true">💰</span>
-              <strong>Precio profesional</strong>
-              <small>Condiciones para médicos y volumen.</small>
-            </article>
-            <article>
-              <span aria-hidden="true">🚚</span>
-              <strong>Entrega rápida</strong>
-              <small>CDMX y envíos nacionales.</small>
-            </article>
-            <article>
-              <span aria-hidden="true">💬</span>
-              <strong>Atención directa</strong>
-              <small>Cotización rápida por WhatsApp.</small>
-            </article>
+            <article><span aria-hidden="true">⚡</span><strong>Disponibilidad</strong><small>Producto cuando lo necesitas.</small></article>
+            <article><span aria-hidden="true">💰</span><strong>Precio profesional</strong><small>Condiciones para médicos y volumen.</small></article>
+            <article><span aria-hidden="true">🚚</span><strong>Entrega rápida</strong><small>CDMX y envíos nacionales.</small></article>
+            <article><span aria-hidden="true">💬</span><strong>Atención directa</strong><small>Cotización rápida por WhatsApp.</small></article>
           </div>
           <div class="hero-audience" aria-label="Perfiles que atendemos">
             <span>Dermatología</span>
             <span>Medicina estética</span>
-            <span>Control de peso</span>
+            <span>Control de peso MG Dermalab</span>
           </div>
         </div>
         <a class="scroll-cue" href="#lineas" aria-label="Ir a la siguiente sección">
@@ -173,17 +148,16 @@
         <div class="section-heading reveal">
           <p class="eyebrow">Selecciona tu línea</p>
           <h2>¿Qué estás buscando?</h2>
-          <p>Elige una línea y te llevamos directo a cotización con el producto preseleccionado.</p>
         </div>
         <div class="line-grid" role="tablist" aria-label="Líneas de distribución">
-          <a href="#catalogo-medicina-estetica" data-catalog-target="catalogo-medicina-estetica" class="line-card reveal" role="tab" aria-selected="false">
+          <a href="control-peso-mg-dermalab.html" class="line-card line-card-control-mg reveal">
             <span class="line-index">01</span>
             <span class="line-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M14.5 4.5l5 5M12.8 6.2l-8 8a2 2 0 000 2.8l.2.2a2 2 0 002.8 0l8-8M9 15l-3.5 3.5M4 20l1.5-3.5M16.2 2.8l5 5" /></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 3v3M12 6l-6.5 12.5a1 1 0 00.9 1.5h11.2a1 1 0 00.9-1.5L12 6zM7.5 15h9M4 6h7M4 6l-2 4.5a3 3 0 006 0L6 6M18 6h2M18 6l-2 4.5a3 3 0 006 0L20 6" /></svg>
             </span>
-            <h3>Medicina estética</h3>
-            <p>Toxina botulínica, bioestimuladores y ácido hialurónico.</p>
-            <span class="line-card-cta">Cotizar medicina estética →</span>
+            <h3>Control de peso MG Dermalab</h3>
+            <p>Tirzepatida MG Dermalab en una landing dedicada para ampliar información y cotizar.</p>
+            <span class="line-card-cta">Ver línea completa →</span>
           </a>
           <a href="#catalogo-dermatologia" data-catalog-target="catalogo-dermatologia" class="line-card reveal" role="tab" aria-selected="false">
             <span class="line-index">02</span>
@@ -194,71 +168,15 @@
             <p>Opciones especializadas de isotretinoína en diferentes marcas y presentaciones.</p>
             <span class="line-card-cta">Cotizar dermatología →</span>
           </a>
-          <a href="#catalogo-control-peso" data-catalog-target="catalogo-control-peso" class="line-card reveal" role="tab" aria-selected="false">
+          <a href="#catalogo-medicina-estetica" data-catalog-target="catalogo-medicina-estetica" class="line-card reveal" role="tab" aria-selected="false">
             <span class="line-index">03</span>
             <span class="line-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 3v3M12 6l-6.5 12.5a1 1 0 00.9 1.5h11.2a1 1 0 00.9-1.5L12 6zM7.5 15h9M4 6h7M4 6l-2 4.5a3 3 0 006 0L6 6M18 6h2M18 6l-2 4.5a3 3 0 006 0L20 6" /></svg>
+              <svg viewBox="0 0 24 24"><path d="M14.5 4.5l5 5M12.8 6.2l-8 8a2 2 0 000 2.8l.2.2a2 2 0 002.8 0l8-8M9 15l-3.5 3.5M4 20l1.5-3.5M16.2 2.8l5 5" /></svg>
             </span>
-            <h3>Control de peso</h3>
-            <p>Tratamiento para el control de peso y metabolismo, bajo supervisión médica.</p>
-            <span class="line-card-cta">Cotizar control de peso →</span>
+            <h3>Medicina estética</h3>
+            <p>Toxina botulínica, bioestimuladores y ácido hialurónico.</p>
+            <span class="line-card-cta">Cotizar medicina estética →</span>
           </a>
-        </div>
-        <div class="line-products-preview" data-line-products-preview hidden>
-          <article class="line-preview-panel" data-line-preview="catalogo-medicina-estetica" hidden>
-            <div class="line-preview-heading">
-              <p class="catalog-label">Medicina estética</p>
-              <h3>Productos disponibles para cotización</h3>
-            </div>
-            <div class="line-preview-grid">
-              <button type="button" data-product-quote="dysport-300"><strong>Dysport</strong><span>300 U / 500 U</span></button>
-              <button type="button" data-product-quote="sculptra"><strong>Sculptra</strong><span>Ácido poli-L-láctico</span></button>
-              <button type="button" data-product-quote="restylane-kysse"><strong>Línea Restylane</strong><span>Kysse, Lyft, Refyne, Defyne, Contour, Eyelight y Skinboosters</span></button>
-            </div>
-            <div class="line-quote-status" data-line-quote-status hidden>
-              <span></span>
-              <div>
-                <a data-whatsapp-link href="https://wa.me/525654434495?text=Hola%2C%20me%20interesa%20solicitar%20disponibilidad%20y%20cotizaci%C3%B3n%20de%20productos%20de%20MG%20Dermalab." target="_blank" rel="noopener">Solicitar por WhatsApp</a>
-                <a href="#contacto">Ir al formulario</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="line-preview-panel" data-line-preview="catalogo-dermatologia" hidden>
-            <div class="line-preview-heading">
-              <p class="catalog-label">Dermatología</p>
-              <h3>Isotretinoína por marca y presentación</h3>
-            </div>
-            <div class="line-preview-grid">
-              <button type="button" data-product-quote="neotrex-10"><strong>Neotrex</strong><span>10 mg / 20 mg</span></button>
-              <button type="button" data-product-quote="epuris-10"><strong>Epuris</strong><span>10 mg / 20 mg</span></button>
-              <button type="button" data-product-quote="vastionin-10"><strong>Vastionin</strong><span>10 mg / 20 mg</span></button>
-            </div>
-            <div class="line-quote-status" data-line-quote-status hidden>
-              <span></span>
-              <div>
-                <a data-whatsapp-link href="https://wa.me/525654434495?text=Hola%2C%20me%20interesa%20solicitar%20disponibilidad%20y%20cotizaci%C3%B3n%20de%20productos%20de%20MG%20Dermalab." target="_blank" rel="noopener">Solicitar por WhatsApp</a>
-                <a href="#contacto">Ir al formulario</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="line-preview-panel" data-line-preview="catalogo-control-peso" hidden>
-            <div class="line-preview-heading">
-              <p class="catalog-label">Control de peso y metabolismo</p>
-              <h3>GLP-1 disponible</h3>
-            </div>
-            <div class="line-preview-grid">
-              <button type="button" data-product-quote="tirzepatida"><strong>Tirzepatida</strong><span>Presentación 60 mg</span></button>
-            </div>
-            <div class="line-quote-status" data-line-quote-status hidden>
-              <span></span>
-              <div>
-                <a data-whatsapp-link href="https://wa.me/525654434495?text=Hola%2C%20me%20interesa%20solicitar%20disponibilidad%20y%20cotizaci%C3%B3n%20de%20productos%20de%20MG%20Dermalab." target="_blank" rel="noopener">Solicitar por WhatsApp</a>
-                <a href="#contacto">Ir al formulario</a>
-              </div>
-            </div>
-          </article>
         </div>
       </section>
 
@@ -276,7 +194,7 @@
           <div class="spotlight-track" data-carousel-track>
 
             <article class="product-card spotlight-card" data-product="neotrex-20">
-              <figure><img loading="lazy" decoding="async" src="assets/neotrex-20-premium-optimized.jpg" width="900" height="675" alt="Neotrex isotretinoína 20 mg" /></figure>
+              <figure><img loading="lazy" decoding="async" src="assets/neotrex-20-premium.png" width="1448" height="1086" alt="Neotrex isotretinoína 20 mg" /></figure>
               <div class="product-info">
                 <div class="product-title-row"><strong>Neotrex</strong><span class="product-dose">20 mg</span></div>
                 <span class="product-active">Isotretinoína</span>
@@ -332,29 +250,29 @@
               </div>
             </article>
 
-            <article class="product-card product-card-glp spotlight-card" data-product="tirzepatida">
-              <figure class="product-glp-image">
-                <img loading="lazy" decoding="async" src="assets/tirzepatida-nythera-transparent.png?v=20260821-1514" width="750" height="1000" alt="Vial de Tirzepatida 60 mg" />
+            <article class="product-card product-card-glp spotlight-card product-card-page" data-product="tirzepatida" data-product-page="control-peso-mg-dermalab.html">
+              <figure class="product-glp-image product-packshot-figure">
+                <img loading="lazy" decoding="async" src="assets/mg-tirzepatida-vial-alpha.png" width="1122" height="1402" alt="Vial MG Tirzepatida 60 mg" />
               </figure>
               <div class="product-glp-stat">
                 <span class="product-glp-number">2</span>
                 <span class="product-glp-label">hormonas<br />agonista dual</span>
               </div>
               <div class="product-info">
-                <div class="product-title-row"><strong>Tirzepatida</strong><span class="product-dose">60 mg</span></div>
-                <span class="product-active">Agonista DUAL &mdash; 2 hormonas: GLP-1 / GIP</span>
-                <p class="product-desc">Actúa sobre 2 receptores de incretinas (GLP-1 y GIP). Es el tratamiento indicado específicamente para diabetes mellitus tipo 2, con efecto asociado en el control de peso.</p>
+                <div class="product-title-row"><strong>MG Tirzepatida</strong><span class="product-dose">60 mg</span></div>
+                <span class="product-active">Control de peso MG Dermalab</span>
+                <p class="product-desc">Línea de control de peso MG Dermalab para cotización profesional. Presentación cuidada, atención directa y disponibilidad sujeta a confirmación.</p>
                 <p class="product-ideal-label">Ideal para</p>
                 <ul class="product-ideal">
-                  <li>Diabetes mellitus tipo 2</li>
-                  <li>Control de glucosa en sangre</li>
-                  <li>Apoyo en pérdida de peso</li>
+                  <li>Presentación de 60 mg</li>
+                  <li>Cotización profesional</li>
+                  <li>Atención directa por WhatsApp</li>
                 </ul>
                 <p class="product-presentation-note">Contamos con presentación de 60 mg.</p>
               </div>
               <div class="product-actions">
-                <button type="button" class="product-more" data-open-product="tirzepatida">Ver ficha completa</button>
-                <a class="text-button" href="#contacto">Solicitar cotización</a>
+                <a class="product-more" href="control-peso-mg-dermalab.html">Ver página completa</a>
+                <a class="text-button" href="index.html?producto=tirzepatida#contacto">Solicitar cotización</a>
               </div>
             </article>
 
@@ -368,23 +286,14 @@
 
       <section class="brand-ribbon" aria-label="Marcas distribuidas">
         <p>Marcas disponibles para cotización:</p>
-        <div class="brand-marquee" aria-hidden="true">
-          <div class="brand-marquee-track">
-            <span>Neotrex</span>
-            <span>Epuris</span>
-            <span>Vastionin</span>
-            <span>Restylane</span>
-            <span>Sculptra</span>
-            <span>Dysport</span>
-            <span>Tirzepatida</span>
-            <span>Neotrex</span>
-            <span>Epuris</span>
-            <span>Vastionin</span>
-            <span>Restylane</span>
-            <span>Sculptra</span>
-            <span>Dysport</span>
-            <span>Tirzepatida</span>
-          </div>
+        <div>
+          <span>Neotrex</span>
+          <span>Epuris</span>
+          <span>Vastionin</span>
+          <span>Restylane</span>
+          <span>Sculptra</span>
+          <span>Dysport</span>
+          <span>Tirzepatida</span>
         </div>
       </section>
 
@@ -399,30 +308,17 @@
           <p>No publicamos precios para ofrecer una cotización personalizada según el perfil del cliente y el volumen solicitado.</p>
         </div>
 
-        <div class="catalog-intro-panel reveal" aria-label="Distribución de marcas premium">
-          <p>Distribuimos marcas premium y laboratorios de prestigio para dermatología, medicina estética y control de peso.</p>
-          <div>
-            <span>Galderma</span>
-            <span>Ipsen</span>
-            <span>Megalabs</span>
-            <span>Advaita</span>
-            <span>Restylane</span>
-            <span>Sculptra</span>
-            <span>Dysport</span>
-          </div>
-        </div>
-
         <nav class="catalog-tabs" aria-label="Categorías del catálogo">
           <a href="#catalogo-dermatologia" data-catalog-target="catalogo-dermatologia">Dermatología</a>
           <a href="#catalogo-medicina-estetica" data-catalog-target="catalogo-medicina-estetica">Medicina estética</a>
-          <a href="#catalogo-control-peso" data-catalog-target="catalogo-control-peso">Control de peso y metabolismo</a>
+          <a class="catalog-control-cta" href="control-peso-mg-dermalab.html">Control de peso MG Dermalab</a>
         </nav>
 
         <div class="catalog-showcase">
 
           <article class="catalog-family reveal" id="catalogo-dermatologia">
             <figure class="catalog-family-hero">
-              <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-linea-dermatologia-900.jpg" srcset="assets/mg-dermalab-linea-dermatologia-900.jpg 900w, assets/mg-dermalab-linea-dermatologia-1200.jpg 1536w" sizes="(max-width: 760px) 100vw, 42vw" width="900" height="600" alt="Dermatología con atención por perfil médico" />
+              <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-linea-dermatologia-1200.jpg" width="1536" height="1024" alt="Dermatología con atención por perfil médico" />
             </figure>
             <div class="family-heading">
               <span class="family-index" aria-hidden="true">02</span>
@@ -433,7 +329,7 @@
             <div class="product-grid">
 
               <article class="product-card" data-product="neotrex-10">
-                <figure><img loading="lazy" decoding="async" src="assets/neotrex-10-premium-optimized.jpg" width="900" height="665" alt="Neotrex isotretinoína 10 mg" /></figure>
+                <figure><img loading="lazy" decoding="async" src="assets/neotrex-10-premium.png" width="918" height="678" alt="Neotrex isotretinoína 10 mg" /></figure>
                 <div class="product-info">
                   <div class="product-title-row"><strong>Neotrex</strong><span class="product-dose">10 mg</span></div>
                   <span class="product-active">Isotretinoína</span>
@@ -452,7 +348,7 @@
               </article>
 
               <article class="product-card" data-product="neotrex-20">
-                <figure><img loading="lazy" decoding="async" src="assets/neotrex-20-premium-optimized.jpg" width="900" height="675" alt="Neotrex isotretinoína 20 mg" /></figure>
+                <figure><img loading="lazy" decoding="async" src="assets/neotrex-20-premium.png" width="1448" height="1086" alt="Neotrex isotretinoína 20 mg" /></figure>
                 <div class="product-info">
                   <div class="product-title-row"><strong>Neotrex</strong><span class="product-dose">20 mg</span></div>
                   <span class="product-active">Isotretinoína</span>
@@ -490,7 +386,7 @@
               </article>
 
               <article class="product-card" data-product="epuris-20">
-                <figure><img loading="lazy" decoding="async" src="assets/epuris-20-premium-optimized.jpg" width="900" height="686" alt="Epuris isotretinoína 20 mg" /></figure>
+                <figure><img loading="lazy" decoding="async" src="assets/epuris-20-premium.png" width="1436" height="1095" alt="Epuris isotretinoína 20 mg" /></figure>
                 <div class="product-info">
                   <div class="product-title-row"><strong>Epuris</strong><span class="product-dose">20 mg</span></div>
                   <span class="product-active">Isotretinoína</span>
@@ -528,7 +424,7 @@
               </article>
 
               <article class="product-card" data-product="vastionin-20">
-                <figure><img loading="lazy" decoding="async" src="assets/vastionin-20-premium-optimized.jpg" width="900" height="687" alt="Vastionin isotretinoína 20 mg" /></figure>
+                <figure><img loading="lazy" decoding="async" src="assets/vastionin-20-premium.png" width="1435" height="1096" alt="Vastionin isotretinoína 20 mg" /></figure>
                 <div class="product-info">
                   <div class="product-title-row"><strong>Vastionin</strong><span class="product-dose">20 mg</span></div>
                   <span class="product-active">Isotretinoína</span>
@@ -552,7 +448,7 @@
 
           <article class="catalog-family reveal dark" id="catalogo-medicina-estetica">
             <figure class="catalog-family-hero">
-              <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-laboratorios-restylane-900.jpg" srcset="assets/mg-dermalab-laboratorios-restylane-900.jpg 900w, assets/mg-dermalab-laboratorios-restylane-1200.jpg 1536w" sizes="(max-width: 760px) 100vw, 42vw" width="900" height="600" alt="Portafolio de medicina estética con Restylane" />
+              <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-laboratorios-restylane-1200.jpg" width="1536" height="1024" alt="Portafolio de medicina estética con Restylane" />
             </figure>
             <div class="family-heading">
               <span class="family-index" aria-hidden="true">01</span>
@@ -782,77 +678,6 @@
             <a class="text-button" href="#contacto">Solicitar cotización de medicina estética</a>
           </article>
 
-          <article class="catalog-family reveal" id="catalogo-control-peso">
-            <div class="family-heading">
-              <span class="family-index" aria-hidden="true">03</span>
-              <p class="catalog-label">Control de peso y metabolismo</p>
-              <h3>Manejo de sobrepeso, obesidad y diabetes tipo 2</h3>
-              <p>Tratamiento inyectable para bajar de peso, disponible para uso profesional bajo supervisión médica.</p>
-            </div>
-            <div class="product-grid">
-
-              <article class="product-card product-card-glp" data-product="tirzepatida">
-                <div class="glp-interactive" aria-label="Beneficios informativos de Tirzepatida">
-                  <figure class="product-glp-image glp-interactive-vial">
-                    <img loading="lazy" decoding="async" src="assets/tirzepatida-nythera-transparent.png?v=20260821-1514" width="750" height="1000" alt="Vial de Tirzepatida 60 mg" />
-                  </figure>
-
-                  <button class="glp-benefit glp-benefit-1" type="button" aria-describedby="glp-benefit-control">
-                    <span>Control glucémico</span>
-                    <small id="glp-benefit-control">Puede apoyar la regulación de glucosa al actuar sobre vías incretínicas relacionadas con insulina y glucagón, siempre bajo supervisión médica.</small>
-                  </button>
-
-                  <button class="glp-benefit glp-benefit-2" type="button" aria-describedby="glp-benefit-apetito">
-                    <span>Menor apetito</span>
-                    <small id="glp-benefit-apetito">Su acción sobre señales de saciedad puede ayudar a disminuir el apetito dentro de un plan médico integral.</small>
-                  </button>
-
-                  <button class="glp-benefit glp-benefit-3" type="button" aria-describedby="glp-benefit-antojos">
-                    <span>Reduce antojos</span>
-                    <small id="glp-benefit-antojos">Al favorecer saciedad y control de ingesta, puede contribuir a reducir impulsos de consumo entre comidas.</small>
-                  </button>
-
-                  <button class="glp-benefit glp-benefit-4" type="button" aria-describedby="glp-benefit-saciedad">
-                    <span>Aumenta saciedad</span>
-                    <small id="glp-benefit-saciedad">Puede prolongar la sensación de plenitud y apoyar adherencia a un plan nutricional indicado por el profesional de salud.</small>
-                  </button>
-
-                  <button class="glp-benefit glp-benefit-5" type="button" aria-describedby="glp-benefit-peso">
-                    <span>Apoya pérdida de peso</span>
-                    <small id="glp-benefit-peso">Como parte de seguimiento médico, puede apoyar reducción de peso al combinar control de apetito, saciedad y hábitos supervisados.</small>
-                  </button>
-
-                  <button class="glp-benefit glp-benefit-6" type="button" aria-describedby="glp-benefit-metabolismo">
-                    <span>Favorece metabolismo</span>
-                    <small id="glp-benefit-metabolismo">Su efecto metabólico se relaciona con la respuesta a incretinas y debe evaluarse según el perfil clínico de cada paciente.</small>
-                  </button>
-                </div>
-                <div class="product-glp-stat">
-                  <span class="product-glp-number">2</span>
-                  <span class="product-glp-label">hormonas<br />agonista dual</span>
-                </div>
-                <div class="product-info">
-                  <div class="product-title-row"><strong>Tirzepatida</strong><span class="product-dose">60 mg</span></div>
-                  <span class="product-active">Agonista DUAL &mdash; 2 hormonas: GLP-1 / GIP</span>
-                  <p class="product-desc">Actúa sobre 2 receptores de incretinas (GLP-1 y GIP). Es el tratamiento indicado específicamente para diabetes mellitus tipo 2, con efecto asociado en el control de peso.</p>
-                  <p class="product-ideal-label">Ideal para</p>
-                  <ul class="product-ideal">
-                    <li>Diabetes mellitus tipo 2</li>
-                    <li>Control de glucosa en sangre</li>
-                    <li>Apoyo en pérdida de peso</li>
-                  </ul>
-                  <p class="product-presentation-note">Contamos con presentación de 60 mg.</p>
-                </div>
-                <div class="product-actions">
-                  <button type="button" class="product-more" data-open-product="tirzepatida">Ver ficha completa</button>
-                  <a class="text-button" href="#contacto">Solicitar cotización</a>
-                </div>
-              </article>
-
-            </div>
-            <a class="text-button" href="#contacto">Solicitar cotización de control de peso</a>
-          </article>
-
         </div>
       </section>
 
@@ -917,7 +742,7 @@
 
       <section class="section labs-section" id="laboratorios">
         <div class="labs-media reveal">
-          <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-laboratorios-restylane-900.jpg" srcset="assets/mg-dermalab-laboratorios-restylane-900.jpg 900w, assets/mg-dermalab-laboratorios-restylane-1200.jpg 1536w" sizes="(max-width: 760px) 100vw, 42vw" width="900" height="600" alt="Portafolio Restylane con empaque profesional de MG Dermalab" />
+          <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-laboratorios-restylane-1200.jpg" width="1536" height="1024" alt="Portafolio Restylane con empaque profesional de MG Dermalab" />
         </div>
         <div class="labs-copy reveal">
           <p class="eyebrow">Laboratorios</p>
@@ -969,7 +794,7 @@
           <a class="section-cta" href="#contacto">Abrir cuenta comercial</a>
         </div>
         <figure class="pharmacy-photo reveal">
-          <img data-parallax-image loading="lazy" decoding="async" src="assets/hero-mg-dermalab-grafito-reuse-900.jpg" srcset="assets/hero-mg-dermalab-grafito-reuse-900.jpg 900w, assets/hero-mg-dermalab-grafito-1600.jpg 1535w" sizes="(max-width: 760px) 100vw, 42vw" width="900" height="600" alt="Área de distribución médica especializada de MG Dermalab con identidad grafito y naranja" />
+          <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-oficina-distribucion-1200.jpg" width="1536" height="1024" alt="Área de trabajo y preparación de pedidos de MG Dermalab" />
         </figure>
         <div class="pharmacy-metrics reveal">
           <div><strong>01</strong><span>Cuenta comercial dedicada</span></div>
@@ -1025,8 +850,8 @@
               <p>Sí. Atendemos médicos, clínicas, consultorios, farmacias e instituciones. Las condiciones se definen según el perfil y el volumen solicitado.</p>
             </details>
             <details>
-              <summary>¿Cómo recibo seguimiento de mi solicitud?</summary>
-              <p>Un asesor te contactará por WhatsApp para confirmar disponibilidad, condiciones comerciales y los siguientes pasos de compra.</p>
+              <summary>¿Puedo solicitar factura?</summary>
+              <p>Sí. Para emitirla necesitamos tus datos fiscales completos y el uso de CFDI correspondiente.</p>
             </details>
           </div>
           <div class="faq-list">
@@ -1053,15 +878,14 @@
             cualquier duda.
           </p>
           <div class="contact-assurance">
-            <span>Entrega inmediata en CDMX</span>
-            <span>Envíos a toda la República</span>
+            <span>Respuesta personalizada</span>
             <span>Cotización privada</span>
+            <span>Perfil médico o institucional</span>
           </div>
           <a class="contact-whatsapp" data-whatsapp-link href="https://wa.me/525654434495?text=Hola%2C%20me%20interesa%20solicitar%20disponibilidad%20y%20cotizaci%C3%B3n%20de%20productos%20de%20MG%20Dermalab." target="_blank" rel="noopener">Cotizar por WhatsApp</a>
         </div>
         <form class="contact-form reveal" name="cotizacion" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="cotizacion" />
-          <input type="hidden" name="lead_started_at" data-lead-started-at value="" />
           <p class="bot-field" aria-hidden="true">
             <label>No llenar este campo<input name="bot-field" tabindex="-1" autocomplete="off" /></label>
           </p>
@@ -1101,7 +925,7 @@
               <option>Sculptra</option>
               <option>Línea Restylane</option>
               <option>Restylane Skinboosters</option>
-              <option>Tirzepatida 60 mg</option>
+              <option>Control de peso MG Dermalab: Tirzepatida 60 mg</option>
               <option>Farmacias / compra por volumen</option>
             </select>
           </label>
@@ -1149,6 +973,8 @@
       </div>
     </footer>
 
-    <script src="script.js?v=20260821-1514" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
