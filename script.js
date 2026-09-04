@@ -278,6 +278,18 @@ const trackEvent = (eventName, params = {}) => {
   }
 };
 
+const pushProductDetailView = (details) => {
+  if (!details) return;
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "product_detail_view",
+    product_name: details.name,
+    category: details.category,
+    presentation: details.presentations,
+  });
+};
+
 const pushGenerateLeadEvent = () => {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
@@ -724,7 +736,7 @@ const fillList = (listElement, items) => {
   });
 };
 
-const openProductModal = (productId, trigger) => {
+const openProductModal = (productId, trigger, trackDetailView = false) => {
   const details = PRODUCT_DETAILS[productId];
   if (!productModal || !details) return;
 
@@ -773,7 +785,9 @@ const openProductModal = (productId, trigger) => {
     productModal.setAttribute("open", "");
   }
 
-  trackEvent("product_view_detail", { product: productId });
+  if (trackDetailView) {
+    pushProductDetailView(details);
+  }
 };
 
 const closeProductModal = () => {
@@ -794,7 +808,7 @@ const closeProductModal = () => {
 if (productModal) {
   document.querySelectorAll("[data-open-product]").forEach((trigger) => {
     trigger.addEventListener("click", () => {
-      openProductModal(trigger.dataset.openProduct, trigger);
+      openProductModal(trigger.dataset.openProduct, trigger, true);
     });
   });
 
@@ -964,7 +978,7 @@ const forceRevealVisible = (root) => {
 };
 
 const scrollToCatalogProducts = (targetPanel, behavior = "auto") => {
-  const scrollTarget = targetPanel.querySelector(".product-grid") || targetPanel;
+  const scrollTarget = targetPanel.querySelector(".family-heading") || targetPanel;
   if (!scrollTarget) return;
 
   const headerHeight = header ? header.getBoundingClientRect().height : 96;
@@ -981,6 +995,8 @@ const activateCatalogPanel = (targetId, { scroll = true, scrollBehavior = "auto"
 
   const targetPanel = Array.from(catalogFamilies).find((panel) => panel.id === targetId);
   if (!targetPanel) return;
+
+  document.body.classList.add("catalog-view-active");
 
   catalogFamilies.forEach((panel) => {
     if (panel === targetPanel) return;
@@ -1027,28 +1043,17 @@ if (catalogFamilies.length && catalogTabTriggers.length) {
       trackEvent("catalog_category_select", { category: targetId });
 
       if (window.history && typeof window.history.replaceState === "function") {
-        window.history.replaceState(null, "", window.location.pathname + window.location.search);
+        window.history.replaceState(null, "", `#${targetId}`);
       }
 
       if (trigger.closest(".line-grid")) {
-        activateCatalogPanel(targetId, { scroll: false });
-
-        if (mobileViewport.matches) {
-          if (lineProductsPreview) lineProductsPreview.hidden = true;
-          preselectProductoLinea(CATEGORY_TO_DEFAULT_PRODUCT[targetId]);
-          jumpToContactInstant();
-          return;
-        }
-
         if (lineProductsPreview) lineProductsPreview.hidden = false;
         linePreviewPanels.forEach((panel) => {
           panel.hidden = panel.dataset.linePreview !== targetId;
         });
-        forceRevealVisible(lineProductsPreview);
-        return;
       }
 
-      activateCatalogPanel(targetId, { scroll: false });
+      activateCatalogPanel(targetId, { scroll: true, scrollBehavior: "smooth" });
     });
   });
 
