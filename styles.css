@@ -2519,12 +2519,11 @@ details p {
 }
 
 .form-status[data-state="success"] {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 90, 31, 0.26);
+  border-radius: var(--radius);
+  background: rgba(255, 90, 31, 0.08);
+  color: var(--navy);
 }
 
 .form-status[data-state="error"] {
@@ -2589,7 +2588,7 @@ details p {
   font-weight: 900;
 }
 
-.contact-form[data-state="success"] > :not(.form-success-card):not(.form-status) {
+.contact-form:has(.form-success-card)[data-state="success"] > :not(.form-success-card):not(.form-status) {
   display: none;
 }
 
@@ -2599,6 +2598,11 @@ details p {
   color: var(--navy);
   font-size: 14px;
   font-weight: 800;
+}
+
+.contact-form.reveal {
+  opacity: 1;
+  transform: none;
 }
 
 .product-field {
