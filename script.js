@@ -736,7 +736,7 @@ const fillList = (listElement, items) => {
   });
 };
 
-const openProductModal = (productId, trigger, trackDetailView = false) => {
+const openProductModal = (productId, trigger) => {
   const details = PRODUCT_DETAILS[productId];
   if (!productModal || !details) return;
 
@@ -785,9 +785,6 @@ const openProductModal = (productId, trigger, trackDetailView = false) => {
     productModal.setAttribute("open", "");
   }
 
-  if (trackDetailView) {
-    pushProductDetailView(details);
-  }
 };
 
 const closeProductModal = () => {
@@ -806,10 +803,16 @@ const closeProductModal = () => {
 };
 
 if (productModal) {
-  document.querySelectorAll("[data-open-product]").forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      openProductModal(trigger.dataset.openProduct, trigger, true);
-    });
+  document.addEventListener("click", (event) => {
+    const trigger = event.target.closest("[data-open-product]");
+    if (!trigger) return;
+
+    const details = PRODUCT_DETAILS[trigger.dataset.openProduct];
+    if (!details) return;
+
+    event.preventDefault();
+    openProductModal(trigger.dataset.openProduct, trigger);
+    pushProductDetailView(details);
   });
 
   document.querySelectorAll(".product-card figure, .product-card .product-info").forEach((area) => {
