@@ -887,7 +887,14 @@ const preselectProductoLinea = (productId) => {
   if (!matchingOption) return;
 
   select.value = matchingOption.value;
-  trackEvent("cta_product_preselect", { product: productId, option: optionText });
+  const details = PRODUCT_DETAILS[productId];
+  trackEvent("cta_product_preselect", {
+    product: productId,
+    option: optionText,
+    product_name: details?.name,
+    category: details?.category,
+    presentation: details?.presentations,
+  });
 };
 
 document.querySelectorAll(".product-card").forEach((card) => {
