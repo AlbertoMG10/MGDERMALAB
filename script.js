@@ -289,6 +289,24 @@ const getProductAnalyticsParams = (productId) => {
   };
 };
 
+const getProductWhatsAppHref = (productId) => {
+  const details = PRODUCT_DETAILS[productId];
+  const productName = details?.name || "un producto de MG Dermalab";
+  const message = `Hola, me interesa ${productName}. Quiero conocer disponibilidad y cotización.`;
+
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+};
+
+const trackProductWhatsAppClick = (productId) => {
+  const productParams = getProductAnalyticsParams(productId);
+  if (!productParams.product_name) return;
+
+  trackEvent("whatsapp_click", {
+    location: "product-whatsapp",
+    ...productParams,
+  });
+};
+
 const pushProductDetailView = (details) => {
   if (!details) return;
 
@@ -793,6 +811,12 @@ const openProductModal = (productId, trigger) => {
   fillList(productModal.querySelector("[data-modal-benefits]"), details.benefits || []);
   fillList(productModal.querySelector("[data-modal-indications]"), details.indications || []);
 
+  const modalWhatsAppLink = productModal.querySelector("[data-product-whatsapp]");
+  if (modalWhatsAppLink) {
+    modalWhatsAppLink.href = getProductWhatsAppHref(productId);
+    modalWhatsAppLink.dataset.productWhatsapp = productId;
+  }
+
   lastProductTrigger = trigger || null;
   lastOpenedProductId = productId;
 
@@ -913,6 +937,31 @@ const preselectProductoLinea = (productId) => {
     presentation: details?.presentations,
   });
 };
+
+document.querySelectorAll(".product-card[data-product]").forEach((card) => {
+  const productId = card.dataset.product;
+  const details = PRODUCT_DETAILS[productId];
+  const actions = card.querySelector(".product-actions");
+
+  if (!details || !actions || actions.querySelector("[data-product-whatsapp]")) return;
+
+  const whatsappLink = document.createElement("a");
+  whatsappLink.className = "product-whatsapp-cta";
+  whatsappLink.href = getProductWhatsAppHref(productId);
+  whatsappLink.target = "_blank";
+  whatsappLink.rel = "noopener";
+  whatsappLink.dataset.productWhatsapp = productId;
+  whatsappLink.textContent = "Consultar por WhatsApp";
+
+  actions.appendChild(whatsappLink);
+});
+
+document.addEventListener("click", (event) => {
+  const whatsappTrigger = event.target.closest("[data-product-whatsapp]");
+  if (!whatsappTrigger) return;
+
+  trackProductWhatsAppClick(whatsappTrigger.dataset.productWhatsapp);
+});
 
 document.querySelectorAll(".product-card").forEach((card) => {
   const cotizarLink = card.querySelector(".product-actions .text-button");
