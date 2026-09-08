@@ -278,15 +278,26 @@ const trackEvent = (eventName, params = {}) => {
   }
 };
 
+const getProductAnalyticsParams = (productId) => {
+  const details = PRODUCT_DETAILS[productId];
+  if (!details) return {};
+
+  return {
+    product_name: details.name,
+    category: details.category,
+    presentation: details.presentations,
+  };
+};
+
 const pushProductDetailView = (details) => {
   if (!details) return;
 
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     event: "product_detail_view",
-    product_name: details.name,
-    category: details.category,
-    presentation: details.presentations,
+    ...getProductAnalyticsParams(
+      Object.keys(PRODUCT_DETAILS).find((productId) => PRODUCT_DETAILS[productId] === details)
+    ),
   });
 };
 
@@ -701,8 +712,14 @@ if (contactForm && clientTypeSelect) {
 
 whatsappLinks.forEach((link) => {
   link.addEventListener("click", () => {
+    const cardProductId = link.closest(".product-card")?.dataset.product;
+    const modalProductId =
+      productModal && productModal.hasAttribute("open") ? lastOpenedProductId : "";
+    const productParams = getProductAnalyticsParams(cardProductId || modalProductId);
+
     trackEvent("whatsapp_click", {
       location: link.className || "whatsapp_link",
+      ...productParams,
     });
   });
 });
@@ -939,9 +956,17 @@ document.querySelectorAll("[data-product-quote]").forEach((link) => {
 
 document.querySelectorAll("[data-mg-whatsapp]").forEach((link) => {
   link.addEventListener("click", () => {
+    const productParams = getProductAnalyticsParams("tirzepatida");
+
+    trackEvent("whatsapp_click", {
+      location: "product-whatsapp",
+      ...productParams,
+    });
+
     trackEvent("mg_tirzepatida_whatsapp_click", {
       product: "tirzepatida",
       line: "Control de peso MG Dermalab",
+      ...productParams,
     });
   });
 });
