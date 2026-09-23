@@ -27,7 +27,7 @@ const pages = [
     intro: "Epuris en 10 mg y 20 mg para solicitudes comerciales de profesionales y establecimientos de salud, sujeto a disponibilidad.",
     image: "assets/epuris-20-premium-optimized.jpg", width: 900, height: 640,
     note: "Indica 10 mg o 20 mg al escribirnos; así podremos revisar existencias para la presentación correcta.",
-    related: [["isotretinoina", "Ver categoría isotretinoína"], ["neotrex", "Neotrex"], ["oratane", "Oratane"]]
+    related: [["isotretinoina", "Ver categoría isotretinoína"], ["neotrex", "Neotrex"], ["vastionin", "Vastionin"]]
   },
   {
     slug: "vastionin", name: "Vastionin", category: "Dermatología", presentation: "10 mg · 20 mg",
@@ -37,14 +37,6 @@ const pages = [
     image: "assets/vastionin-20-premium-optimized.jpg", width: 900, height: 640,
     note: "Comparte concentración, número de piezas y destino para preparar tu cotización.",
     related: [["isotretinoina", "Ver categoría isotretinoína"], ["neotrex", "Neotrex"], ["epuris", "Epuris"]]
-  },
-  {
-    slug: "oratane", name: "Oratane", category: "Dermatología", presentation: "5 mg · 10 mg · 20 mg",
-    title: "Oratane 5 mg, 10 mg y 20 mg | MG Dermalab",
-    description: "Solicita disponibilidad de Oratane 5 mg, 10 mg y 20 mg con MG Dermalab. Cotización para médicos, clínicas y farmacias.",
-    intro: "Oratane en 5 mg, 10 mg y 20 mg. Nuestro equipo confirma existencias y condiciones comerciales para cada solicitud.",
-    note: "Indica la concentración de Oratane, la cantidad requerida y tu ciudad para preparar una consulta comercial precisa.",
-    related: [["isotretinoina", "Ver categoría isotretinoína"], ["epuris", "Epuris"], ["vastionin", "Vastionin"]]
   },
   {
     slug: "dysport", name: "Dysport", category: "Medicina estética", presentation: "300 U · 500 U",
@@ -66,19 +58,19 @@ const pages = [
   },
   {
     slug: "tirzepatida", name: "Tirzepatida", category: "Línea especializada", presentation: "60 mg",
-    title: "Tirzepatida 60 mg | Cotización | MG Dermalab",
-    description: "Consulta disponibilidad y cotización de Tirzepatida 60 mg con MG Dermalab. Información comercial y atención directa en México.",
-    intro: "Tirzepatida en presentación de 60 mg. Esta página ofrece únicamente información comercial y disponibilidad sujeta a confirmación.",
+    title: "Tirzepatida: mecanismo y presentación 60 mg | MG Dermalab",
+    description: "Conoce qué es la tirzepatida, cómo actúa sobre GIP y GLP-1 y consulta la presentación comercial de 60 mg de MG Dermalab.",
+    intro: "Una explicación clara de la molécula tirzepatida y de la presentación comercial de 60 mg distribuida por MG Dermalab.",
     image: "assets/mg-tirzepatida-vial-alpha.png", width: 1122, height: 1402,
     note: "Comparte la cantidad requerida y tu ciudad para recibir atención comercial personalizada.",
     related: [["retatrutida", "Retatrutida"], ["", "Catálogo MG Dermalab"]]
   },
   {
     slug: "retatrutida", name: "Retatrutida", category: "Línea especializada", presentation: "",
-    title: "Retatrutida: estatus de investigación | MG Dermalab",
-    description: "Conoce el estatus regulatorio actual de retatrutida, una molécula investigacional que no está aprobada ni disponible para uso público.",
-    intro: "Información responsable sobre el estatus de retatrutida como molécula investigacional. No se presenta como medicamento aprobado ni como tratamiento comercial disponible.",
-    note: "No se ofrece retatrutida como medicamento comercial. Esta sección se limita a aclarar su estatus público y regulatorio.",
+    title: "Retatrutida: agonista triple en investigación | MG Dermalab",
+    description: "Conoce qué es la retatrutida, cómo activa los receptores GIP, GLP-1 y glucagón y cuál es su estatus actual de investigación clínica.",
+    intro: "Una molécula investigacional que reúne actividad sobre tres sistemas receptores y se estudia dentro del desarrollo cardiometabólico de Lilly.",
+    note: "Contenido educativo basado en información oficial de Lilly sobre su programa de investigación clínica.",
     related: [["tirzepatida", "Tirzepatida"], ["", "Catálogo MG Dermalab"]]
   }
 ];
@@ -107,10 +99,10 @@ for (const [slug, name, variant, description] of restylaneVariants) {
 const hubs = [
   {
     slug: "isotretinoina", name: "Isotretinoína", category: "Dermatología", title: "Isotretinoína: marcas y presentaciones | MG Dermalab",
-    description: "Explora Neotrex, Epuris, Vastionin y Oratane con presentaciones confirmadas. Consulta disponibilidad con MG Dermalab.",
+    description: "Explora Neotrex, Epuris y Vastionin en 10 mg y 20 mg. Consulta disponibilidad de isotretinoína con MG Dermalab.",
     intro: "Consulta las marcas y concentraciones de isotretinoína que maneja MG Dermalab. Cada disponibilidad se confirma antes de cotizar.",
     image: "assets/mg-dermalab-linea-dermatologia-1200.jpg", width: 1200, height: 800,
-    items: [["neotrex", "Neotrex", "10 mg · 20 mg"], ["epuris", "Epuris", "10 mg · 20 mg"], ["vastionin", "Vastionin", "10 mg · 20 mg"], ["oratane", "Oratane", "5 mg · 10 mg · 20 mg"]],
+    items: [["neotrex", "Neotrex", "10 mg · 20 mg"], ["epuris", "Epuris", "10 mg · 20 mg"], ["vastionin", "Vastionin", "10 mg · 20 mg"]],
     note: "La información es comercial. No sustituye valoración, indicación ni seguimiento de un profesional de la salud."
   },
   {
@@ -135,7 +127,7 @@ const productContent = {
       ["¿Puedo consultar varias piezas de Neotrex?", "Sí. Comparte presentación, cantidad y ciudad para revisar disponibilidad y condiciones comerciales."],
       ["¿Cómo se confirma el envío de Neotrex?", "El equipo confirma cobertura, costo y plazo estimado al preparar la cotización."]
     ],
-    source: ["Información de isotretinoína", "https://www.safetyandquality.gov.au/medicine-finder/oratane"]
+    source: ["DailyMed · isotretinoína", "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=31f62a49-4c6d-4ce3-a0ca-d159562370b1"]
   },
   epuris: {
     subtitle: "Isotretinoína en cápsulas para solicitudes profesionales.",
@@ -161,20 +153,7 @@ const productContent = {
       ["¿Realizan envíos nacionales de Vastionin?", "Sí, con cobertura y condiciones confirmadas en la cotización."],
       ["¿Publican el precio de Vastionin?", "No. Las condiciones dependen de disponibilidad, cantidad y envío."]
     ],
-    source: ["Información farmacológica de isotretinoína", "https://www.safetyandquality.gov.au/medicine-finder/oratane"]
-  },
-  oratane: {
-    subtitle: "Tres concentraciones confirmadas para cotización dermatológica.",
-    what: "Oratane contiene isotretinoína, un retinoide relacionado con la vitamina A disponible en cápsulas.",
-    use: "La información oficial de Oratane describe su uso para formas graves de acné. Es un medicamento de prescripción y no debe utilizarse sin valoración médica.",
-    mechanism: "La isotretinoína disminuye la producción de sebo al actuar sobre las glándulas sebáceas. Su uso requiere vigilancia profesional, especialmente por sus riesgos durante el embarazo.",
-    faq: [
-      ["¿Qué presentaciones de Oratane cotizan?", "MG Dermalab consulta Oratane de 5 mg, 10 mg y 20 mg."],
-      ["¿Oratane contiene isotretinoína?", "Sí. La información oficial identifica isotretinoína como ingrediente activo."],
-      ["¿Oratane es un medicamento de prescripción?", "Sí. Debe ser indicado y supervisado por un profesional de la salud."],
-      ["¿Qué datos necesito para cotizar?", "Concentración, cantidad y ciudad de entrega."]
-    ],
-    source: ["Oratane · información oficial", "https://www.safetyandquality.gov.au/medicine-finder/oratane"]
+    source: ["DailyMed · isotretinoína", "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=31f62a49-4c6d-4ce3-a0ca-d159562370b1"]
   },
   dysport: {
     subtitle: "Toxina botulínica tipo A en 300 U y 500 U.",
@@ -203,28 +182,32 @@ const productContent = {
     source: ["Galderma · Sculptra IFU", "https://www.galderma.com/sites/default/files/2025-12/IFU_Sculptra_MDR.pdf"]
   },
   tirzepatida: {
-    subtitle: "Información comercial limitada a la presentación identificada por MG Dermalab.",
-    what: "La tirzepatida es una molécula agonista de los receptores GIP y GLP-1. La presentación de 60 mg mostrada en esta página no debe interpretarse como equivalente a una marca o presentación aprobada distinta.",
-    use: "Las indicaciones dependen del medicamento, la presentación y la autorización regulatoria correspondiente. MG Dermalab no atribuye a esta presentación las indicaciones de productos de tirzepatida de otras marcas.",
-    mechanism: "Como molécula, la tirzepatida activa los receptores GIP y GLP-1. Esta explicación no confirma formulación, equivalencia ni autorización de la presentación comercial mostrada.",
+    subtitle: "Agonismo dual GIP/GLP-1 explicado con claridad.",
+    what: "La tirzepatida es una molécula agonista dual: una sola molécula se une y activa los receptores de GIP y GLP-1. Estos receptores responden a señales hormonales que participan en la regulación de la glucosa, el apetito y la ingesta de energía.",
+    mechanism: "La activación de GIP y GLP-1 participa en la secreción de insulina dependiente de glucosa y en la regulación del glucagón. También interviene en circuitos relacionados con el apetito, la ingesta energética y la regulación metabólica. En términos sencillos, combina actividad sobre dos vías receptoras complementarias.",
+    use: "La molécula tirzepatida forma parte de medicamentos que, cuando cuentan con la autorización correspondiente, se utilizan en indicaciones metabólicas específicas como diabetes tipo 2 o control crónico del peso. Cada uso autorizado pertenece al medicamento, presentación y registro sanitario concretos; no a la molécula de manera aislada.",
+    regulatory: "Las indicaciones autorizadas dependen del medicamento, presentación y registro sanitario correspondiente. La información sobre la molécula no implica que todas las presentaciones comerciales de tirzepatida tengan las mismas autorizaciones.",
+    presentationCopy: "MG Dermalab distribuye una presentación comercial identificada como tirzepatida 60 mg. Su disponibilidad se confirma directamente y no debe asumirse equivalencia con Mounjaro, Zepbound u otra marca o presentación autorizada.",
     faq: [
       ["¿La presentación de 60 mg equivale a Mounjaro o Zepbound?", "No debe asumirse equivalencia. Son productos y presentaciones con documentación propia."],
-      ["¿Esta página ofrece una pauta de uso?", "No. No se publican dosis, esquemas ni recomendaciones médicas."],
+      ["¿Qué significa que sea un agonista dual?", "Significa que una sola molécula activa dos receptores: GIP y GLP-1."],
+      ["¿Qué procesos se relacionan con estos receptores?", "Participan en mecanismos de secreción de insulina dependiente de glucosa, regulación del glucagón, apetito e ingesta energética."],
       ["¿Qué información debo solicitar antes de cotizar?", "Solicita al asesor la documentación comercial disponible para el producto específico."],
       ["¿La disponibilidad está garantizada?", "No. Cualquier disponibilidad está sujeta a confirmación individual."]
     ],
-    source: ["FDA · tirzepatida, información de referencia", "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/215866s039lbl.pdf"]
+    source: ["FDA · tirzepatida, información para prescribir", "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/217806s002lbl.pdf"]
   },
   retatrutida: {
-    subtitle: "Molécula investigacional en desarrollo clínico.",
-    what: "Retatrutida es una molécula investigacional desarrollada como agonista de los receptores GIP, GLP-1 y glucagón.",
-    use: "No está aprobada por la FDA ni disponible para uso público. Lilly indica que solo está disponible para participantes de sus ensayos clínicos; esta página no la presenta como tratamiento comercial establecido.",
-    mechanism: "En investigación clínica se describe como un agonista triple de los receptores GIP, GLP-1 y glucagón. Su seguridad y eficacia continúan en evaluación regulatoria.",
+    subtitle: "Una sola molécula, tres sistemas receptores en estudio.",
+    what: "Retatrutida es una molécula investigacional de Lilly diseñada como agonista triple de los receptores GIP, GLP-1 y glucagón. A diferencia de un agonista dual, incorpora actividad sobre un tercer sistema receptor dentro de una sola molécula.",
+    mechanism: "Activa los receptores de GIP y GLP-1, relacionados con señales incretínicas y regulación metabólica, y añade actividad sobre el receptor de glucagón. Esta combinación triple se investiga para comprender su efecto integrado sobre distintos procesos cardiometabólicos.",
+    use: "Retatrutida se está investigando y ha sido evaluada en ensayos clínicos de Lilly en obesidad o sobrepeso, diabetes tipo 2 y otros trastornos cardiometabólicos incluidos en su programa, entre ellos resultados cardiovasculares y renales. Estos estudios evalúan su seguridad y eficacia; no constituyen una indicación aprobada.",
+    regulatory: "Retatrutida continúa siendo una molécula investigacional y no debe presentarse como un medicamento aprobado para uso público.",
     faq: [
       ["¿Retatrutida está aprobada?", "No. Lilly la describe actualmente como una molécula investigacional no aprobada por ninguna agencia regulatoria."],
-      ["¿Retatrutida está disponible para uso público?", "No. La información oficial indica que solo está disponible dentro de ensayos clínicos patrocinados por Lilly."],
-      ["¿La presentación mostrada confirma un medicamento autorizado?", "No. No debe interpretarse como prueba de aprobación, pureza, seguridad o equivalencia."],
-      ["¿MG Dermalab publica una pauta de uso?", "No. No se publican dosis, esquemas ni recomendaciones de tratamiento."]
+      ["¿Qué significa agonista triple?", "Significa que una sola molécula activa tres receptores: GIP, GLP-1 y glucagón."],
+      ["¿En qué áreas se está investigando?", "Lilly informa estudios en obesidad o sobrepeso, diabetes tipo 2 y otros resultados cardiometabólicos, cardiovasculares y renales."],
+      ["¿Retatrutida está disponible para uso público?", "No. Lilly indica que permanece en investigación clínica y no está aprobada por ninguna agencia regulatoria."]
     ],
     source: ["Lilly · estatus de retatrutida", "https://www.lilly.com/news/stories/what-to-know-about-retatrutide"]
   }
@@ -262,7 +245,7 @@ Object.assign(hubs[0], {
   what: "La isotretinoína es un retinoide oral relacionado con la vitamina A y sujeto a prescripción médica.",
   use: "Se utiliza en formas graves de acné que no han respondido a tratamientos convencionales. No sustituye la valoración individual del dermatólogo.",
   mechanism: "Reduce la actividad de las glándulas sebáceas y participa en otros procesos relacionados con el acné. Requiere seguimiento profesional por su perfil de seguridad.",
-  source: ["Oratane · información oficial", "https://www.safetyandquality.gov.au/medicine-finder/oratane"]
+  source: ["DailyMed · isotretinoína", "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=31f62a49-4c6d-4ce3-a0ca-d159562370b1"]
 });
 
 Object.assign(hubs[1], {
@@ -289,17 +272,19 @@ function faqFor(page) {
 }
 
 function storySections(page) {
-  const sections = [
-    [`¿Qué es ${page.name}?`, page.what],
-    ["¿Para qué se utiliza?", page.use],
-    ["¿Cómo funciona?", page.mechanism]
-  ];
+  const isMetabolicFeature = page.slug === "tirzepatida" || page.slug === "retatrutida";
+  const sections = isMetabolicFeature
+    ? [[`¿Qué es ${page.name}?`, page.what], ["¿Cómo funciona?", page.mechanism], [page.slug === "retatrutida" ? "¿Qué se está investigando?" : "¿Para qué se utiliza la molécula?", page.use]]
+    : [[`¿Qué es ${page.name}?`, page.what], ["¿Para qué se utiliza?", page.use], ["¿Cómo funciona?", page.mechanism]];
   return `<section class="seo-story-stack" aria-label="Información de ${esc(page.name)}">${sections.map(([title, copy], index) => `<article class="seo-story"><span class="seo-story-index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span><div><h2>${esc(title)}</h2><p>${esc(copy)}</p></div></article>`).join("")}<p class="seo-source">Fuente principal: <a href="${esc(page.source[1])}" target="_blank" rel="noopener noreferrer">${esc(page.source[0])}</a></p></section>`;
 }
 
 function presentations(page) {
   if (page.slug === "retatrutida") {
-    return `<section class="seo-presentations" aria-labelledby="presentations-title"><div class="seo-section-heading"><p class="seo-kicker">Estatus regulatorio</p><h2 id="presentations-title">Sin presentación comercial aprobada</h2><p>Retatrutida continúa en investigación clínica. No se publica una presentación comercial porque no está aprobada ni disponible para uso público.</p></div><div class="seo-presentation-list"><span>Molécula investigacional</span></div></section>`;
+    return `<section class="seo-presentations" aria-labelledby="presentations-title"><div class="seo-section-heading"><p class="seo-kicker">Programa clínico</p><h2 id="presentations-title">Áreas de investigación</h2><p>Lilly mantiene un programa clínico que evalúa la molécula en diferentes contextos cardiometabólicos.</p></div><div class="seo-presentation-list"><span>Obesidad y sobrepeso</span><span>Diabetes tipo 2</span><span>Resultados cardiovasculares y renales</span></div></section>`;
+  }
+  if (page.slug === "tirzepatida") {
+    return `<section class="seo-presentations" aria-labelledby="presentations-title"><div class="seo-section-heading"><p class="seo-kicker">Presentación MG Dermalab</p><h2 id="presentations-title">Tirzepatida 60 mg</h2><p>${esc(page.presentationCopy)}</p></div><div class="seo-presentation-list"><span>60 mg</span><span>Disponibilidad sujeta a confirmación</span></div></section>`;
   }
   const isRestylane = page.category.includes("Restylane");
   const items = page.presentation ? page.presentation.split(" · ") : [];
@@ -308,10 +293,15 @@ function presentations(page) {
 }
 
 function distribution(page) {
-  if (page.slug === "retatrutida") {
-    return `<section class="seo-distribution" aria-labelledby="distribution-title"><div><p class="seo-kicker">Información responsable</p><h2 id="distribution-title">No disponible para distribución comercial</h2><p>Retatrutida no está aprobada por ninguna agencia regulatoria y Lilly informa que solo está disponible para participantes de sus ensayos clínicos.</p></div><dl><div><dt>Estatus</dt><dd>Molécula investigacional en desarrollo clínico.</dd></div><div><dt>Disponibilidad</dt><dd>No disponible para uso público.</dd></div><div><dt>Alcance</dt><dd>Esta página no ofrece venta, dosis ni recomendaciones de tratamiento.</dd></div></dl></section>`;
-  }
+  if (page.slug === "retatrutida") return "";
   return `<section class="seo-distribution" aria-labelledby="distribution-title"><div><p class="seo-kicker">MG Dermalab</p><h2 id="distribution-title">Distribución profesional en México</h2><p>${esc(page.note)} Atendemos solicitudes de profesionales de la salud, clínicas y farmacias cuando corresponde.</p></div><dl><div><dt>Cotización</dt><dd>Condiciones comerciales según producto y volumen.</dd></div><div><dt>Cobertura</dt><dd>Envíos nacionales sujetos a validación de destino.</dd></div><div><dt>Disponibilidad</dt><dd>Existencia y presentación se confirman antes de continuar.</dd></div></dl></section>`;
+}
+
+function regulatoryNote(page) {
+  if (!page.regulatory) return "";
+  const kicker = page.slug === "retatrutida" ? "Estatus actual" : "Aclaración regulatoria";
+  const title = page.slug === "retatrutida" ? "Investigación clínica en curso" : "La molécula y la presentación no son lo mismo";
+  return `\n      <aside class="seo-regulatory-note" aria-labelledby="regulatory-title"><p class="seo-kicker">${kicker}</p><div><h2 id="regulatory-title">${title}</h2><p>${esc(page.regulatory)}</p></div></aside>`;
 }
 
 function finalCta(page, waText) {
@@ -415,7 +405,7 @@ function productHtml(page, prefix) {
       </section>
       ${storySections(page)}
       ${presentations(page)}
-      ${distribution(page)}
+      ${distribution(page)}${regulatoryNote(page)}
       <section class="seo-faq" aria-labelledby="faq-title"><div class="seo-section-heading"><p class="seo-kicker">Antes de cotizar</p><h2 id="faq-title">Preguntas frecuentes</h2></div><div class="seo-faq-list">${faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}</div></section>
       <section class="seo-related" aria-labelledby="related-title"><div><p class="seo-kicker">También puede interesarte</p><h2 id="related-title">Explora productos relacionados</h2></div><nav class="seo-related-links" aria-label="Productos relacionados">${page.related.map(([slug, label]) => `<a href="${href(prefix, slug)}">${esc(label)}<span aria-hidden="true">→</span></a>`).join("")}</nav></section>
       ${finalCta(page, waText)}

@@ -8160,6 +8160,38 @@ img {
   border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
 
+.seo-regulatory-note {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.45fr) minmax(0, 1.55fr);
+  gap: clamp(32px, 7vw, 100px);
+  margin: 0 calc(-1 * max(24px, calc((100vw - 1180px) / 2)));
+  padding: 58px max(24px, calc((100vw - 1180px) / 2));
+  border-bottom: 1px solid rgba(22, 24, 27, 0.16);
+  background: #eef0f1;
+}
+
+.seo-regulatory-note h2 {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+.seo-regulatory-note > div {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(28px, 6vw, 80px);
+  align-items: start;
+}
+
+.seo-regulatory-note > div p {
+  margin: 4px 0 0;
+  color: rgba(22, 24, 27, 0.68);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
 .seo-final-cta > div {
   max-width: 770px;
 }
@@ -8196,7 +8228,9 @@ img {
 
   .seo-story > div,
   .seo-presentations,
-  .seo-distribution {
+  .seo-distribution,
+  .seo-regulatory-note,
+  .seo-regulatory-note > div {
     grid-template-columns: 1fr;
   }
 
