@@ -236,7 +236,7 @@ const PRODUCT_DETAILS = {
     category: "Control de peso MG Dermalab",
     name: "MG Tirzepatida 60 mg",
     active: "Agonista DUAL — GLP-1 / GIP (2 hormonas)",
-    image: "assets/mg-tirzepatida-vial-alpha.png",
+    image: "assets/mg-tirzepatida-vial-640.webp",
     desc: "Línea de control de peso MG Dermalab para cotización profesional. Presentación cuidada, atención directa y disponibilidad sujeta a confirmación.",
     benefits: [
       "Presentación de 60 mg",

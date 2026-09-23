@@ -41,11 +41,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <link rel="preload" as="image" href="assets/hero-mg-dermalab-grafito-1600.jpg" imagesrcset="assets/hero-mg-dermalab-grafito-900.jpg 900w, assets/hero-mg-dermalab-grafito-1600.jpg 1600w" imagesizes="100vw" />
-    <link rel="stylesheet" href="styles.css?v=20260909-seo-catalog" />
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" /></noscript>
+    <link rel="preload" as="image" type="image/avif" href="assets/hero-mg-dermalab-grafito-960.avif" imagesrcset="assets/hero-mg-dermalab-grafito-640.avif 640w, assets/hero-mg-dermalab-grafito-960.avif 960w, assets/hero-mg-dermalab-grafito-1535.avif 1535w" imagesizes="100vw" fetchpriority="high" />
+    <link rel="stylesheet" href="styles.min.css?v=20260923-performance" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -104,18 +106,22 @@
 
     <main id="contenido">
       <section class="hero" id="inicio">
-        <img
-          class="hero-image"
-          src="assets/hero-mg-dermalab-grafito-1600.jpg"
-          srcset="assets/hero-mg-dermalab-grafito-900.jpg 900w, assets/hero-mg-dermalab-grafito-1600.jpg 1600w"
-          sizes="100vw"
-          width="1535"
-          height="1024"
-          alt="Oficina de MG Dermalab con empaque premium y distribución médica especializada"
-          fetchpriority="high"
-        />
+        <picture>
+          <source type="image/avif" srcset="assets/hero-mg-dermalab-grafito-640.avif 640w, assets/hero-mg-dermalab-grafito-960.avif 960w, assets/hero-mg-dermalab-grafito-1535.avif 1535w" sizes="100vw" />
+          <img
+            class="hero-image"
+            src="assets/hero-mg-dermalab-grafito-1600.jpg"
+            srcset="assets/hero-mg-dermalab-grafito-900.jpg 900w, assets/hero-mg-dermalab-grafito-1600.jpg 1600w"
+            sizes="100vw"
+            width="1535"
+            height="1024"
+            alt="Oficina de MG Dermalab con empaque premium y distribución médica especializada"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
         <div class="hero-overlay"></div>
-        <div class="hero-content reveal">
+        <div class="hero-content">
           <p class="eyebrow">Especialistas en lo que tu práctica necesita.</p>
           <h1>PRODUCTOS ESPECIALIZADOS. PRECIO PROFESIONAL. ENTREGA RÁPIDA.</h1>
           <p class="hero-copy">
@@ -149,7 +155,7 @@
           <p class="eyebrow">Selecciona tu línea</p>
           <h2>¿Qué estás buscando?</h2>
         </div>
-        <div class="line-grid" role="tablist" aria-label="Líneas de distribución">
+        <nav class="line-grid" aria-label="Líneas de distribución">
           <a href="control-peso-mg-dermalab.html" class="line-card line-card-control-mg reveal">
             <span class="line-index">01</span>
             <span class="line-icon" aria-hidden="true">
@@ -159,7 +165,7 @@
             <p>Tirzepatida MG Dermalab en una landing dedicada para ampliar información y cotizar.</p>
             <span class="line-card-cta">Ver línea completa →</span>
           </a>
-          <a href="#catalogo-dermatologia" data-catalog-target="catalogo-dermatologia" class="line-card reveal" role="tab" aria-selected="false">
+          <a href="#catalogo-dermatologia" data-catalog-target="catalogo-dermatologia" class="line-card reveal">
             <span class="line-index">02</span>
             <span class="line-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M6.5 3.5A3.5 3.5 0 0110 7v10a3.5 3.5 0 01-7 0V7a3.5 3.5 0 013.5-3.5zM3 10.5h7M14 17.5h4a3 3 0 003-3v-5a3 3 0 00-3-3h-4v11zM14 10.5h7" /></svg>
@@ -168,7 +174,7 @@
             <p>Opciones especializadas de isotretinoína en diferentes marcas y presentaciones.</p>
             <span class="line-card-cta">Cotizar dermatología →</span>
           </a>
-          <a href="#catalogo-medicina-estetica" data-catalog-target="catalogo-medicina-estetica" class="line-card reveal" role="tab" aria-selected="false">
+          <a href="#catalogo-medicina-estetica" data-catalog-target="catalogo-medicina-estetica" class="line-card reveal">
             <span class="line-index">03</span>
             <span class="line-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M14.5 4.5l5 5M12.8 6.2l-8 8a2 2 0 000 2.8l.2.2a2 2 0 002.8 0l8-8M9 15l-3.5 3.5M4 20l1.5-3.5M16.2 2.8l5 5" /></svg>
@@ -177,7 +183,7 @@
             <p>Toxina botulínica, bioestimuladores y ácido hialurónico.</p>
             <span class="line-card-cta">Cotizar medicina estética →</span>
           </a>
-        </div>
+        </nav>
       </section>
 
       <section class="section spotlight-section" id="destacados">
@@ -194,7 +200,7 @@
           <div class="spotlight-track" data-carousel-track>
 
             <article class="product-card spotlight-card" data-product="neotrex-20">
-              <figure><img loading="lazy" decoding="async" src="assets/neotrex-20-premium.png" width="1448" height="1086" alt="Neotrex isotretinoína 20 mg" /></figure>
+              <figure><img loading="lazy" decoding="async" src="assets/neotrex-20-premium-optimized.jpg" width="900" height="675" alt="Neotrex isotretinoína 20 mg" /></figure>
               <div class="product-info">
                 <div class="product-title-row"><strong>Neotrex</strong><span class="product-dose">20 mg</span></div>
                 <span class="product-active">Isotretinoína</span>
@@ -252,7 +258,7 @@
 
             <article class="product-card product-card-glp spotlight-card product-card-page" data-product="tirzepatida" data-product-page="control-peso-mg-dermalab.html">
               <figure class="product-glp-image product-packshot-figure">
-                <img loading="lazy" decoding="async" src="assets/mg-tirzepatida-vial-alpha.png" width="1122" height="1402" alt="Vial MG Tirzepatida 60 mg" />
+                <img loading="lazy" decoding="async" src="assets/mg-tirzepatida-vial-640.webp" srcset="assets/mg-tirzepatida-vial-360.webp 360w, assets/mg-tirzepatida-vial-640.webp 640w" sizes="(max-width: 720px) 54vw, 260px" width="640" height="800" alt="Vial MG Tirzepatida 60 mg" />
               </figure>
               <div class="product-glp-stat">
                 <span class="product-glp-number">2</span>
@@ -318,7 +324,10 @@
 
           <article class="catalog-family reveal" id="catalogo-dermatologia">
             <figure class="catalog-family-hero">
-              <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-linea-dermatologia-1200.jpg" width="1536" height="1024" alt="Dermatología con atención por perfil médico" />
+              <picture>
+                <source type="image/avif" srcset="assets/mg-dermalab-linea-dermatologia-1200-640.avif 640w, assets/mg-dermalab-linea-dermatologia-1200-1200.avif 1200w" sizes="(max-width: 760px) 100vw, 50vw" />
+                <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-linea-dermatologia-1200.jpg" width="1536" height="1024" alt="Dermatología con atención por perfil médico" />
+              </picture>
             </figure>
             <div class="family-heading">
               <span class="family-index" aria-hidden="true">02</span>
@@ -329,7 +338,7 @@
             <div class="product-grid">
 
               <article class="product-card" data-product="neotrex-10">
-                <figure><img loading="lazy" decoding="async" src="assets/neotrex-10-premium.png" width="918" height="678" alt="Neotrex isotretinoína 10 mg" /></figure>
+                <figure><img loading="lazy" decoding="async" src="assets/neotrex-10-premium-optimized.jpg" width="900" height="664" alt="Neotrex isotretinoína 10 mg" /></figure>
                 <div class="product-info">
                   <div class="product-title-row"><strong>Neotrex</strong><span class="product-dose">10 mg</span></div>
                   <span class="product-active">Isotretinoína</span>
@@ -348,7 +357,7 @@
               </article>
 
               <article class="product-card" data-product="neotrex-20">
-                <figure><img loading="lazy" decoding="async" src="assets/neotrex-20-premium.png" width="1448" height="1086" alt="Neotrex isotretinoína 20 mg" /></figure>
+                <figure><img loading="lazy" decoding="async" src="assets/neotrex-20-premium-optimized.jpg" width="900" height="675" alt="Neotrex isotretinoína 20 mg" /></figure>
                 <div class="product-info">
                   <div class="product-title-row"><strong>Neotrex</strong><span class="product-dose">20 mg</span></div>
                   <span class="product-active">Isotretinoína</span>
@@ -386,7 +395,7 @@
               </article>
 
               <article class="product-card" data-product="epuris-20">
-                <figure><img loading="lazy" decoding="async" src="assets/epuris-20-premium.png" width="1436" height="1095" alt="Epuris isotretinoína 20 mg" /></figure>
+                <figure><img loading="lazy" decoding="async" src="assets/epuris-20-premium-optimized.jpg" width="900" height="686" alt="Epuris isotretinoína 20 mg" /></figure>
                 <div class="product-info">
                   <div class="product-title-row"><strong>Epuris</strong><span class="product-dose">20 mg</span></div>
                   <span class="product-active">Isotretinoína</span>
@@ -424,7 +433,7 @@
               </article>
 
               <article class="product-card" data-product="vastionin-20">
-                <figure><img loading="lazy" decoding="async" src="assets/vastionin-20-premium.png" width="1435" height="1096" alt="Vastionin isotretinoína 20 mg" /></figure>
+                <figure><img loading="lazy" decoding="async" src="assets/vastionin-20-premium-optimized.jpg" width="900" height="687" alt="Vastionin isotretinoína 20 mg" /></figure>
                 <div class="product-info">
                   <div class="product-title-row"><strong>Vastionin</strong><span class="product-dose">20 mg</span></div>
                   <span class="product-active">Isotretinoína</span>
@@ -448,7 +457,10 @@
 
           <article class="catalog-family reveal dark" id="catalogo-medicina-estetica">
             <figure class="catalog-family-hero">
-              <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-laboratorios-restylane-1200.jpg" width="1536" height="1024" alt="Portafolio de medicina estética con Restylane" />
+              <picture>
+                <source type="image/avif" srcset="assets/mg-dermalab-laboratorios-restylane-1200-640.avif 640w, assets/mg-dermalab-laboratorios-restylane-1200-1200.avif 1200w" sizes="(max-width: 760px) 100vw, 50vw" />
+                <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-laboratorios-restylane-1200.jpg" width="1536" height="1024" alt="Portafolio de medicina estética con Restylane" />
+              </picture>
             </figure>
             <div class="family-heading">
               <span class="family-index" aria-hidden="true">01</span>
@@ -745,7 +757,10 @@
 
       <section class="section labs-section" id="laboratorios">
         <div class="labs-media reveal">
-          <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-laboratorios-restylane-1200.jpg" width="1536" height="1024" alt="Portafolio Restylane con empaque profesional de MG Dermalab" />
+          <picture>
+            <source type="image/avif" srcset="assets/mg-dermalab-laboratorios-restylane-1200-640.avif 640w, assets/mg-dermalab-laboratorios-restylane-1200-1200.avif 1200w" sizes="(max-width: 760px) 100vw, 50vw" />
+            <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-laboratorios-restylane-1200.jpg" width="1536" height="1024" alt="Portafolio Restylane con empaque profesional de MG Dermalab" />
+          </picture>
         </div>
         <div class="labs-copy reveal">
           <p class="eyebrow">Laboratorios</p>
@@ -797,7 +812,10 @@
           <a class="section-cta" href="#contacto">Abrir cuenta comercial</a>
         </div>
         <figure class="pharmacy-photo reveal">
-          <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-oficina-distribucion-1200.jpg" width="1536" height="1024" alt="Área de trabajo y preparación de pedidos de MG Dermalab" />
+          <picture>
+            <source type="image/avif" srcset="assets/mg-dermalab-oficina-distribucion-1200-640.avif 640w, assets/mg-dermalab-oficina-distribucion-1200-1200.avif 1200w" sizes="(max-width: 760px) 100vw, 50vw" />
+            <img data-parallax-image loading="lazy" decoding="async" src="assets/mg-dermalab-oficina-distribucion-1200.jpg" width="1536" height="1024" alt="Área de trabajo y preparación de pedidos de MG Dermalab" />
+          </picture>
         </figure>
         <div class="pharmacy-metrics reveal">
           <div><strong>01</strong><span>Cuenta comercial dedicada</span></div>
@@ -936,7 +954,7 @@
             Cantidad aproximada
             <input type="text" name="volumen" placeholder="Ej. 3 piezas, 10 piezas, 50+" required />
           </label>
-          <div class="turnstile-field" data-turnstile-widget aria-label="Verificación de seguridad"></div>
+          <div class="turnstile-field" data-turnstile-widget role="group" aria-label="Verificación de seguridad"></div>
           <button type="submit">Solicitar cotización</button>
           <p class="form-status" role="status" aria-live="polite"></p>
           <p class="form-note">Al enviar, aceptas que usemos tus datos para seguimiento comercial. Consulta el <a href="privacidad.html">aviso de privacidad</a>.</p>
@@ -995,8 +1013,6 @@
       </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-    <script src="script.js?v=20260908-product-whatsapp-premium" defer></script>
+    <script src="script.min.js?v=20260923-performance" defer></script>
   </body>
 </html>
