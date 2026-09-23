@@ -74,11 +74,11 @@ const pages = [
     related: [["retatrutida", "Retatrutida"], ["", "Catálogo MG Dermalab"]]
   },
   {
-    slug: "retatrutida", name: "Retatrutida", category: "Línea especializada", presentation: "60 mg",
-    title: "Retatrutida 60 mg | Consulta comercial | MG Dermalab",
-    description: "Consulta información comercial y disponibilidad de Retatrutida 60 mg con MG Dermalab. Cotización sujeta a confirmación.",
-    intro: "Retatrutida en presentación de 60 mg para consulta comercial directa, con disponibilidad sujeta a confirmación.",
-    note: "Recibe atención comercial directa para consultar existencias, cantidad y condiciones de envío.",
+    slug: "retatrutida", name: "Retatrutida", category: "Línea especializada", presentation: "",
+    title: "Retatrutida: estatus de investigación | MG Dermalab",
+    description: "Conoce el estatus regulatorio actual de retatrutida, una molécula investigacional que no está aprobada ni disponible para uso público.",
+    intro: "Información responsable sobre el estatus de retatrutida como molécula investigacional. No se presenta como medicamento aprobado ni como tratamiento comercial disponible.",
+    note: "No se ofrece retatrutida como medicamento comercial. Esta sección se limita a aclarar su estatus público y regulatorio.",
     related: [["tirzepatida", "Tirzepatida"], ["", "Catálogo MG Dermalab"]]
   }
 ];
@@ -123,6 +123,156 @@ const hubs = [
   }
 ];
 
+const productContent = {
+  neotrex: {
+    subtitle: "Isotretinoína oral para atención dermatológica especializada.",
+    what: "Neotrex es una marca de isotretinoína en cápsulas. Pertenece al grupo de los retinoides y su uso requiere prescripción y seguimiento por un profesional de la salud.",
+    use: "La isotretinoína oral se utiliza en formas graves de acné que no han respondido adecuadamente a tratamientos convencionales. La valoración, indicación y seguimiento corresponden al médico tratante.",
+    mechanism: "La isotretinoína actúa sobre procesos relacionados con la actividad de las glándulas sebáceas. El mecanismo completo es complejo, por lo que esta página no sustituye la información para prescribir ni la valoración médica.",
+    faq: [
+      ["¿Qué presentaciones de Neotrex maneja MG Dermalab?", "Manejamos Neotrex de 10 mg y 20 mg, sujeto a disponibilidad."],
+      ["¿Neotrex requiere receta y seguimiento médico?", "Sí. La isotretinoína oral debe utilizarse únicamente bajo prescripción y seguimiento profesional."],
+      ["¿Puedo consultar varias piezas de Neotrex?", "Sí. Comparte presentación, cantidad y ciudad para revisar disponibilidad y condiciones comerciales."],
+      ["¿Cómo se confirma el envío de Neotrex?", "El equipo confirma cobertura, costo y plazo estimado al preparar la cotización."]
+    ],
+    source: ["Información de isotretinoína", "https://www.safetyandquality.gov.au/medicine-finder/oratane"]
+  },
+  epuris: {
+    subtitle: "Isotretinoína en cápsulas para solicitudes profesionales.",
+    what: "Epuris es isotretinoína oral en cápsulas y forma parte de los retinoides sistémicos utilizados en dermatología.",
+    use: "Su documentación oficial describe el uso de isotretinoína en acné grave. No se publican pautas de tratamiento: la selección de paciente y el seguimiento son responsabilidad médica.",
+    mechanism: "La isotretinoína reduce la actividad de las glándulas sebáceas y modifica procesos implicados en el acné. Su utilización exige control profesional por su perfil de seguridad.",
+    faq: [
+      ["¿Epuris está disponible en 10 mg y 20 mg?", "MG Dermalab consulta ambas presentaciones, siempre sujetas a existencia vigente."],
+      ["¿Epuris es isotretinoína?", "Sí. La documentación oficial identifica isotretinoína como ingrediente medicinal."],
+      ["¿Atienden solicitudes de clínicas y farmacias?", "Sí. El equipo comercial revisa cada solicitud y los requisitos aplicables."],
+      ["¿Cómo cotizo Epuris?", "Indica 10 mg o 20 mg, cantidad y ciudad por WhatsApp."]
+    ],
+    source: ["Health Canada · Epuris", "https://health-products.canada.ca/noc-ac/nocInfo?no=35348"]
+  },
+  vastionin: {
+    subtitle: "Isotretinoína de 10 mg y 20 mg con cotización directa.",
+    what: "Vastionin es una marca de isotretinoína en cápsulas dentro de la línea dermatológica de MG Dermalab.",
+    use: "La isotretinoína oral se reserva para formas graves de acné y requiere indicación médica. Esta página ofrece información general y comercial, no consejo médico individual.",
+    mechanism: "La isotretinoína interviene en la actividad sebácea y otros procesos relacionados con el acné. El tratamiento debe individualizarse y vigilarse profesionalmente.",
+    faq: [
+      ["¿Qué concentraciones de Vastionin manejan?", "Se consultan presentaciones de 10 mg y 20 mg."],
+      ["¿La disponibilidad de Vastionin es inmediata?", "La existencia se confirma al recibir presentación, cantidad y destino."],
+      ["¿Realizan envíos nacionales de Vastionin?", "Sí, con cobertura y condiciones confirmadas en la cotización."],
+      ["¿Publican el precio de Vastionin?", "No. Las condiciones dependen de disponibilidad, cantidad y envío."]
+    ],
+    source: ["Información farmacológica de isotretinoína", "https://www.safetyandquality.gov.au/medicine-finder/oratane"]
+  },
+  oratane: {
+    subtitle: "Tres concentraciones confirmadas para cotización dermatológica.",
+    what: "Oratane contiene isotretinoína, un retinoide relacionado con la vitamina A disponible en cápsulas.",
+    use: "La información oficial de Oratane describe su uso para formas graves de acné. Es un medicamento de prescripción y no debe utilizarse sin valoración médica.",
+    mechanism: "La isotretinoína disminuye la producción de sebo al actuar sobre las glándulas sebáceas. Su uso requiere vigilancia profesional, especialmente por sus riesgos durante el embarazo.",
+    faq: [
+      ["¿Qué presentaciones de Oratane cotizan?", "MG Dermalab consulta Oratane de 5 mg, 10 mg y 20 mg."],
+      ["¿Oratane contiene isotretinoína?", "Sí. La información oficial identifica isotretinoína como ingrediente activo."],
+      ["¿Oratane es un medicamento de prescripción?", "Sí. Debe ser indicado y supervisado por un profesional de la salud."],
+      ["¿Qué datos necesito para cotizar?", "Concentración, cantidad y ciudad de entrega."]
+    ],
+    source: ["Oratane · información oficial", "https://www.safetyandquality.gov.au/medicine-finder/oratane"]
+  },
+  dysport: {
+    subtitle: "Toxina botulínica tipo A en 300 U y 500 U.",
+    what: "Dysport es abobotulinumtoxinA, una preparación de toxina botulínica tipo A para uso por profesionales de la salud capacitados.",
+    use: "La documentación oficial contempla indicaciones terapéuticas y estéticas específicas. La selección de indicación, dosis y técnica corresponde exclusivamente al profesional tratante.",
+    mechanism: "Actúa inhibiendo la liberación de acetilcolina en la unión neuromuscular, lo que reduce temporalmente la actividad muscular en el área tratada.",
+    faq: [
+      ["¿Dysport está disponible en 300 U y 500 U?", "Sí, ambas presentaciones se consultan con disponibilidad sujeta a confirmación."],
+      ["¿Las unidades de Dysport equivalen a otras toxinas?", "No. La información oficial señala que sus unidades no son intercambiables con las de otros productos."],
+      ["¿Quién debe administrar Dysport?", "Únicamente profesionales de la salud con capacitación y autorización aplicables."],
+      ["¿Cómo cotizo Dysport para una clínica?", "Indica presentación, número de piezas y ciudad por WhatsApp."]
+    ],
+    source: ["Galderma · Dysport PI", "https://www.galderma.com/us/sites/default/files/2020-11/1066038%20Dysport%20PI.pdf"]
+  },
+  sculptra: {
+    subtitle: "Bioestimulador inyectable para práctica estética profesional.",
+    what: "Sculptra es un dispositivo médico inyectable basado en micropartículas de ácido poli-L-láctico, destinado a uso estético profesional.",
+    use: "La documentación oficial describe su uso para aumentar volumen en áreas deprimidas y mejorar determinados pliegues y aspectos de la calidad de la piel. La indicación concreta depende de la regulación local y del profesional tratante.",
+    mechanism: "El ácido poli-L-láctico actúa como estimulador de colágeno y contribuye gradualmente al soporte estructural de la piel.",
+    faq: [
+      ["¿Sculptra es un relleno de ácido hialurónico?", "No. Su componente principal es ácido poli-L-láctico."],
+      ["¿Sculptra requiere aplicación profesional?", "Sí. Debe ser administrado por profesionales capacitados y conforme a la regulación aplicable."],
+      ["¿MG Dermalab atiende clínicas que buscan Sculptra?", "Sí. La disponibilidad y las condiciones comerciales se revisan por solicitud."],
+      ["¿Cómo solicito una cotización de Sculptra?", "Comparte cantidad y ciudad; la presentación comercial se confirma con el asesor."]
+    ],
+    source: ["Galderma · Sculptra IFU", "https://www.galderma.com/sites/default/files/2025-12/IFU_Sculptra_MDR.pdf"]
+  },
+  tirzepatida: {
+    subtitle: "Información comercial limitada a la presentación identificada por MG Dermalab.",
+    what: "La tirzepatida es una molécula agonista de los receptores GIP y GLP-1. La presentación de 60 mg mostrada en esta página no debe interpretarse como equivalente a una marca o presentación aprobada distinta.",
+    use: "Las indicaciones dependen del medicamento, la presentación y la autorización regulatoria correspondiente. MG Dermalab no atribuye a esta presentación las indicaciones de productos de tirzepatida de otras marcas.",
+    mechanism: "Como molécula, la tirzepatida activa los receptores GIP y GLP-1. Esta explicación no confirma formulación, equivalencia ni autorización de la presentación comercial mostrada.",
+    faq: [
+      ["¿La presentación de 60 mg equivale a Mounjaro o Zepbound?", "No debe asumirse equivalencia. Son productos y presentaciones con documentación propia."],
+      ["¿Esta página ofrece una pauta de uso?", "No. No se publican dosis, esquemas ni recomendaciones médicas."],
+      ["¿Qué información debo solicitar antes de cotizar?", "Solicita al asesor la documentación comercial disponible para el producto específico."],
+      ["¿La disponibilidad está garantizada?", "No. Cualquier disponibilidad está sujeta a confirmación individual."]
+    ],
+    source: ["FDA · tirzepatida, información de referencia", "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/215866s039lbl.pdf"]
+  },
+  retatrutida: {
+    subtitle: "Molécula investigacional en desarrollo clínico.",
+    what: "Retatrutida es una molécula investigacional desarrollada como agonista de los receptores GIP, GLP-1 y glucagón.",
+    use: "No está aprobada por la FDA ni disponible para uso público. Lilly indica que solo está disponible para participantes de sus ensayos clínicos; esta página no la presenta como tratamiento comercial establecido.",
+    mechanism: "En investigación clínica se describe como un agonista triple de los receptores GIP, GLP-1 y glucagón. Su seguridad y eficacia continúan en evaluación regulatoria.",
+    faq: [
+      ["¿Retatrutida está aprobada?", "No. Lilly la describe actualmente como una molécula investigacional no aprobada por ninguna agencia regulatoria."],
+      ["¿Retatrutida está disponible para uso público?", "No. La información oficial indica que solo está disponible dentro de ensayos clínicos patrocinados por Lilly."],
+      ["¿La presentación mostrada confirma un medicamento autorizado?", "No. No debe interpretarse como prueba de aprobación, pureza, seguridad o equivalencia."],
+      ["¿MG Dermalab publica una pauta de uso?", "No. No se publican dosis, esquemas ni recomendaciones de tratamiento."]
+    ],
+    source: ["Lilly · estatus de retatrutida", "https://www.lilly.com/news/stories/what-to-know-about-retatrutide"]
+  }
+};
+
+const restylaneContent = {
+  "restylane-kysse": ["Ácido hialurónico diseñado para la zona labial.", "Restylane Kysse es un gel inyectable de ácido hialurónico reticulado de origen no animal con lidocaína.", "Su documentación oficial describe aumento de labios y corrección de líneas periorales superiores.", "Su gel utiliza tecnología OBT/XpresHAn, desarrollada para aportar flexibilidad y acompañar el movimiento.", "Galderma · Kysse IFU", "https://www.galderma.com/sites/default/files/2025-03/90-85207-01_IFU_Restylane_Kysse-2023.pdf"],
+  "restylane-lyft": ["Ácido hialurónico de soporte dentro de la familia Restylane.", "Restylane Lyft es un gel inyectable de ácido hialurónico de tecnología NASHA.", "La documentación oficial contempla corrección de pliegues, aumento de mejillas y otras indicaciones según la autorización local.", "La tecnología NASHA produce un gel de soporte estructural para aplicación profesional.", "Galderma · Restylane", "https://www.galderma.com/mx/restylane"],
+  "restylane-refyne": ["Flexibilidad para corrección profesional de pliegues faciales.", "Restylane Refyne es un relleno inyectable de ácido hialurónico de la tecnología OBT/XpresHAn.", "Su documentación oficial lo describe para la corrección de arrugas y pliegues faciales de moderados a severos.", "La reticulación OBT busca equilibrar soporte y flexibilidad en áreas con movimiento.", "Galderma · Restylane", "https://www.galderma.com/mx/restylane"],
+  "restylane-defyne": ["Soporte definido dentro del portafolio Restylane.", "Restylane Defyne es un gel de ácido hialurónico inyectable de tecnología OBT/XpresHAn.", "La documentación oficial contempla pliegues faciales profundos y, en algunos mercados, aumento de la región del mentón.", "Su tecnología equilibra firmeza y flexibilidad para áreas faciales dinámicas.", "Galderma · Restylane", "https://www.galderma.com/mx/restylane"],
+  "restylane-contour": ["Gel de ácido hialurónico para contorno del tercio medio.", "Restylane Contour es un relleno inyectable de ácido hialurónico de la familia Restylane.", "La documentación estadounidense lo describe para aumento de mejillas y corrección de deficiencias del contorno del tercio medio; la indicación local debe confirmarse.", "Su formulación utiliza tecnología XpresHAn para combinar soporte y movimiento.", "Galderma · Contour", "https://www.galderma.com/news/galderma-receives-fda-approval"],
+  "restylane-eyelight": ["Ácido hialurónico para uso profesional en la zona infraorbitaria.", "Restylane Eyelight es un gel inyectable de ácido hialurónico de tecnología NASHA.", "La documentación estadounidense lo describe para mejorar el hundimiento infraorbitario; la indicación aplicable en México debe verificarse.", "La tecnología NASHA crea un gel firme de ácido hialurónico estabilizado.", "Galderma · Eyelight", "https://www.galderma.com/GaldermaFDAapprovalforRestylaneEyelight"],
+  "restylane-skinboosters-vital": ["Skinbooster de ácido hialurónico para práctica profesional.", "Restylane Skinboosters Vital forma parte de la línea de ácido hialurónico de Galderma y aparece en el portafolio mexicano.", "Se integra en tratamientos profesionales orientados a la calidad de la piel. La indicación concreta depende de la información de uso local.", "El ácido hialurónico se administra mediante microinyecciones por profesionales capacitados; esta página no publica técnica ni pauta.", "Galderma México · Restylane", "https://www.galderma.com/mx/restylane"],
+  "restylane-skinboosters-vital-light": ["Skinbooster de ácido hialurónico de la familia Restylane.", "Restylane Skinboosters Vital Light es un gel inyectable de ácido hialurónico con lidocaína en su documentación internacional.", "Se describe dentro de la línea Skinboosters para tratamientos profesionales de calidad de piel; la disponibilidad e indicación local deben confirmarse.", "Su acción se basa en la presencia de ácido hialurónico estabilizado administrado por un profesional capacitado.", "Galderma · Vital Light IFU", "https://www.galderma.com/sites/default/files/2025-03/90-95981-01_IFU_Restylane_SB_Vital_Light_Lidocaine%20-2023.pdf"]
+};
+
+for (const page of pages) {
+  if (productContent[page.slug]) Object.assign(page, productContent[page.slug]);
+  if (restylaneContent[page.slug]) {
+    const [subtitle, what, use, mechanism, sourceName, sourceUrl] = restylaneContent[page.slug];
+    Object.assign(page, {
+      subtitle, what, use, mechanism, source: [sourceName, sourceUrl],
+      faq: [
+        [`¿Qué es ${page.name}?`, what],
+        [`¿Forma parte de la familia Restylane?`, "Sí. Es una variante del portafolio de ácido hialurónico Restylane."],
+        ["¿Quién debe aplicarlo?", "Exclusivamente profesionales de la salud capacitados y conforme a la regulación aplicable."],
+        [`¿Cómo consulto disponibilidad de ${page.name}?`, "Comparte nombre de la variante, cantidad y ciudad por WhatsApp."]
+      ]
+    });
+  }
+}
+
+Object.assign(hubs[0], {
+  subtitle: "Guía comercial de marcas y concentraciones de isotretinoína.",
+  what: "La isotretinoína es un retinoide oral relacionado con la vitamina A y sujeto a prescripción médica.",
+  use: "Se utiliza en formas graves de acné que no han respondido a tratamientos convencionales. No sustituye la valoración individual del dermatólogo.",
+  mechanism: "Reduce la actividad de las glándulas sebáceas y participa en otros procesos relacionados con el acné. Requiere seguimiento profesional por su perfil de seguridad.",
+  source: ["Oratane · información oficial", "https://www.safetyandquality.gov.au/medicine-finder/oratane"]
+});
+
+Object.assign(hubs[1], {
+  subtitle: "Portafolio profesional de rellenos de ácido hialurónico.",
+  what: "Restylane es una familia de geles inyectables de ácido hialurónico para medicina estética profesional.",
+  use: "El portafolio reúne variantes con características e indicaciones diferentes para labios, pliegues, contorno y calidad de piel, según la autorización aplicable.",
+  mechanism: "Las tecnologías NASHA y OBT estabilizan y reticulan el ácido hialurónico para obtener geles con distintos niveles de soporte y flexibilidad.",
+  source: ["Galderma México · Restylane", "https://www.galderma.com/mx/restylane"]
+});
+
 const esc = (value) => String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const json = (value) => JSON.stringify(value).replace(/</g, "\\u003c");
 
@@ -131,10 +281,44 @@ function href(prefix, slug) {
 }
 
 function faqFor(page) {
+  if (page.faq) return page.faq;
   const first = !page.presentation
     ? [`¿Cómo consulto disponibilidad de ${page.name}?`, "Comparte la cantidad requerida y tu ciudad por WhatsApp. Un asesor revisará la solicitud y responderá con la información comercial disponible."]
     : [`¿Qué presentación de ${page.name} manejan?`, `Manejamos ${page.presentation.replace(/ · /g, ", ")}. La disponibilidad se confirma al momento de cotizar.`];
   return [first, ...commonFaq];
+}
+
+function storySections(page) {
+  const sections = [
+    [`¿Qué es ${page.name}?`, page.what],
+    ["¿Para qué se utiliza?", page.use],
+    ["¿Cómo funciona?", page.mechanism]
+  ];
+  return `<section class="seo-story-stack" aria-label="Información de ${esc(page.name)}">${sections.map(([title, copy], index) => `<article class="seo-story"><span class="seo-story-index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span><div><h2>${esc(title)}</h2><p>${esc(copy)}</p></div></article>`).join("")}<p class="seo-source">Fuente principal: <a href="${esc(page.source[1])}" target="_blank" rel="noopener noreferrer">${esc(page.source[0])}</a></p></section>`;
+}
+
+function presentations(page) {
+  if (page.slug === "retatrutida") {
+    return `<section class="seo-presentations" aria-labelledby="presentations-title"><div class="seo-section-heading"><p class="seo-kicker">Estatus regulatorio</p><h2 id="presentations-title">Sin presentación comercial aprobada</h2><p>Retatrutida continúa en investigación clínica. No se publica una presentación comercial porque no está aprobada ni disponible para uso público.</p></div><div class="seo-presentation-list"><span>Molécula investigacional</span></div></section>`;
+  }
+  const isRestylane = page.category.includes("Restylane");
+  const items = page.presentation ? page.presentation.split(" · ") : [];
+  const labels = isRestylane ? [] : items;
+  return `<section class="seo-presentations" aria-labelledby="presentations-title"><div class="seo-section-heading"><p class="seo-kicker">Información comercial</p><h2 id="presentations-title">Presentaciones disponibles</h2><p>Mostramos únicamente las presentaciones confirmadas en nuestro catálogo. La existencia se valida al solicitar cotización.</p></div><div class="seo-presentation-list">${labels.length ? labels.map((item) => `<span>${esc(item)}</span>`).join("") : `<span>La presentación comercial se confirma al cotizar</span>`}</div></section>`;
+}
+
+function distribution(page) {
+  if (page.slug === "retatrutida") {
+    return `<section class="seo-distribution" aria-labelledby="distribution-title"><div><p class="seo-kicker">Información responsable</p><h2 id="distribution-title">No disponible para distribución comercial</h2><p>Retatrutida no está aprobada por ninguna agencia regulatoria y Lilly informa que solo está disponible para participantes de sus ensayos clínicos.</p></div><dl><div><dt>Estatus</dt><dd>Molécula investigacional en desarrollo clínico.</dd></div><div><dt>Disponibilidad</dt><dd>No disponible para uso público.</dd></div><div><dt>Alcance</dt><dd>Esta página no ofrece venta, dosis ni recomendaciones de tratamiento.</dd></div></dl></section>`;
+  }
+  return `<section class="seo-distribution" aria-labelledby="distribution-title"><div><p class="seo-kicker">MG Dermalab</p><h2 id="distribution-title">Distribución profesional en México</h2><p>${esc(page.note)} Atendemos solicitudes de profesionales de la salud, clínicas y farmacias cuando corresponde.</p></div><dl><div><dt>Cotización</dt><dd>Condiciones comerciales según producto y volumen.</dd></div><div><dt>Cobertura</dt><dd>Envíos nacionales sujetos a validación de destino.</dd></div><div><dt>Disponibilidad</dt><dd>Existencia y presentación se confirman antes de continuar.</dd></div></dl></section>`;
+}
+
+function finalCta(page, waText) {
+  const isInvestigational = page.slug === "retatrutida";
+  const title = isInvestigational ? "Consulta información y estatus" : "Consulta disponibilidad y cotización";
+  const label = isInvestigational ? "Consultar información por WhatsApp" : "Solicitar cotización por WhatsApp";
+  return `<section class="seo-final-cta"><div><p class="seo-kicker">Atención directa</p><h2>${title}</h2><p>${isInvestigational ? "Nuestro equipo puede orientarte sobre la información pública disponible. Retatrutida continúa en investigación y no se comercializa como tratamiento aprobado." : "Comparte la presentación, cantidad y ciudad. Nuestro equipo revisará tu solicitud y confirmará las opciones disponibles."}</p></div><a class="primary-button" data-seo-whatsapp data-product-name="${esc(page.name)}" data-category="${esc(page.category)}" data-presentation="${esc(page.presentation || "No especificada")}" href="https://wa.me/525654434495?text=${waText}" target="_blank" rel="noopener">${label}</a></section>`;
 }
 
 function head(page, prefix, type, faq) {
@@ -203,7 +387,8 @@ function header(prefix, page) {
 
 function visual(page, prefix) {
   if (page.image) return `<figure class="seo-product-visual"><img src="${prefix}${page.image}" alt="${esc(page.name)} disponible para cotización con MG Dermalab" width="${page.width}" height="${page.height}" fetchpriority="high" /></figure>`;
-  return `<div class="seo-product-visual seo-product-signature" role="img" aria-label="${esc(page.name)} — ${esc(page.category)} — MG Dermalab"><span>MG Dermalab</span><p>${esc(page.category)}</p><strong>${esc(page.name)}</strong><small>${page.presentation ? esc(page.presentation) : "Distribución especializada"}</small></div>`;
+  const signature = page.slug === "retatrutida" ? "Investigación clínica" : page.presentation ? esc(page.presentation) : "Distribución especializada";
+  return `<div class="seo-product-visual seo-product-signature" role="img" aria-label="${esc(page.name)} — ${esc(page.category)} — MG Dermalab"><span>MG Dermalab</span><p>${esc(page.category)}</p><strong>${esc(page.name)}</strong><small>${signature}</small></div>`;
 }
 
 function footer(prefix) {
@@ -216,28 +401,30 @@ function footer(prefix) {
 
 function productHtml(page, prefix) {
   const faq = faqFor(page);
-  const waText = encodeURIComponent(`Hola, quiero consultar disponibilidad de ${page.name}${page.presentation ? ` (${page.presentation})` : ""} con MG Dermalab.`);
+  const isInvestigational = page.slug === "retatrutida";
+  const waText = encodeURIComponent(isInvestigational ? `Hola, quiero consultar información sobre el estatus de ${page.name}.` : `Hola, quiero consultar disponibilidad de ${page.name}${page.presentation ? ` (${page.presentation})` : ""} con MG Dermalab.`);
+  const heroCta = isInvestigational ? "Consultar información por WhatsApp" : "Consultar disponibilidad por WhatsApp";
   const presentationLine = page.presentation ? `<p class="seo-presentation">${esc(page.presentation)}</p>` : "";
-  const primaryFact = page.presentation
-    ? `<div><span>Presentación</span><strong>${esc(page.presentation)}</strong></div>`
-    : `<div><span>Cotización</span><strong>Atención personalizada</strong></div>`;
   return `${head(page, prefix, "product", faq)}
   ${header(prefix, page)}
     <main class="seo-main" id="contenido">
       <nav class="seo-breadcrumb" aria-label="Breadcrumb"><a href="${prefix}index.html">Inicio</a><span aria-hidden="true">/</span><a href="${page.category.includes("Restylane") ? `${prefix}restylane` : `${prefix}index.html#catalogo`}">${esc(page.category)}</a><span aria-hidden="true">/</span><span aria-current="page">${esc(page.name)}</span></nav>
-      <section class="seo-hero">
-        <div class="seo-hero-copy"><p class="seo-kicker">${esc(page.category)}</p><h1>${esc(page.name)}</h1>${presentationLine}<p class="seo-intro">${esc(page.intro)}</p><div class="seo-actions"><a class="primary-button" data-seo-whatsapp data-product-name="${esc(page.name)}" data-category="${esc(page.category)}" data-presentation="${esc(page.presentation)}" href="https://wa.me/525654434495?text=${waText}" target="_blank" rel="noopener">Consultar disponibilidad por WhatsApp</a><a class="seo-back-link" href="${prefix}index.html#catalogo">Volver al catálogo</a></div></div>
+      <section class="seo-hero seo-hero-premium">
+        <div class="seo-hero-copy"><p class="seo-kicker">${esc(page.category)}</p><h1>${esc(page.name)}</h1>${presentationLine}<p class="seo-subtitle">${esc(page.subtitle)}</p><p class="seo-intro">${esc(page.intro)}</p><div class="seo-actions"><a class="primary-button" data-seo-whatsapp data-product-name="${esc(page.name)}" data-category="${esc(page.category)}" data-presentation="${esc(page.presentation || "No especificada")}" href="https://wa.me/525654434495?text=${waText}" target="_blank" rel="noopener">${heroCta}</a><a class="seo-back-link" href="${prefix}index.html#catalogo">Volver al catálogo</a></div></div>
         ${visual(page, prefix)}
       </section>
-      <section class="seo-facts" aria-label="Información comercial">${primaryFact}<div><span>Atención</span><strong>Médicos, clínicas y farmacias</strong></div><div><span>Disponibilidad</span><strong>Sujeta a confirmación</strong></div></section>
-      <section class="seo-info-band"><div><p class="seo-kicker">Cotización directa</p><h2>La información necesaria, sin rodeos.</h2></div><p>${esc(page.note)} Comparte tu ciudad y cantidad requerida por WhatsApp para que nuestro equipo revise disponibilidad y condiciones de envío.</p></section>
+      ${storySections(page)}
+      ${presentations(page)}
+      ${distribution(page)}
       <section class="seo-faq" aria-labelledby="faq-title"><div class="seo-section-heading"><p class="seo-kicker">Antes de cotizar</p><h2 id="faq-title">Preguntas frecuentes</h2></div><div class="seo-faq-list">${faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}</div></section>
       <section class="seo-related" aria-labelledby="related-title"><div><p class="seo-kicker">También puede interesarte</p><h2 id="related-title">Explora productos relacionados</h2></div><nav class="seo-related-links" aria-label="Productos relacionados">${page.related.map(([slug, label]) => `<a href="${href(prefix, slug)}">${esc(label)}<span aria-hidden="true">→</span></a>`).join("")}</nav></section>
+      ${finalCta(page, waText)}
     </main>
     ${footer(prefix)}`;
 }
 
 function hubFaq(page) {
+  if (page.faq) return page.faq;
   return [
     [`¿Qué opciones incluye la categoría ${page.name}?`, `Esta página reúne ${page.items.map((i) => i[1]).join(", ")}. Consulta cada ficha para ver la presentación confirmada.`],
     ["¿La disponibilidad es inmediata?", "La disponibilidad se revisa al recibir cada solicitud y puede variar por producto y presentación."],
@@ -252,10 +439,12 @@ function hubHtml(page, prefix) {
   ${header(prefix, page)}
     <main class="seo-main" id="contenido">
       <nav class="seo-breadcrumb" aria-label="Breadcrumb"><a href="${prefix}index.html">Inicio</a><span aria-hidden="true">/</span><span>${esc(page.category)}</span><span aria-hidden="true">/</span><span aria-current="page">${esc(page.name)}</span></nav>
-      <section class="seo-hero seo-hub-hero"><div class="seo-hero-copy"><p class="seo-kicker">${esc(page.category)} · Guía de línea</p><h1>${esc(page.name)}</h1><p class="seo-intro">${esc(page.intro)}</p><div class="seo-actions"><a class="primary-button" data-seo-whatsapp data-product-name="${esc(page.name)}" data-category="${esc(page.category)}" data-presentation="${esc(page.items.map((i) => i[1]).join(", "))}" href="https://wa.me/525654434495?text=${waText}" target="_blank" rel="noopener">Consultar la línea por WhatsApp</a><a class="seo-back-link" href="${prefix}index.html#catalogo">Volver al catálogo</a></div></div>${visual(page, prefix)}</section>
+      <section class="seo-hero seo-hub-hero seo-hero-premium"><div class="seo-hero-copy"><p class="seo-kicker">${esc(page.category)} · Guía de línea</p><h1>${esc(page.name)}</h1><p class="seo-subtitle">${esc(page.subtitle)}</p><p class="seo-intro">${esc(page.intro)}</p><div class="seo-actions"><a class="primary-button" data-seo-whatsapp data-product-name="${esc(page.name)}" data-category="${esc(page.category)}" data-presentation="${esc(page.items.map((i) => i[1]).join(", "))}" href="https://wa.me/525654434495?text=${waText}" target="_blank" rel="noopener">Consultar la línea por WhatsApp</a><a class="seo-back-link" href="${prefix}index.html#catalogo">Volver al catálogo</a></div></div>${visual(page, prefix)}</section>
+      ${storySections(page)}
       <section class="seo-family" aria-labelledby="family-title"><div class="seo-section-heading"><p class="seo-kicker">Opciones disponibles</p><h2 id="family-title">Encuentra la ficha que buscas</h2><p>${esc(page.note)}</p></div><div class="seo-family-grid">${page.items.map(([slug, name, presentation], index) => `<a href="${prefix}${slug}"><span>${String(index + 1).padStart(2, "0")}</span><strong>${esc(name)}</strong><small>${esc(presentation)}</small><i aria-hidden="true">→</i></a>`).join("")}</div></section>
-      <section class="seo-info-band"><div><p class="seo-kicker">Atención especializada</p><h2>Cotiza la opción correcta.</h2></div><p>Comparte el nombre del producto o variante, presentación, cantidad y ciudad. Nuestro equipo confirmará disponibilidad antes de continuar.</p></section>
+      ${distribution(page)}
       <section class="seo-faq" aria-labelledby="faq-title"><div class="seo-section-heading"><p class="seo-kicker">Información comercial</p><h2 id="faq-title">Preguntas frecuentes</h2></div><div class="seo-faq-list">${faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}</div></section>
+      ${finalCta(page, waText)}
     </main>
     ${footer(prefix)}`;
 }

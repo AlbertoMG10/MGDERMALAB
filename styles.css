@@ -7963,3 +7963,315 @@ img {
     transform: translateY(-14px) scale(0.76);
   }
 }
+
+/* Premium editorial system for SEO product pages */
+.seo-hero-premium {
+  min-height: 660px;
+  padding-top: 44px;
+  padding-bottom: 94px;
+}
+
+.seo-subtitle {
+  max-width: 610px;
+  margin: 24px 0 0;
+  color: var(--ink);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(25px, 3vw, 38px);
+  font-weight: 500;
+  line-height: 1.16;
+}
+
+.seo-hero-premium .seo-intro {
+  max-width: 590px;
+  margin-top: 18px;
+  font-size: 17px;
+}
+
+.seo-hero-premium .seo-product-visual {
+  min-height: 540px;
+  border: 0;
+  border-radius: 0;
+  background: #eef0f1;
+  overflow: visible;
+  box-shadow: 24px 28px 0 #16181b;
+}
+
+.seo-hero-premium .seo-product-visual::before {
+  inset: 22px -18px -18px 22px;
+  border-color: rgba(255, 90, 31, 0.62);
+  border-radius: 0;
+  z-index: -1;
+}
+
+.seo-hero-premium .seo-product-visual::after {
+  content: "MG DERMALAB";
+  position: absolute;
+  right: 24px;
+  bottom: 20px;
+  color: rgba(22, 24, 27, 0.42);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.seo-hero-premium .seo-product-visual img {
+  width: min(82%, 450px);
+  max-height: 450px;
+  filter: drop-shadow(0 28px 24px rgba(22, 24, 27, 0.2));
+  transition: transform 280ms ease;
+}
+
+.seo-hero-premium .seo-product-visual:hover img {
+  transform: translateY(-7px);
+}
+
+.seo-story-stack {
+  margin: 0 calc(-1 * max(24px, calc((100vw - 1180px) / 2)));
+  padding: 20px max(24px, calc((100vw - 1180px) / 2)) 90px;
+  background: #eef0f1;
+}
+
+.seo-story {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: clamp(28px, 6vw, 90px);
+  align-items: start;
+  padding: clamp(48px, 7vw, 82px) 0;
+  border-top: 1px solid rgba(22, 24, 27, 0.18);
+}
+
+.seo-story-index {
+  color: #ff5a1f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.seo-story > div {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(38px, 8vw, 120px);
+  align-items: start;
+}
+
+.seo-story h2,
+.seo-presentations h2,
+.seo-distribution h2,
+.seo-final-cta h2 {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(34px, 4.6vw, 58px);
+  font-weight: 600;
+  line-height: 1.04;
+}
+
+.seo-story p {
+  max-width: 650px;
+  margin: 4px 0 0;
+  color: rgba(22, 24, 27, 0.72);
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.seo-source {
+  margin: 0 0 0 calc(72px + clamp(28px, 6vw, 90px));
+  color: rgba(22, 24, 27, 0.56);
+  font-size: 12px;
+}
+
+.seo-source a {
+  border-bottom: 1px solid rgba(22, 24, 27, 0.3);
+  font-weight: 700;
+}
+
+.seo-presentations {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(44px, 8vw, 120px);
+  padding: 110px 0;
+}
+
+.seo-presentation-list {
+  display: grid;
+  align-content: center;
+  border-top: 1px solid rgba(22, 24, 27, 0.22);
+}
+
+.seo-presentation-list span {
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(22, 24, 27, 0.22);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 600;
+}
+
+.seo-distribution {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(48px, 9vw, 130px);
+  margin: 0 calc(-1 * max(24px, calc((100vw - 1180px) / 2)));
+  padding: 96px max(24px, calc((100vw - 1180px) / 2));
+  color: #fff;
+  background: #16181b;
+}
+
+.seo-distribution > div > p:last-child,
+.seo-final-cta p:last-child {
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.seo-distribution dl {
+  margin: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.seo-distribution dl div {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 24px;
+  padding: 23px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.seo-distribution dt {
+  color: #ff5a1f;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.seo-distribution dd {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.55;
+}
+
+.seo-final-cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 50px;
+  align-items: center;
+  margin: 0 calc(-1 * max(24px, calc((100vw - 1180px) / 2)));
+  padding: 86px max(24px, calc((100vw - 1180px) / 2));
+  color: #fff;
+  background: #16181b;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.seo-final-cta > div {
+  max-width: 770px;
+}
+
+.seo-final-cta .primary-button {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border: 1px solid #ff5a1f;
+  border-radius: 6px;
+  color: #fff;
+  background: #ff5a1f;
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.seo-final-cta .primary-button:hover {
+  color: #fff;
+  background: #e84e16;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .seo-hero-premium {
+    min-height: 580px;
+  }
+
+  .seo-hero-premium .seo-product-visual {
+    min-height: 420px;
+  }
+
+  .seo-story > div,
+  .seo-presentations,
+  .seo-distribution {
+    grid-template-columns: 1fr;
+  }
+
+  .seo-presentations,
+  .seo-distribution {
+    gap: 42px;
+  }
+}
+
+@media (max-width: 760px) {
+  .seo-hero-premium {
+    padding-bottom: 70px;
+  }
+
+  .seo-hero-premium .seo-product-visual {
+    min-height: 340px;
+    margin: 0 12px 22px 0;
+    box-shadow: 12px 14px 0 #16181b;
+  }
+
+  .seo-hero-premium .seo-product-visual::before {
+    inset: 14px -10px -10px 14px;
+  }
+
+  .seo-story-stack {
+    padding-bottom: 64px;
+  }
+
+  .seo-story {
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 16px;
+    padding: 50px 0;
+  }
+
+  .seo-story > div {
+    gap: 20px;
+  }
+
+  .seo-story p {
+    font-size: 16px;
+  }
+
+  .seo-source {
+    margin-left: 52px;
+    line-height: 1.6;
+  }
+
+  .seo-presentations {
+    padding: 72px 0;
+  }
+
+  .seo-distribution,
+  .seo-final-cta {
+    padding-top: 66px;
+    padding-bottom: 66px;
+  }
+
+  .seo-distribution dl div {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .seo-final-cta {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .seo-final-cta .primary-button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seo-hero-premium .seo-product-visual img,
+  .seo-final-cta .primary-button {
+    transition: none;
+  }
+}
