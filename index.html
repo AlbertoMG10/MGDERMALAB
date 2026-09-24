@@ -7,8 +7,10 @@
       new Date().getTime(),event:"gtm.js"});var load=function(){if(d.querySelector("script[data-gtm-bootstrap]"))return;
       var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";
       j.async=true;j.dataset.gtmBootstrap="";j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;
-      f.parentNode.insertBefore(j,f);};var schedule=function(){if("requestIdleCallback" in w){
-      w.requestIdleCallback(load,{timeout:1500});}else{w.setTimeout(load,200);}};
+      f.parentNode.insertBefore(j,f);};var timer,events=["pointerdown","touchstart","keydown"];
+      var cleanup=function(){if(timer){w.clearTimeout(timer);timer=0;}events.forEach(function(n){w.removeEventListener(n,start);});w.removeEventListener("load",schedule);};
+      var start=function(){cleanup();load();};events.forEach(function(n){w.addEventListener(n,start,{once:true,passive:true});});
+      var schedule=function(){timer=w.setTimeout(start,7000);};
       if(d.readyState==="complete"){schedule();}else{w.addEventListener("load",schedule,{once:true});}
       })(window,document,"script","dataLayer","GTM-T9MFWNKW");
     </script>
