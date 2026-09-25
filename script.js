@@ -57,7 +57,7 @@ const PRODUCT_DETAILS = {
     name: "Epuris 10 mg",
     active: "Isotretinoína",
     image: "assets/epuris-10.webp",
-    desc: "Isotretinoína de absorción optimizada para el tratamiento del acné severo bajo supervisión médica.",
+    desc: "Isotretinoína de absorción optimizada disponible en presentación de 10 mg.",
     benefits: ["Absorción optimizada", "Reduce la producción de sebo", "Previene nuevas lesiones"],
     indications: ["Acné severo"],
     presentations: "Caja con cápsulas de 10 mg",
@@ -69,7 +69,7 @@ const PRODUCT_DETAILS = {
     name: "Epuris 20 mg",
     active: "Isotretinoína",
     image: "assets/epuris-20-premium-optimized.jpg",
-    desc: "Isotretinoína de absorción optimizada para el tratamiento del acné severo bajo supervisión médica.",
+    desc: "Isotretinoína de absorción optimizada disponible en presentación de 20 mg.",
     benefits: ["Absorción optimizada", "Reduce la producción de sebo", "Previene nuevas lesiones"],
     indications: ["Acné severo"],
     presentations: "Caja con cápsulas de 20 mg",
@@ -247,6 +247,18 @@ const PRODUCT_DETAILS = {
     presentations: "Vial liofilizado de 60 mg para cotización profesional.",
     conservation: "Confirmar condiciones de conservación y disponibilidad al cotizar.",
     receta: "Uso bajo valoración y supervisión de profesionales de la salud.",
+  },
+  retatrutida: {
+    category: "Control de peso MG Dermalab",
+    name: "Retatrutida",
+    active: "Control de peso MG Dermalab",
+    image: null,
+    desc: "Producto disponible para consulta directa con MG Dermalab.",
+    benefits: ["Cotización individual", "Atención directa por WhatsApp", "Datos del producto al consultar"],
+    indications: ["Consulta de producto"],
+    presentations: "No especificada",
+    conservation: "Confirmar al cotizar.",
+    receta: "Confirmar requisitos al cotizar.",
   },
 };
 
@@ -894,24 +906,25 @@ if (productModal) {
 
 /* CTA dinámico: identifica el producto de interés en el formulario de cotización */
 const PRODUCT_TO_QUOTE_OPTION = {
-  "neotrex-10": "Dermatología: Neotrex, Epuris o Vastionin",
-  "neotrex-20": "Dermatología: Neotrex, Epuris o Vastionin",
-  "epuris-10": "Dermatología: Neotrex, Epuris o Vastionin",
-  "epuris-20": "Dermatología: Neotrex, Epuris o Vastionin",
-  "vastionin-10": "Dermatología: Neotrex, Epuris o Vastionin",
-  "vastionin-20": "Dermatología: Neotrex, Epuris o Vastionin",
-  "dysport-300": "Dysport 300 U / 500 U",
-  "dysport-500": "Dysport 300 U / 500 U",
+  "neotrex-10": "Neotrex 10 mg",
+  "neotrex-20": "Neotrex 20 mg",
+  "epuris-10": "Epuris 10 mg",
+  "epuris-20": "Epuris 20 mg",
+  "vastionin-10": "Vastionin 10 mg",
+  "vastionin-20": "Vastionin 20 mg",
+  "dysport-300": "Dysport 300 U",
+  "dysport-500": "Dysport 500 U",
   sculptra: "Sculptra",
-  "restylane-kysse": "Línea Restylane",
-  "restylane-lyft": "Línea Restylane",
-  "restylane-refyne": "Línea Restylane",
-  "restylane-defyne": "Línea Restylane",
-  "restylane-contour": "Línea Restylane",
-  "restylane-eyelight": "Línea Restylane",
-  "restylane-skinboosters-vital": "Restylane Skinboosters",
-  "restylane-skinboosters-vital-light": "Restylane Skinboosters",
-  tirzepatida: "Control de peso MG Dermalab: Tirzepatida 60 mg",
+  "restylane-kysse": "Restylane Kysse",
+  "restylane-lyft": "Restylane Lyft",
+  "restylane-refyne": "Restylane Refyne",
+  "restylane-defyne": "Restylane Defyne",
+  "restylane-contour": "Restylane Contour",
+  "restylane-eyelight": "Restylane Eyelight",
+  "restylane-skinboosters-vital": "Restylane Skinboosters Vital",
+  "restylane-skinboosters-vital-light": "Restylane Skinboosters Vital Light",
+  tirzepatida: "Tirzepatida 60 mg",
+  retatrutida: "Retatrutida",
 };
 
 const CATEGORY_TO_DEFAULT_PRODUCT = {
@@ -953,7 +966,7 @@ document.querySelectorAll(".product-card[data-product]").forEach((card) => {
   whatsappLink.dataset.productWhatsapp = productId;
   whatsappLink.textContent = "Consultar por WhatsApp";
 
-  actions.appendChild(whatsappLink);
+  actions.insertBefore(whatsappLink, actions.firstChild);
 });
 
 document.addEventListener("click", (event) => {
