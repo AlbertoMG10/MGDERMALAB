@@ -12,7 +12,7 @@ const commonFaq = [
 
 const pages = [
   {
-    slug: "neotrex", name: "Neotrex", category: "Dermatología", presentation: "10 mg · 20 mg",
+    slug: "neotrex", name: "Neotrex", category: "Dermatología", presentation: "10 mg · 20 mg", includeProductSchema: false,
     title: "Neotrex 10 mg y 20 mg | Disponibilidad | MG Dermalab",
     description: "Consulta disponibilidad y cotización de Neotrex 10 mg y 20 mg con MG Dermalab. Atención a médicos, clínicas, farmacias y pacientes en México.",
     intro: "Neotrex en presentaciones de 10 mg y 20 mg, disponible mediante cotización y confirmación directa con nuestro equipo comercial.",
@@ -22,7 +22,7 @@ const pages = [
     related: [["isotretinoina", "Ver otras opciones de isotretinoína"], ["epuris", "Epuris"], ["vastionin", "Vastionin"]]
   },
   {
-    slug: "epuris", name: "Epuris", category: "Dermatología", presentation: "10 mg · 20 mg",
+    slug: "epuris", name: "Epuris", category: "Dermatología", presentation: "10 mg · 20 mg", includeProductSchema: false,
     title: "Epuris 10 mg y 20 mg | Disponibilidad | MG Dermalab",
     description: "Cotiza Epuris 10 mg y 20 mg con MG Dermalab. Consulta disponibilidad, cotización y envíos para médicos, clínicas, farmacias y pacientes en México.",
     intro: "Epuris en 10 mg y 20 mg para solicitudes comerciales de profesionales y establecimientos de salud, sujeto a disponibilidad.",
@@ -32,7 +32,7 @@ const pages = [
     related: [["isotretinoina", "Ver otras opciones de isotretinoína"], ["neotrex", "Neotrex"], ["vastionin", "Vastionin"]]
   },
   {
-    slug: "vastionin", name: "Vastionin", category: "Dermatología", presentation: "10 mg · 20 mg",
+    slug: "vastionin", name: "Vastionin", category: "Dermatología", presentation: "10 mg · 20 mg", includeProductSchema: false,
     title: "Vastionin 10 mg y 20 mg | Disponibilidad | MG Dermalab",
     description: "Consulta disponibilidad y cotización de Vastionin 10 mg y 20 mg con MG Dermalab. Atención a médicos, clínicas, farmacias y pacientes en México.",
     intro: "Vastionin en concentraciones de 10 mg y 20 mg, con atención comercial directa y disponibilidad sujeta a confirmación.",
@@ -60,7 +60,7 @@ const pages = [
     related: [["dysport", "Dysport"], ["restylane", "Familia Restylane"], ["", "Catálogo MG Dermalab"]]
   },
   {
-    slug: "tirzepatida", name: "Tirzepatida", h1: "Tirzepatida 60 mg", category: "Línea especializada", presentation: "60 mg",
+    slug: "tirzepatida", name: "Tirzepatida", h1: "Tirzepatida 60 mg", category: "Línea especializada", presentation: "60 mg", includeProductSchema: false,
     title: "Tirzepatida 60 mg | Disponibilidad en México | MG Dermalab",
     description: "Consulta disponibilidad y cotización de Tirzepatida 60 mg con MG Dermalab. Atención a médicos, clínicas, farmacias y pacientes en todo México.",
     intro: "Información sobre la molécula tirzepatida y la presentación comercial de 60 mg que MG Dermalab maneja mediante cotización y confirmación de disponibilidad en México.",
@@ -348,16 +348,20 @@ function finalCta(page, waText) {
 function head(page, prefix, type, faq) {
   const url = `${site}/${page.slug}`;
   const image = page.image ? `${site}/${page.image}` : `${site}/assets/hero-mg-dermalab-grafito-1600.jpg`;
+  const includeSubject = type === "hub" || page.includeProductSchema !== false;
+  const subject = type === "hub"
+    ? {"@type": "CollectionPage", "@id": `${url}#subject`, name: page.name, description: page.intro, url, hasPart: page.items.map(([slug, name]) => ({"@type": "WebPage", name, url: `${site}/${slug}`}))}
+    : page.includeProductSchema === false
+      ? null
+      : {"@type": "Product", "@id": `${url}#subject`, name: page.name, category: page.category, description: page.intro, url, ...(page.image ? {image} : {})};
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
-      {"@type": "WebPage", "@id": `${url}#webpage`, url, name: page.title, description: page.description, isPartOf: {"@id": `${site}/#website`}, about: {"@id": `${url}#subject`}},
-      type === "hub"
-        ? {"@type": "CollectionPage", "@id": `${url}#subject`, name: page.name, description: page.intro, url, hasPart: page.items.map(([slug, name]) => ({"@type": "WebPage", name, url: `${site}/${slug}`}))}
-        : {"@type": "Product", "@id": `${url}#subject`, name: page.name, category: page.category, description: page.intro, url, ...(page.image ? {image} : {})},
+      {"@type": "WebPage", "@id": `${url}#webpage`, url, name: page.title, description: page.description, isPartOf: {"@id": `${site}/#website`}, ...(includeSubject ? {about: {"@id": `${url}#subject`}} : {})},
+      subject,
       {"@type": "BreadcrumbList", itemListElement: breadcrumbTrail(page, type).map(([name, item], index) => ({"@type": "ListItem", position: index + 1, name, item}))},
       {"@type": "FAQPage", mainEntity: faq.map(([q, a]) => ({"@type": "Question", name: q, acceptedAnswer: {"@type": "Answer", text: a}}))}
-    ]
+    ].filter(Boolean)
   };
   return `<!doctype html>
 <html lang="es-MX">
