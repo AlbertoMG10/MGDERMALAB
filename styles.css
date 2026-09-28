@@ -5621,6 +5621,10 @@ img {
     font-size: clamp(46px, 15vw, 66px);
   }
 
+  .seo-isotretinoina .seo-hero-copy h1 {
+    font-size: clamp(42px, 13.2vw, 56px);
+  }
+
   .seo-intro {
     font-size: 17px;
   }
@@ -5681,6 +5685,12 @@ img {
   .seo-related {
     padding-top: 56px;
     padding-bottom: 56px;
+  }
+}
+
+@media (max-width: 340px) {
+  .seo-isotretinoina .seo-hero-copy h1 {
+    font-size: clamp(32px, 10.4vw, 36px);
   }
 }
 

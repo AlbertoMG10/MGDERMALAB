@@ -13,30 +13,33 @@ const commonFaq = [
 const pages = [
   {
     slug: "neotrex", name: "Neotrex", category: "Dermatología", presentation: "10 mg · 20 mg",
-    title: "Neotrex 10 mg y 20 mg | Cotización | MG Dermalab",
-    description: "Consulta disponibilidad y cotización de Neotrex 10 mg y 20 mg con MG Dermalab. Atención para médicos, clínicas y farmacias en México.",
+    title: "Neotrex 10 mg y 20 mg | Disponibilidad | MG Dermalab",
+    description: "Consulta disponibilidad y cotización de Neotrex 10 mg y 20 mg con MG Dermalab. Atención a médicos, clínicas, farmacias y pacientes en México.",
     intro: "Neotrex en presentaciones de 10 mg y 20 mg, disponible mediante cotización y confirmación directa con nuestro equipo comercial.",
     image: "assets/neotrex-20-premium-optimized.jpg", width: 900, height: 640,
     note: "Confirma la concentración y cantidad que necesitas para recibir una respuesta precisa.",
-    related: [["isotretinoina", "Ver categoría isotretinoína"], ["epuris", "Epuris"], ["vastionin", "Vastionin"]]
+    imageAlt: "Neotrex isotretinoína 20 mg",
+    related: [["isotretinoina", "Ver otras opciones de isotretinoína"], ["epuris", "Epuris"], ["vastionin", "Vastionin"]]
   },
   {
     slug: "epuris", name: "Epuris", category: "Dermatología", presentation: "10 mg · 20 mg",
     title: "Epuris 10 mg y 20 mg | Disponibilidad | MG Dermalab",
-    description: "Cotiza Epuris 10 mg y 20 mg con MG Dermalab. Consulta disponibilidad, volumen y envío para médicos, clínicas y farmacias.",
+    description: "Cotiza Epuris 10 mg y 20 mg con MG Dermalab. Consulta disponibilidad, cotización y envíos para médicos, clínicas, farmacias y pacientes en México.",
     intro: "Epuris en 10 mg y 20 mg para solicitudes comerciales de profesionales y establecimientos de salud, sujeto a disponibilidad.",
     image: "assets/epuris-20-premium-optimized.jpg", width: 900, height: 640,
     note: "Indica 10 mg o 20 mg al escribirnos; así podremos revisar existencias para la presentación correcta.",
-    related: [["isotretinoina", "Ver categoría isotretinoína"], ["neotrex", "Neotrex"], ["vastionin", "Vastionin"]]
+    imageAlt: "Epuris isotretinoína 20 mg",
+    related: [["isotretinoina", "Ver otras opciones de isotretinoína"], ["neotrex", "Neotrex"], ["vastionin", "Vastionin"]]
   },
   {
     slug: "vastionin", name: "Vastionin", category: "Dermatología", presentation: "10 mg · 20 mg",
-    title: "Vastionin 10 mg y 20 mg | Cotización | MG Dermalab",
-    description: "Consulta Vastionin 10 mg y 20 mg con MG Dermalab. Disponibilidad y cotización para médicos, clínicas y farmacias en México.",
+    title: "Vastionin 10 mg y 20 mg | Disponibilidad | MG Dermalab",
+    description: "Consulta disponibilidad y cotización de Vastionin 10 mg y 20 mg con MG Dermalab. Atención a médicos, clínicas, farmacias y pacientes en México.",
     intro: "Vastionin en concentraciones de 10 mg y 20 mg, con atención comercial directa y disponibilidad sujeta a confirmación.",
     image: "assets/vastionin-20-premium-optimized.jpg", width: 900, height: 640,
     note: "Comparte concentración, número de piezas y destino para preparar tu cotización.",
-    related: [["isotretinoina", "Ver categoría isotretinoína"], ["neotrex", "Neotrex"], ["epuris", "Epuris"]]
+    imageAlt: "Vastionin isotretinoína 20 mg",
+    related: [["isotretinoina", "Ver otras opciones de isotretinoína"], ["neotrex", "Neotrex"], ["epuris", "Epuris"]]
   },
   {
     slug: "dysport", name: "Dysport", category: "Medicina estética", presentation: "300 U · 500 U",
@@ -57,12 +60,13 @@ const pages = [
     related: [["dysport", "Dysport"], ["restylane", "Familia Restylane"], ["", "Catálogo MG Dermalab"]]
   },
   {
-    slug: "tirzepatida", name: "Tirzepatida", category: "Línea especializada", presentation: "60 mg",
-    title: "Tirzepatida: mecanismo y presentación 60 mg | MG Dermalab",
-    description: "Conoce qué es la tirzepatida, cómo actúa sobre GIP y GLP-1 y consulta la presentación comercial de 60 mg de MG Dermalab.",
-    intro: "Una explicación clara de la molécula tirzepatida y de la presentación comercial de 60 mg distribuida por MG Dermalab.",
+    slug: "tirzepatida", name: "Tirzepatida", h1: "Tirzepatida 60 mg", category: "Línea especializada", presentation: "60 mg",
+    title: "Tirzepatida 60 mg | Disponibilidad en México | MG Dermalab",
+    description: "Consulta disponibilidad y cotización de Tirzepatida 60 mg con MG Dermalab. Atención a médicos, clínicas, farmacias y pacientes en todo México.",
+    intro: "Información sobre la molécula tirzepatida y la presentación comercial de 60 mg que MG Dermalab maneja mediante cotización y confirmación de disponibilidad en México.",
     image: "assets/mg-tirzepatida-vial-alpha.png", width: 1122, height: 1402,
     note: "Comparte la cantidad requerida y tu ciudad para recibir atención comercial personalizada.",
+    imageAlt: "Tirzepatida 60 mg MG Dermalab",
     related: [["retatrutida", "Retatrutida"], ["", "Catálogo MG Dermalab"]]
   },
   {
@@ -98,12 +102,15 @@ for (const [slug, name, variant, description] of restylaneVariants) {
 
 const hubs = [
   {
-    slug: "isotretinoina", name: "Isotretinoína", category: "Dermatología", title: "Isotretinoína: marcas y presentaciones | MG Dermalab",
-    description: "Explora Neotrex, Epuris y Vastionin en 10 mg y 20 mg. Consulta disponibilidad de isotretinoína con MG Dermalab.",
-    intro: "Consulta las marcas y concentraciones de isotretinoína que maneja MG Dermalab. Cada disponibilidad se confirma antes de cotizar.",
+    slug: "isotretinoina", name: "Isotretinoína", category: "Dermatología", title: "Isotretinoína 10 mg y 20 mg | Marcas | MG Dermalab",
+    description: "Consulta isotretinoína de 10 mg y 20 mg: Neotrex, Vastionin y Epuris. Revisa disponibilidad y solicita cotización con atención directa en México.",
+    intro: "Página temática de isotretinoína con las marcas y concentraciones que maneja MG Dermalab. Consulta cada ficha y confirma disponibilidad antes de cotizar.",
     image: "assets/mg-dermalab-linea-dermatologia-1200.jpg", width: 1200, height: 800,
     items: [["neotrex", "Neotrex", "10 mg · 20 mg"], ["epuris", "Epuris", "10 mg · 20 mg"], ["vastionin", "Vastionin", "10 mg · 20 mg"]],
-    note: "La información es comercial. No sustituye valoración, indicación ni seguimiento de un profesional de la salud."
+    note: "Compara Neotrex, Vastionin y Epuris en 10 mg y 20 mg y abre la ficha específica de cada marca.",
+    imageAlt: "Línea de isotretinoína de MG Dermalab",
+    familyTitle: "Marcas disponibles",
+    familyKicker: "Presentaciones de 10 mg y 20 mg"
   },
   {
     slug: "restylane", name: "Restylane", category: "Medicina estética", title: "Familia Restylane | Línea disponible | MG Dermalab",
@@ -123,9 +130,9 @@ const productContent = {
     mechanism: "La isotretinoína actúa sobre procesos relacionados con la actividad de las glándulas sebáceas. El mecanismo completo es complejo, por lo que esta página no sustituye la información para prescribir ni la valoración médica.",
     faq: [
       ["¿Qué presentaciones de Neotrex maneja MG Dermalab?", "Manejamos Neotrex de 10 mg y 20 mg, sujeto a disponibilidad."],
-      ["¿Neotrex requiere receta y seguimiento médico?", "Sí. La isotretinoína oral debe utilizarse únicamente bajo prescripción y seguimiento profesional."],
-      ["¿Puedo consultar varias piezas de Neotrex?", "Sí. Comparte presentación, cantidad y ciudad para revisar disponibilidad y condiciones comerciales."],
-      ["¿Cómo se confirma el envío de Neotrex?", "El equipo confirma cobertura, costo y plazo estimado al preparar la cotización."]
+      ["¿Manejan Neotrex 10 mg y 20 mg?", "Sí. Puedes solicitar cotización de cualquiera de las dos presentaciones y confirmar existencia con nuestro equipo."],
+      ["¿Cómo solicito una cotización de Neotrex?", "Comparte presentación, cantidad y ciudad por WhatsApp o mediante el formulario."],
+      ["¿Realizan envíos nacionales de Neotrex?", "Sí. La cobertura, el costo y el plazo estimado se confirman al preparar la cotización."]
     ],
     source: ["DailyMed · isotretinoína", "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=31f62a49-4c6d-4ce3-a0ca-d159562370b1"]
   },
@@ -136,9 +143,9 @@ const productContent = {
     mechanism: "La isotretinoína reduce la actividad de las glándulas sebáceas y modifica procesos implicados en el acné. Su utilización exige control profesional por su perfil de seguridad.",
     faq: [
       ["¿Epuris está disponible en 10 mg y 20 mg?", "MG Dermalab consulta ambas presentaciones, siempre sujetas a existencia vigente."],
-      ["¿Epuris es isotretinoína?", "Sí. La documentación oficial identifica isotretinoína como ingrediente medicinal."],
-      ["¿Atienden solicitudes de clínicas y farmacias?", "Sí. El equipo comercial revisa cada solicitud y los requisitos aplicables."],
-      ["¿Cómo cotizo Epuris?", "Indica 10 mg o 20 mg, cantidad y ciudad por WhatsApp."]
+      ["¿Cómo cotizo Epuris?", "Indica 10 mg o 20 mg, cantidad y ciudad por WhatsApp o mediante el formulario."],
+      ["¿Atienden pacientes además de médicos y clínicas?", "Sí. Atendemos médicos, clínicas, farmacias y pacientes particulares, con los requisitos aplicables a cada producto."],
+      ["¿Realizan envíos nacionales de Epuris?", "Sí. La cobertura, el costo y el plazo estimado se confirman antes de procesar el pedido."]
     ],
     source: ["Health Canada · Epuris", "https://health-products.canada.ca/noc-ac/nocInfo?no=35348"]
   },
@@ -151,7 +158,7 @@ const productContent = {
       ["¿Qué concentraciones de Vastionin manejan?", "Se consultan presentaciones de 10 mg y 20 mg."],
       ["¿La disponibilidad de Vastionin es inmediata?", "La existencia se confirma al recibir presentación, cantidad y destino."],
       ["¿Realizan envíos nacionales de Vastionin?", "Sí, con cobertura y condiciones confirmadas en la cotización."],
-      ["¿Publican el precio de Vastionin?", "No. Las condiciones dependen de disponibilidad, cantidad y envío."]
+      ["¿Cómo solicito una cotización de Vastionin?", "Indica 10 mg o 20 mg, cantidad y ciudad por WhatsApp o mediante el formulario."]
     ],
     source: ["DailyMed · isotretinoína", "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=31f62a49-4c6d-4ce3-a0ca-d159562370b1"]
   },
@@ -189,11 +196,11 @@ const productContent = {
     regulatory: "Las indicaciones autorizadas dependen del medicamento, presentación y registro sanitario correspondiente. La información sobre la molécula no implica que todas las presentaciones comerciales de tirzepatida tengan las mismas autorizaciones.",
     presentationCopy: "MG Dermalab distribuye una presentación comercial identificada como tirzepatida 60 mg. Su disponibilidad se confirma directamente y no debe asumirse equivalencia con Mounjaro, Zepbound u otra marca o presentación autorizada.",
     faq: [
-      ["¿La presentación de 60 mg equivale a Mounjaro o Zepbound?", "No debe asumirse equivalencia. Son productos y presentaciones con documentación propia."],
-      ["¿Qué significa que sea un agonista dual?", "Significa que una sola molécula activa dos receptores: GIP y GLP-1."],
-      ["¿Qué procesos se relacionan con estos receptores?", "Participan en mecanismos de secreción de insulina dependiente de glucosa, regulación del glucagón, apetito e ingesta energética."],
-      ["¿Qué información debo solicitar antes de cotizar?", "Solicita al asesor la documentación comercial disponible para el producto específico."],
-      ["¿La disponibilidad está garantizada?", "No. Cualquier disponibilidad está sujeta a confirmación individual."]
+      ["¿Qué presentación de tirzepatida maneja MG Dermalab?", "MG Dermalab maneja una presentación comercial identificada como tirzepatida 60 mg."],
+      ["¿Cómo puedo consultar disponibilidad de tirzepatida?", "Comparte la cantidad y tu ciudad por WhatsApp o mediante el formulario. La existencia se confirma de manera individual."],
+      ["¿Realizan envíos de tirzepatida en México?", "MG Dermalab coordina envíos nacionales; cobertura, costo y plazo se confirman al cotizar."],
+      ["¿Puedo solicitar una cotización por WhatsApp?", "Sí. Nuestro equipo revisa la solicitud y comparte la información comercial disponible para el producto específico."],
+      ["¿La presentación de 60 mg equivale a Mounjaro o Zepbound?", "No debe asumirse equivalencia. Son productos y presentaciones con documentación propia."]
     ],
     source: ["FDA · tirzepatida, información para prescribir", "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/217806s002lbl.pdf"]
   },
@@ -245,7 +252,13 @@ Object.assign(hubs[0], {
   what: "La isotretinoína es un retinoide oral relacionado con la vitamina A y sujeto a prescripción médica.",
   use: "Se utiliza en formas graves de acné que no han respondido a tratamientos convencionales. No sustituye la valoración individual del dermatólogo.",
   mechanism: "Reduce la actividad de las glándulas sebáceas y participa en otros procesos relacionados con el acné. Requiere seguimiento profesional por su perfil de seguridad.",
-  source: ["DailyMed · isotretinoína", "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=31f62a49-4c6d-4ce3-a0ca-d159562370b1"]
+  source: ["DailyMed · isotretinoína", "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=31f62a49-4c6d-4ce3-a0ca-d159562370b1"],
+  faq: [
+    ["¿Qué marcas de isotretinoína maneja MG Dermalab?", "MG Dermalab maneja Neotrex, Vastionin y Epuris, con disponibilidad sujeta a confirmación."],
+    ["¿Qué presentaciones de isotretinoína tienen disponibles?", "Se consultan presentaciones de 10 mg y 20 mg. Cada ficha indica las concentraciones correspondientes."],
+    ["¿Atienden pacientes además de médicos y clínicas?", "Sí. Atendemos médicos, clínicas, farmacias y pacientes particulares, con los requisitos aplicables a cada producto."],
+    ["¿Cómo consulto disponibilidad de isotretinoína?", "Selecciona la marca y comparte presentación, cantidad y ciudad por WhatsApp o mediante el formulario."]
+  ]
 });
 
 Object.assign(hubs[1], {
@@ -261,6 +274,27 @@ const json = (value) => JSON.stringify(value).replace(/</g, "\\u003c");
 
 function href(prefix, slug) {
   return slug ? `${prefix}${slug}` : `${prefix}index.html#catalogo`;
+}
+
+function breadcrumbTrail(page, type) {
+  if (["neotrex", "vastionin", "epuris"].includes(page.slug)) {
+    return [
+      ["Inicio", `${site}/`],
+      ["Dermatología", `${site}/#catalogo-dermatologia`],
+      ["Isotretinoína", `${site}/isotretinoina`],
+      [page.name, `${site}/${page.slug}`]
+    ];
+  }
+  if (page.slug === "tirzepatida") {
+    return [["Inicio", `${site}/`], ["Control de peso", `${site}/#lineas`], [page.h1 || page.name, `${site}/${page.slug}`]];
+  }
+  return [["Inicio", `${site}/`], [page.name, `${site}/${page.slug}`]];
+}
+
+function breadcrumbHref(prefix, url) {
+  if (url === `${site}/`) return `${prefix}index.html`;
+  if (url.startsWith(`${site}/#`)) return `${prefix}index.html${url.slice(`${site}/`.length)}`;
+  return url.replace(`${site}/`, prefix);
 }
 
 function faqFor(page) {
@@ -321,7 +355,7 @@ function head(page, prefix, type, faq) {
       type === "hub"
         ? {"@type": "CollectionPage", "@id": `${url}#subject`, name: page.name, description: page.intro, url, hasPart: page.items.map(([slug, name]) => ({"@type": "WebPage", name, url: `${site}/${slug}`}))}
         : {"@type": "Product", "@id": `${url}#subject`, name: page.name, category: page.category, description: page.intro, url, ...(page.image ? {image} : {})},
-      {"@type": "BreadcrumbList", itemListElement: [{"@type": "ListItem", position: 1, name: "Inicio", item: `${site}/`}, {"@type": "ListItem", position: 2, name: page.name, item: url}]},
+      {"@type": "BreadcrumbList", itemListElement: breadcrumbTrail(page, type).map(([name, item], index) => ({"@type": "ListItem", position: index + 1, name, item}))},
       {"@type": "FAQPage", mainEntity: faq.map(([q, a]) => ({"@type": "Question", name: q, acceptedAnswer: {"@type": "Answer", text: a}}))}
     ]
   };
@@ -364,7 +398,7 @@ function head(page, prefix, type, faq) {
 }
 
 function header(prefix, page) {
-  return `<body class="seo-page">
+  return `<body class="seo-page${page.slug === "isotretinoina" ? " seo-isotretinoina" : ""}">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9MFWNKW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <header class="site-header" data-header>
@@ -376,7 +410,7 @@ function header(prefix, page) {
 }
 
 function visual(page, prefix) {
-  if (page.image) return `<figure class="seo-product-visual"><img src="${prefix}${page.image}" alt="${esc(page.name)} disponible para cotización con MG Dermalab" width="${page.width}" height="${page.height}" fetchpriority="high" /></figure>`;
+  if (page.image) return `<figure class="seo-product-visual"><img src="${prefix}${page.image}" alt="${esc(page.imageAlt || `${page.name} disponible para cotización con MG Dermalab`)}" width="${page.width}" height="${page.height}" fetchpriority="high" /></figure>`;
   const signature = page.slug === "retatrutida" ? "Investigación clínica" : page.presentation ? esc(page.presentation) : "Distribución especializada";
   return `<div class="seo-product-visual seo-product-signature" role="img" aria-label="${esc(page.name)} — ${esc(page.category)} — MG Dermalab"><span>MG Dermalab</span><p>${esc(page.category)}</p><strong>${esc(page.name)}</strong><small>${signature}</small></div>`;
 }
@@ -394,13 +428,18 @@ function productHtml(page, prefix) {
   const isInvestigational = page.slug === "retatrutida";
   const waText = encodeURIComponent(isInvestigational ? `Hola, quiero consultar información sobre el estatus de ${page.name}.` : `Hola, quiero consultar disponibilidad de ${page.name}${page.presentation ? ` (${page.presentation})` : ""} con MG Dermalab.`);
   const heroCta = isInvestigational ? "Consultar información por WhatsApp" : "Consultar disponibilidad por WhatsApp";
-  const presentationLine = page.presentation ? `<p class="seo-presentation">${esc(page.presentation)}</p>` : "";
+  const presentationLine = page.presentation && !page.h1 ? `<p class="seo-presentation">${esc(page.presentation)}</p>` : "";
+  const breadcrumb = breadcrumbTrail(page, "product");
+  const usesSeoBreadcrumb = ["neotrex", "vastionin", "epuris", "tirzepatida"].includes(page.slug);
+  const breadcrumbMarkup = usesSeoBreadcrumb
+    ? breadcrumb.map(([name, url], index) => index === breadcrumb.length - 1 ? `<span aria-current="page">${esc(name)}</span>` : `<a href="${breadcrumbHref(prefix, url)}">${esc(name)}</a><span aria-hidden="true">/</span>`).join("")
+    : `<a href="${prefix}index.html">Inicio</a><span aria-hidden="true">/</span><a href="${page.category.includes("Restylane") ? `${prefix}restylane` : `${prefix}index.html#catalogo`}">${esc(page.category)}</a><span aria-hidden="true">/</span><span aria-current="page">${esc(page.name)}</span>`;
   return `${head(page, prefix, "product", faq)}
   ${header(prefix, page)}
     <main class="seo-main" id="contenido">
-      <nav class="seo-breadcrumb" aria-label="Breadcrumb"><a href="${prefix}index.html">Inicio</a><span aria-hidden="true">/</span><a href="${page.category.includes("Restylane") ? `${prefix}restylane` : `${prefix}index.html#catalogo`}">${esc(page.category)}</a><span aria-hidden="true">/</span><span aria-current="page">${esc(page.name)}</span></nav>
+      <nav class="seo-breadcrumb" aria-label="Breadcrumb">${breadcrumbMarkup}</nav>
       <section class="seo-hero seo-hero-premium">
-        <div class="seo-hero-copy"><p class="seo-kicker">${esc(page.category)}</p><h1>${esc(page.name)}</h1>${presentationLine}<p class="seo-subtitle">${esc(page.subtitle)}</p><p class="seo-intro">${esc(page.intro)}</p><div class="seo-actions"><a class="primary-button" data-seo-whatsapp data-product-name="${esc(page.name)}" data-category="${esc(page.category)}" data-presentation="${esc(page.presentation || "No especificada")}" href="https://wa.me/525654434495?text=${waText}" target="_blank" rel="noopener">${heroCta}</a><a class="seo-back-link" href="${prefix}index.html#catalogo">Volver al catálogo</a></div></div>
+        <div class="seo-hero-copy"><p class="seo-kicker">${esc(page.category)}</p><h1>${esc(page.h1 || page.name)}</h1>${presentationLine}<p class="seo-subtitle">${esc(page.subtitle)}</p><p class="seo-intro">${esc(page.intro)}</p><div class="seo-actions"><a class="primary-button" data-seo-whatsapp data-product-name="${esc(page.name)}" data-category="${esc(page.category)}" data-presentation="${esc(page.presentation || "No especificada")}" href="https://wa.me/525654434495?text=${waText}" target="_blank" rel="noopener">${heroCta}</a><a class="seo-back-link" href="${prefix}index.html#catalogo">Volver al catálogo</a></div></div>
         ${visual(page, prefix)}
       </section>
       ${storySections(page)}
@@ -431,7 +470,7 @@ function hubHtml(page, prefix) {
       <nav class="seo-breadcrumb" aria-label="Breadcrumb"><a href="${prefix}index.html">Inicio</a><span aria-hidden="true">/</span><span>${esc(page.category)}</span><span aria-hidden="true">/</span><span aria-current="page">${esc(page.name)}</span></nav>
       <section class="seo-hero seo-hub-hero seo-hero-premium"><div class="seo-hero-copy"><p class="seo-kicker">${esc(page.category)} · Guía de línea</p><h1>${esc(page.name)}</h1><p class="seo-subtitle">${esc(page.subtitle)}</p><p class="seo-intro">${esc(page.intro)}</p><div class="seo-actions"><a class="primary-button" data-seo-whatsapp data-product-name="${esc(page.name)}" data-category="${esc(page.category)}" data-presentation="${esc(page.items.map((i) => i[1]).join(", "))}" href="https://wa.me/525654434495?text=${waText}" target="_blank" rel="noopener">Consultar la línea por WhatsApp</a><a class="seo-back-link" href="${prefix}index.html#catalogo">Volver al catálogo</a></div></div>${visual(page, prefix)}</section>
       ${storySections(page)}
-      <section class="seo-family" aria-labelledby="family-title"><div class="seo-section-heading"><p class="seo-kicker">Opciones disponibles</p><h2 id="family-title">Encuentra la ficha que buscas</h2><p>${esc(page.note)}</p></div><div class="seo-family-grid">${page.items.map(([slug, name, presentation], index) => `<a href="${prefix}${slug}"><span>${String(index + 1).padStart(2, "0")}</span><strong>${esc(name)}</strong><small>${esc(presentation)}</small><i aria-hidden="true">→</i></a>`).join("")}</div></section>
+      <section class="seo-family" aria-labelledby="family-title"><div class="seo-section-heading"><p class="seo-kicker">${esc(page.familyKicker || "Opciones disponibles")}</p><h2 id="family-title">${esc(page.familyTitle || "Encuentra la ficha que buscas")}</h2><p>${esc(page.note)}</p></div><div class="seo-family-grid">${page.items.map(([slug, name, presentation], index) => `<a href="${prefix}${slug}"><span>${String(index + 1).padStart(2, "0")}</span><strong>${esc(name)}</strong><small>${esc(presentation)}</small><i aria-hidden="true">→</i></a>`).join("")}</div></section>
       ${distribution(page)}
       <section class="seo-faq" aria-labelledby="faq-title"><div class="seo-section-heading"><p class="seo-kicker">Información comercial</p><h2 id="faq-title">Preguntas frecuentes</h2></div><div class="seo-faq-list">${faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}</div></section>
       ${finalCta(page, waText)}

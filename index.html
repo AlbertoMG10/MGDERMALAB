@@ -54,25 +54,37 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": ["Organization", "MedicalBusiness"],
-        "@id": "https://mgdermalab.mx/#organization",
-        "name": "MG Dermalab",
-        "url": "https://mgdermalab.mx/",
-        "logo": "https://mgdermalab.mx/favicon.svg",
-        "email": "mgdermalab@gmail.com",
-        "telephone": "+52 56 5443 4495",
-        "description": "Distribución médica especializada para médicos, clínicas, farmacias y pacientes particulares en México.",
-        "areaServed": {
-          "@type": "Country",
-          "name": "México"
-        },
-        "contactPoint": [
+        "@graph": [
           {
-            "@type": "ContactPoint",
+            "@type": ["Organization", "MedicalBusiness"],
+            "@id": "https://mgdermalab.mx/#organization",
+            "name": "MG Dermalab",
+            "url": "https://mgdermalab.mx/",
+            "logo": "https://mgdermalab.mx/favicon.svg",
+            "email": "mgdermalab@gmail.com",
             "telephone": "+52 56 5443 4495",
-            "contactType": "ventas y cotizaciones",
-            "areaServed": "MX",
-            "availableLanguage": ["es-MX"]
+            "description": "Distribución médica especializada para médicos, clínicas, farmacias y pacientes particulares en México.",
+            "areaServed": {
+              "@type": "Country",
+              "name": "México"
+            },
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "telephone": "+52 56 5443 4495",
+                "contactType": "ventas y cotizaciones",
+                "areaServed": "MX",
+                "availableLanguage": ["es-MX"]
+              }
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://mgdermalab.mx/#website",
+            "url": "https://mgdermalab.mx/",
+            "name": "MG Dermalab",
+            "publisher": {"@id": "https://mgdermalab.mx/#organization"},
+            "inLanguage": "es-MX"
           }
         ]
       }
@@ -209,7 +221,7 @@
             <article class="product-card spotlight-card" data-product="neotrex-20">
               <figure><img loading="lazy" decoding="async" src="assets/neotrex-20-premium-optimized.jpg" width="900" height="675" alt="Neotrex isotretinoína 20 mg" /></figure>
               <div class="product-info">
-                <div class="product-title-row"><strong>Neotrex</strong><span class="product-dose">20 mg</span></div>
+                <div class="product-title-row"><a href="neotrex"><strong>Neotrex</strong></a><span class="product-dose">20 mg</span></div>
                 <span class="product-active">Isotretinoína</span>
                 <p class="product-desc">Tratamiento sistémico indicado para el acné severo y resistente, reduciendo la producción de sebo y previniendo nuevas lesiones.</p>
                 <p class="product-ideal-label">Ideal para</p>
@@ -272,7 +284,7 @@
                 <span class="product-glp-label">hormonas<br />agonista dual</span>
               </div>
               <div class="product-info">
-                <div class="product-title-row"><strong>MG Tirzepatida</strong><span class="product-dose">60 mg</span></div>
+                <div class="product-title-row"><a href="tirzepatida"><strong>MG Tirzepatida</strong></a><span class="product-dose">60 mg</span></div>
                 <span class="product-active">Control de peso MG Dermalab</span>
                 <p class="product-desc">Línea de control de peso MG Dermalab para cotización profesional. Presentación cuidada, atención directa y disponibilidad sujeta a confirmación.</p>
                 <p class="product-ideal-label">Ideal para</p>
@@ -361,7 +373,7 @@
             <div class="family-heading">
               <span class="family-index" aria-hidden="true">02</span>
               <p class="catalog-label">Dermatología</p>
-              <h3>Isotretinoína</h3>
+              <h3><a href="isotretinoina">Isotretinoína</a></h3>
               <p>Línea de isotretinoína con distintas marcas y presentaciones sujetas a inventario.</p>
             </div>
             <div class="product-grid">
@@ -369,7 +381,7 @@
               <article class="product-card" data-product="neotrex-10">
                 <figure><img loading="lazy" decoding="async" src="assets/neotrex-10-premium-optimized.jpg" width="900" height="664" alt="Neotrex isotretinoína 10 mg" /></figure>
                 <div class="product-info">
-                  <div class="product-title-row"><strong>Neotrex</strong><span class="product-dose">10 mg</span></div>
+                  <div class="product-title-row"><a href="neotrex"><strong>Neotrex</strong></a><span class="product-dose">10 mg</span></div>
                   <span class="product-active">Isotretinoína</span>
                   <p class="product-desc">Tratamiento sistémico indicado para el acné severo y resistente, reduciendo la producción de sebo y previniendo nuevas lesiones.</p>
                   <p class="product-ideal-label">Ideal para</p>
@@ -388,7 +400,7 @@
               <article class="product-card" data-product="neotrex-20">
                 <figure><img loading="lazy" decoding="async" src="assets/neotrex-20-premium-optimized.jpg" width="900" height="675" alt="Neotrex isotretinoína 20 mg" /></figure>
                 <div class="product-info">
-                  <div class="product-title-row"><strong>Neotrex</strong><span class="product-dose">20 mg</span></div>
+                  <div class="product-title-row"><a href="neotrex"><strong>Neotrex</strong></a><span class="product-dose">20 mg</span></div>
                   <span class="product-active">Isotretinoína</span>
                   <p class="product-desc">Tratamiento sistémico indicado para el acné severo y resistente, reduciendo la producción de sebo y previniendo nuevas lesiones.</p>
                   <p class="product-ideal-label">Ideal para</p>
@@ -407,7 +419,7 @@
               <article class="product-card" data-product="epuris-10">
                 <figure><img loading="lazy" decoding="async" src="assets/epuris-10.webp" width="372" height="465" alt="Epuris isotretinoína 10 mg" /></figure>
                 <div class="product-info">
-                  <div class="product-title-row"><strong>Epuris</strong><span class="product-dose">10 mg</span></div>
+                  <div class="product-title-row"><a href="epuris"><strong>Epuris</strong></a><span class="product-dose">10 mg</span></div>
                   <span class="product-active">Isotretinoína</span>
                   <p class="product-desc">Isotretinoína de absorción optimizada disponible en presentación de 10 mg.</p>
                   <p class="product-ideal-label">Ideal para</p>
@@ -426,7 +438,7 @@
               <article class="product-card" data-product="epuris-20">
                 <figure><img loading="lazy" decoding="async" src="assets/epuris-20-premium-optimized.jpg" width="900" height="686" alt="Epuris isotretinoína 20 mg" /></figure>
                 <div class="product-info">
-                  <div class="product-title-row"><strong>Epuris</strong><span class="product-dose">20 mg</span></div>
+                  <div class="product-title-row"><a href="epuris"><strong>Epuris</strong></a><span class="product-dose">20 mg</span></div>
                   <span class="product-active">Isotretinoína</span>
                   <p class="product-desc">Isotretinoína de absorción optimizada disponible en presentación de 20 mg.</p>
                   <p class="product-ideal-label">Ideal para</p>
@@ -445,7 +457,7 @@
               <article class="product-card" data-product="vastionin-10">
                 <figure><img loading="lazy" decoding="async" src="assets/vastionin-10.webp" width="372" height="465" alt="Vastionin isotretinoína 10 mg" /></figure>
                 <div class="product-info">
-                  <div class="product-title-row"><strong>Vastionin</strong><span class="product-dose">10 mg</span></div>
+                  <div class="product-title-row"><a href="vastionin"><strong>Vastionin</strong></a><span class="product-dose">10 mg</span></div>
                   <span class="product-active">Isotretinoína</span>
                   <p class="product-desc">Isotretinoína indicada para pacientes con acné moderado a severo resistente a tratamientos convencionales.</p>
                   <p class="product-ideal-label">Ideal para</p>
@@ -464,7 +476,7 @@
               <article class="product-card" data-product="vastionin-20">
                 <figure><img loading="lazy" decoding="async" src="assets/vastionin-20-premium-optimized.jpg" width="900" height="687" alt="Vastionin isotretinoína 20 mg" /></figure>
                 <div class="product-info">
-                  <div class="product-title-row"><strong>Vastionin</strong><span class="product-dose">20 mg</span></div>
+                  <div class="product-title-row"><a href="vastionin"><strong>Vastionin</strong></a><span class="product-dose">20 mg</span></div>
                   <span class="product-active">Isotretinoína</span>
                   <p class="product-desc">Isotretinoína indicada para pacientes con acné moderado a severo resistente a tratamientos convencionales.</p>
                   <p class="product-ideal-label">Ideal para</p>
