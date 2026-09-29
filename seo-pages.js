@@ -23,7 +23,7 @@
     link.addEventListener("click", () => {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
-        event: "click_whatsapp",
+        event: "whatsapp_click",
         product_name: link.dataset.productName || "",
         category: link.dataset.category || "",
         presentation: link.dataset.presentation || "",

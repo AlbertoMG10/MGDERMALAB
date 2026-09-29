@@ -281,10 +281,6 @@ const trackEvent = (eventName, params = {}) => {
     ...params,
   });
 
-  if (typeof window.gtag === "function") {
-    window.gtag("event", eventName, params);
-  }
-
   if (typeof window.fbq === "function") {
     window.fbq("trackCustom", eventName, params);
   }
@@ -700,11 +696,6 @@ const submitLeadForm = async (form, event) => {
       "success"
     );
     pushGenerateLeadEvent();
-    trackEvent("lead_form_submit", {
-      form_name: form.getAttribute("name") || "lead",
-      tipo_cliente: payload.tipoCliente,
-      producto: payload.producto,
-    });
   } catch (error) {
     const visibleMessage =
       error && error.message && !/Lead endpoint|Failed to fetch|NetworkError/i.test(error.message)
