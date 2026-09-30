@@ -15,6 +15,38 @@ const WHATSAPP_NUMBER = "525654434495";
 const WHATSAPP_MESSAGE =
   "Hola, me interesa solicitar disponibilidad y cotización de productos de MG Dermalab.";
 const LEADS_ENDPOINT = "https://mgdermalab-backend.onrender.com/api/leads";
+const ATTRIBUTION_STORAGE_PREFIX = "mg_first_touch_";
+const ATTRIBUTION_PARAM_KEYS = [
+  "gclid",
+  "fbclid",
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+];
+
+const captureFirstTouchAttribution = () => {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    ATTRIBUTION_PARAM_KEYS.forEach((key) => {
+      const storageKey = `${ATTRIBUTION_STORAGE_PREFIX}${key}`;
+      if (sessionStorage.getItem(storageKey) !== null) return;
+
+      const value = params.get(key);
+      if (value) sessionStorage.setItem(storageKey, value);
+    });
+
+    const landingUrlKey = `${ATTRIBUTION_STORAGE_PREFIX}landing_url`;
+    if (sessionStorage.getItem(landingUrlKey) === null) {
+      sessionStorage.setItem(landingUrlKey, window.location.href);
+    }
+  } catch {
+    // Attribution must never block the page or form submission.
+  }
+};
+
+captureFirstTouchAttribution();
 const TURNSTILE_SITE_KEY = "";
 const TURNSTILE_SITE_KEY_ENDPOINT = "https://mgdermalab-backend.onrender.com/api/turnstile-site-key";
 
@@ -327,10 +359,13 @@ const pushProductDetailView = (details) => {
   });
 };
 
-const pushGenerateLeadEvent = () => {
+const pushGenerateLeadEvent = ({ leadSource, tipoCliente, leadId }) => {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     event: "generate_lead",
+    lead_source: leadSource,
+    tipo_cliente: tipoCliente,
+    lead_id: leadId,
   });
 };
 
@@ -433,15 +468,24 @@ const scrollToHash = () => {
 const getTrackingParams = () => {
   const params = new URLSearchParams(window.location.search);
 
+  const firstTouchValue = (key) => {
+    try {
+      return sessionStorage.getItem(`${ATTRIBUTION_STORAGE_PREFIX}${key}`) || "";
+    } catch {
+      return "";
+    }
+  };
+
   return {
-    paginaOrigen: window.location.href,
-    utm_source: normalizeValue(params.get("utm_source")),
-    utm_medium: normalizeValue(params.get("utm_medium")),
-    utm_campaign: normalizeValue(params.get("utm_campaign")),
-    utm_content: normalizeValue(params.get("utm_content")),
-    utm_term: normalizeValue(params.get("utm_term")),
-    fbclid: normalizeValue(params.get("fbclid")),
-    gclid: normalizeValue(params.get("gclid")),
+    paginaOrigen: window.location.pathname,
+    urlCompleta: firstTouchValue("landing_url") || window.location.href,
+    utm_source: firstTouchValue("utm_source") || normalizeValue(params.get("utm_source")),
+    utm_medium: firstTouchValue("utm_medium") || normalizeValue(params.get("utm_medium")),
+    utm_campaign: firstTouchValue("utm_campaign") || normalizeValue(params.get("utm_campaign")),
+    utm_content: firstTouchValue("utm_content") || normalizeValue(params.get("utm_content")),
+    utm_term: firstTouchValue("utm_term") || normalizeValue(params.get("utm_term")),
+    fbclid: firstTouchValue("fbclid") || normalizeValue(params.get("fbclid")),
+    gclid: firstTouchValue("gclid") || normalizeValue(params.get("gclid")),
   };
 };
 
@@ -682,7 +726,7 @@ const submitLeadForm = async (form, event) => {
 
     const result = await response.json().catch(() => ({}));
 
-    if (!response.ok || result.ok === false) {
+    if (!response.ok || result.ok !== true || !result.recordId || result.skipped) {
       throw new Error(result.message || `Lead endpoint responded with ${response.status}`);
     }
 
@@ -695,7 +739,11 @@ const submitLeadForm = async (form, event) => {
       "Hemos recibido tus datos. Pronto estaremos contactándote. Gracias. MG Dermalab te desea un excelente día.",
       "success"
     );
-    pushGenerateLeadEvent();
+    pushGenerateLeadEvent({
+      leadSource: "home",
+      tipoCliente: payload.tipoCliente,
+      leadId: result.leadId,
+    });
   } catch (error) {
     const visibleMessage =
       error && error.message && !/Lead endpoint|Failed to fetch|NetworkError/i.test(error.message)
