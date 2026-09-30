@@ -53,10 +53,12 @@ const TURNSTILE_SITE_KEY_ENDPOINT = "https://mgdermalab-backend.onrender.com/api
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const mobileViewport = window.matchMedia("(max-width: 980px)");
 const FORM_MIN_SUBMIT_MS = 2500;
+const LEAD_REQUEST_TIMEOUT_MS = 60000;
 
 let ticking = false;
 let turnstileWidgetId = null;
 let turnstileScriptPromise = null;
+let turnstileInitPromise = null;
 let lastProductTrigger = null;
 
 const PRODUCT_DETAILS = {
@@ -563,29 +565,36 @@ const loadTurnstileScript = () => {
   return turnstileScriptPromise;
 };
 
-const initTurnstile = async () => {
+const initTurnstile = () => {
   const widget = getTurnstileWidget();
-  if (!widget || turnstileWidgetId !== null) return;
+  if (!widget || turnstileWidgetId !== null) return Promise.resolve();
+  if (turnstileInitPromise) return turnstileInitPromise;
 
-  try {
-    widget.dataset.state = "loading";
-    widget.textContent = "Cargando verificación de seguridad...";
-    await loadTurnstileScript();
-    const [siteKey, turnstile] = await Promise.all([getTurnstileSiteKey(), waitForTurnstile()]);
+  turnstileInitPromise = (async () => {
+    try {
+      widget.dataset.state = "loading";
+      widget.textContent = "Cargando verificación de seguridad...";
+      await loadTurnstileScript();
+      const [siteKey, turnstile] = await Promise.all([getTurnstileSiteKey(), waitForTurnstile()]);
 
-    if (!siteKey) {
-      throw new Error("No se recibió la Site Key de Turnstile.");
+      if (!siteKey) {
+        throw new Error("No se recibió la Site Key de Turnstile.");
+      }
+
+      turnstileWidgetId = turnstile.render(widget, {
+        sitekey: siteKey,
+        theme: "light",
+      });
+      widget.dataset.state = "";
+    } catch (error) {
+      setTurnstileError("No se pudo cargar la verificación de seguridad. Inténtalo nuevamente o contáctanos por WhatsApp.");
+      trackEvent("turnstile_load_error", { message: error.message });
+    } finally {
+      if (turnstileWidgetId === null) turnstileInitPromise = null;
     }
+  })();
 
-    turnstileWidgetId = turnstile.render(widget, {
-      sitekey: siteKey,
-      theme: "light",
-    });
-    widget.dataset.state = "";
-  } catch (error) {
-    setTurnstileError("No se pudo cargar la verificación de seguridad. Inténtalo nuevamente o contáctanos por WhatsApp.");
-    trackEvent("turnstile_load_error", { message: error.message });
-  }
+  return turnstileInitPromise;
 };
 
 const getTurnstileToken = () => {
@@ -712,6 +721,8 @@ const submitLeadForm = async (form, event) => {
   }
   form.setAttribute("aria-busy", "true");
   setFormStatus(form, "Enviando...", "loading");
+  const requestController = new AbortController();
+  const requestTimeout = window.setTimeout(() => requestController.abort(), LEAD_REQUEST_TIMEOUT_MS);
 
   try {
     const response = await fetch(LEADS_ENDPOINT, {
@@ -721,6 +732,7 @@ const submitLeadForm = async (form, event) => {
         Accept: "application/json",
       },
       credentials: "omit",
+      signal: requestController.signal,
       body: JSON.stringify(payload),
     });
 
@@ -745,10 +757,11 @@ const submitLeadForm = async (form, event) => {
       leadId: result.leadId,
     });
   } catch (error) {
-    const visibleMessage =
-      error && error.message && !/Lead endpoint|Failed to fetch|NetworkError/i.test(error.message)
-        ? error.message
-        : "No fue posible enviar la solicitud. Inténtalo nuevamente o contáctanos por WhatsApp.";
+    const visibleMessage = error?.name === "AbortError"
+      ? "El envío tardó más de lo esperado. Inténtalo nuevamente o contáctanos por WhatsApp."
+      : error && error.message && !/Lead endpoint|Failed to fetch|NetworkError/i.test(error.message)
+          ? error.message
+          : "No fue posible enviar la solicitud. Inténtalo nuevamente o contáctanos por WhatsApp.";
 
     setFormStatus(
       form,
@@ -761,6 +774,7 @@ const submitLeadForm = async (form, event) => {
       message: error.message,
     });
   } finally {
+    window.clearTimeout(requestTimeout);
     if (button) {
       button.disabled = false;
       button.textContent = originalText;
