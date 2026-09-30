@@ -1,4 +1,22 @@
 (() => {
+  const attributionKeys = ["gclid", "fbclid", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+
+  try {
+    const params = new URLSearchParams(window.location.search);
+    attributionKeys.forEach((key) => {
+      const storageKey = `mg_first_touch_${key}`;
+      if (sessionStorage.getItem(storageKey) === null && params.get(key)) {
+        sessionStorage.setItem(storageKey, params.get(key));
+      }
+    });
+
+    if (sessionStorage.getItem("mg_first_touch_landing_url") === null) {
+      sessionStorage.setItem("mg_first_touch_landing_url", window.location.href);
+    }
+  } catch {
+    // Attribution must never block product-page interactions.
+  }
+
   const header = document.querySelector("[data-header]");
   const toggle = document.querySelector("[data-menu-toggle]");
   const menu = document.getElementById("main-nav");
