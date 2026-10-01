@@ -314,10 +314,6 @@ const trackEvent = (eventName, params = {}) => {
     event: eventName,
     ...params,
   });
-
-  if (typeof window.fbq === "function") {
-    window.fbq("trackCustom", eventName, params);
-  }
 };
 
 const getProductAnalyticsParams = (productId) => {
