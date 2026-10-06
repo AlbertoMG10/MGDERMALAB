@@ -1,33 +1,5 @@
-const fs = require("fs");
-
-const lastmod = new Date().toISOString().slice(0, 10);
-const urls = [
-  ["https://mgdermalab.mx/", "weekly", "1.0"],
-  ["https://mgdermalab.mx/#catalogo", "weekly", "0.8"],
-  ["https://mgdermalab.mx/#laboratorios", "weekly", "0.8"],
-  ["https://mgdermalab.mx/#medicos", "weekly", "0.8"],
-  ["https://mgdermalab.mx/#farmacias", "weekly", "0.8"],
-  ["https://mgdermalab.mx/#faq", "monthly", "0.6"],
-  ["https://mgdermalab.mx/#contacto", "weekly", "0.9"],
-  ["https://mgdermalab.mx/privacidad.html", "yearly", "0.3"],
-  ["https://mgdermalab.mx/terminos.html", "yearly", "0.3"],
-  ["https://mgdermalab.mx/devoluciones.html", "yearly", "0.3"],
-];
-
-const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls
-  .map(
-    ([loc, changefreq, priority]) => `  <url>
-    <loc>${loc}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
-  </url>`
-  )
-  .join("\n")}
-</urlset>
-`;
-
-fs.writeFileSync("sitemap.xml", xml);
-console.log(`sitemap.xml actualizado con ${urls.length} URLs.`);
+const fs=require("fs");
+const lastmod="2026-10-05";
+const urls=["","dermatologia","medicina-estetica","control-de-peso","profesionales","farmacias","nosotros","contacto","productos-originales","envios","neotrex-vs-epuris-vs-vastionin","dysport-vs-botox","guia-restylane","neotrex","vastionin","epuris","isotretinoina","dysport","sculptra","restylane","restylane-kysse","restylane-lyft","restylane-refyne","restylane-defyne","restylane-contour","restylane-eyelight","restylane-skinboosters-vital","restylane-skinboosters-vital-light","tirzepatida","retatrutida","privacidad","terminos","devoluciones"];
+const site="https://mgdermalab.mx";
+fs.writeFileSync("sitemap.xml",`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(x=>`  <url><loc>${site}/${x}</loc><lastmod>${lastmod}</lastmod></url>`).join("\n")}\n</urlset>\n`);
