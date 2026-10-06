@@ -3515,6 +3515,32 @@ details p {
   }
 }
 
+.home-trust-strip {
+  padding: 14px 24px;
+  border-block: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.home-trust-strip span { color: var(--teal); margin-inline: 10px; }
+.labs-section:not(:has(.labs-media)) {
+  min-height: 0;
+  height: auto;
+  grid-template-columns: minmax(0, 760px);
+  padding-block: var(--space-8);
+}
+.form-optional { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: 12px; }
+.form-optional summary { cursor: pointer; color: var(--ink); font-weight: 700; }
+.form-optional label { margin-top: 12px; }
+
+@media (max-width: 640px) {
+  .home-trust-strip { padding-inline: 16px; font-size: 13px; }
+  .home-trust-strip span { margin-inline: 4px; }
+}
+
 .whatsapp-float:hover {
   transform: translateY(-2px);
   background: #16181B;
@@ -5214,7 +5240,7 @@ img {
 .seo-section-heading h2,
 .seo-info-band h2,
 .seo-related h2 {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "DM Sans", Georgia, serif;
   font-weight: 600;
 }
 
@@ -5332,7 +5358,7 @@ img {
 }
 
 .seo-product-signature strong {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "DM Sans", Georgia, serif;
   font-size: clamp(36px, 5vw, 60px);
   font-weight: 600;
 }
@@ -5521,7 +5547,7 @@ img {
 }
 
 .seo-family-grid strong {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "DM Sans", Georgia, serif;
   font-size: 23px;
   font-weight: 600;
 }
@@ -8043,7 +8069,7 @@ img {
   max-width: 610px;
   margin: 24px 0 0;
   color: var(--ink);
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "DM Sans", Georgia, serif;
   font-size: clamp(25px, 3vw, 38px);
   font-weight: 500;
   line-height: 1.16;
@@ -8126,7 +8152,7 @@ img {
 .seo-distribution h2,
 .seo-final-cta h2 {
   margin: 0;
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "DM Sans", Georgia, serif;
   font-size: clamp(34px, 4.6vw, 58px);
   font-weight: 600;
   line-height: 1.04;
@@ -8167,7 +8193,7 @@ img {
 .seo-presentation-list span {
   padding: 22px 0;
   border-bottom: 1px solid rgba(22, 24, 27, 0.22);
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "DM Sans", Georgia, serif;
   font-size: clamp(24px, 3vw, 34px);
   font-weight: 600;
 }
@@ -8240,7 +8266,7 @@ img {
 
 .seo-regulatory-note h2 {
   margin: 0;
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "DM Sans", Georgia, serif;
   font-size: clamp(28px, 3.6vw, 44px);
   font-weight: 600;
   line-height: 1.08;
@@ -8440,5 +8466,166 @@ img {
     min-height: 44px;
     display: inline-flex;
     align-items: center;
+  }
+}
+
+/* Unified editorial system */
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("assets/dm-sans-latin-400-700.woff2") format("woff2");
+}
+
+:root {
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --radius: 12px;
+}
+
+body,
+button,
+input,
+select,
+textarea,
+h1,
+h2,
+h3,
+.seo-page h1,
+.seo-page h2,
+.seo-page h3,
+.seo-product-signature strong {
+  font-family: "DM Sans", Arial, sans-serif;
+}
+
+h1,
+.seo-page h1 {
+  font-size: clamp(32px, 6vw, 56px);
+}
+
+h2,
+.seo-page h2 {
+  font-size: clamp(26px, 4vw, 40px);
+}
+
+h3,
+.seo-page h3 {
+  font-size: clamp(20px, 2vw, 24px);
+}
+
+p,
+li,
+.seo-page p,
+.seo-page li {
+  font-size: clamp(17px, 1.4vw, 18px);
+  line-height: 1.6;
+}
+
+.seo-page p,
+.seo-page li,
+.seo-intro,
+.seo-subtitle {
+  max-width: 65ch;
+}
+
+h1,
+h2,
+h3,
+.seo-page h1,
+.seo-page h2,
+.seo-page h3 {
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.main-nav a {
+  white-space: nowrap;
+}
+
+.seo-hero:not(:has(.seo-product-visual)) {
+  grid-template-columns: minmax(0, 820px);
+  min-height: 0;
+  padding-block: clamp(40px, 7vw, 80px);
+}
+
+.seo-next-step {
+  display: grid;
+  gap: var(--space-3);
+  padding: clamp(48px, 7vw, 80px) 0;
+  border-top: 1px solid var(--line);
+}
+
+.seo-next-step nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.seo-next-step a {
+  display: grid;
+  gap: var(--space-1);
+  min-height: 128px;
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(22, 24, 27, .06);
+}
+
+.seo-next-step a span {
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.seo-repeat-order {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: var(--space-4);
+  padding: clamp(48px, 7vw, 80px) 0;
+  border-top: 1px solid var(--line);
+}
+
+.seo-repeat-order .seo-actions { justify-content: flex-end; }
+
+.seo-actions::after,
+.seo-final-cta .primary-button::after {
+  content: "Producto original · Envío a toda la República";
+  display: block;
+  width: 100%;
+  margin-top: var(--space-1);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 1099px) {
+  .main-nav { display: none; }
+  .mobile-menu-toggle { display: grid; }
+}
+
+@media (max-width: 700px) {
+  .seo-next-step nav { grid-template-columns: 1fr; }
+  .seo-next-step a { min-height: 0; }
+  .seo-repeat-order { grid-template-columns: 1fr; align-items: start; }
+  .seo-repeat-order .seo-actions { justify-content: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
   }
 }

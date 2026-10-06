@@ -500,10 +500,18 @@ const setTurnstileError = (message) => {
 const getTurnstileSiteKey = async () => {
   if (TURNSTILE_SITE_KEY) return TURNSTILE_SITE_KEY;
 
-  const response = await fetch(TURNSTILE_SITE_KEY_ENDPOINT, {
-    method: "GET",
-    headers: { Accept: "application/json" },
-  });
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 12000);
+  let response;
+  try {
+    response = await fetch(TURNSTILE_SITE_KEY_ENDPOINT, {
+      method: "GET",
+      headers: { Accept: "application/json" },
+      signal: controller.signal,
+    });
+  } finally {
+    window.clearTimeout(timeout);
+  }
 
   if (!response.ok) {
     throw new Error(`Turnstile site key endpoint responded with ${response.status}`);
