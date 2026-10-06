@@ -13,8 +13,8 @@ const commonFaq = [
 const pages = [
   {
     slug: "neotrex", name: "Neotrex", category: "Dermatología", presentation: "10 mg · 20 mg", includeProductSchema: false,
-    title: "Neotrex 10 mg y 20 mg | Disponibilidad | MG Dermalab",
-    description: "Consulta disponibilidad y cotización de Neotrex 10 mg y 20 mg con MG Dermalab. Atención a médicos, clínicas, farmacias y pacientes en México.",
+    title: "Neotrex 10 mg y 20 mg (isotretinoína) | Distribuidor en México",
+    description: "Neotrex isotretinoína 10 y 20 mg para médicos y farmacias. Envío a CDMX, Guadalajara, Monterrey y toda la República. Consulta disponibilidad por WhatsApp.",
     intro: "Neotrex en presentaciones de 10 mg y 20 mg, disponible mediante cotización y confirmación directa con nuestro equipo comercial.",
     image: "assets/neotrex-20-premium-optimized.jpg", width: 900, height: 640,
     note: "Confirma la concentración y cantidad que necesitas para recibir una respuesta precisa.",
@@ -23,8 +23,8 @@ const pages = [
   },
   {
     slug: "epuris", name: "Epuris", category: "Dermatología", presentation: "10 mg · 20 mg", includeProductSchema: false,
-    title: "Epuris 10 mg y 20 mg | Disponibilidad | MG Dermalab",
-    description: "Cotiza Epuris 10 mg y 20 mg con MG Dermalab. Consulta disponibilidad, cotización y envíos para médicos, clínicas, farmacias y pacientes en México.",
+    title: "Epuris 10 mg y 20 mg (isotretinoína) | Distribuidor en México",
+    description: "Epuris isotretinoína 10 y 20 mg para médicos y farmacias. Envío a CDMX, Guadalajara, Monterrey y toda la República. Consulta disponibilidad por WhatsApp.",
     intro: "Epuris en 10 mg y 20 mg para solicitudes comerciales de profesionales y establecimientos de salud, sujeto a disponibilidad.",
     image: "assets/epuris-20-premium-optimized.jpg", width: 900, height: 640,
     note: "Indica 10 mg o 20 mg al escribirnos; así podremos revisar existencias para la presentación correcta.",
@@ -33,8 +33,8 @@ const pages = [
   },
   {
     slug: "vastionin", name: "Vastionin", category: "Dermatología", presentation: "10 mg · 20 mg", includeProductSchema: false,
-    title: "Vastionin 10 mg y 20 mg | Disponibilidad | MG Dermalab",
-    description: "Consulta disponibilidad y cotización de Vastionin 10 mg y 20 mg con MG Dermalab. Atención a médicos, clínicas, farmacias y pacientes en México.",
+    title: "Vastionin 10 mg y 20 mg (isotretinoína) | Distribuidor en México",
+    description: "Vastionin isotretinoína 10 y 20 mg para médicos y farmacias. Envío a CDMX, Guadalajara, Monterrey y toda la República. Consulta disponibilidad por WhatsApp.",
     intro: "Vastionin en concentraciones de 10 mg y 20 mg, con atención comercial directa y disponibilidad sujeta a confirmación.",
     image: "assets/vastionin-20-premium-optimized.jpg", width: 900, height: 640,
     note: "Comparte concentración, número de piezas y destino para preparar tu cotización.",
@@ -43,8 +43,8 @@ const pages = [
   },
   {
     slug: "dysport", name: "Dysport", category: "Medicina estética", presentation: "300 U · 500 U",
-    title: "Dysport 300 U y 500 U | Cotización | MG Dermalab",
-    description: "Consulta disponibilidad de Dysport 300 U y 500 U con MG Dermalab. Cotización directa para médicos y clínicas en México.",
+    title: "Dysport 300 U y 500 U: precio para médicos en México | MG Dermalab",
+    description: "Cotiza Dysport 300 U y 500 U (abobotulinumtoxinA, Galderma) con precio profesional para médicos y clínicas. Lote y caducidad verificados, envío nacional.",
     intro: "Dysport en presentaciones de 300 U y 500 U, con atención comercial especializada para médicos y clínicas.",
     image: "assets/dysport-300.jpg", width: 529, height: 378,
     note: "Selecciona 300 U o 500 U y comparte la cantidad requerida para consultar disponibilidad.",
@@ -102,8 +102,8 @@ for (const [slug, name, variant, description] of restylaneVariants) {
 
 const hubs = [
   {
-    slug: "isotretinoina", name: "Isotretinoína", category: "Dermatología", title: "Isotretinoína 10 mg y 20 mg | Marcas | MG Dermalab",
-    description: "Consulta isotretinoína de 10 mg y 20 mg: Neotrex, Vastionin y Epuris. Revisa disponibilidad y solicita cotización con atención directa en México.",
+    slug: "isotretinoina", name: "Isotretinoína", category: "Dermatología", title: "Isotretinoína 10 mg y 20 mg: Neotrex, Epuris y Vastionin | MG Dermalab",
+    description: "Compara las marcas de isotretinoína en México: Neotrex, Epuris y Vastionin en 10 y 20 mg. Distribución a médicos y farmacias con envío a todo el país.",
     intro: "Página temática de isotretinoína con las marcas y concentraciones que maneja MG Dermalab. Consulta cada ficha y confirma disponibilidad antes de cotizar.",
     image: "assets/mg-dermalab-linea-dermatologia-1200.jpg", width: 1200, height: 800,
     items: [["neotrex", "Neotrex", "10 mg · 20 mg"], ["epuris", "Epuris", "10 mg · 20 mg"], ["vastionin", "Vastionin", "10 mg · 20 mg"]],
@@ -113,8 +113,8 @@ const hubs = [
     familyKicker: "Presentaciones de 10 mg y 20 mg"
   },
   {
-    slug: "restylane", name: "Restylane", category: "Medicina estética", title: "Familia Restylane | Línea disponible | MG Dermalab",
-    description: "Conoce la familia Restylane: Kysse, Lyft, Refyne, Defyne, Contour, Eyelight y Skinboosters. Cotiza con MG Dermalab.",
+    slug: "restylane", name: "Restylane", category: "Medicina estética", title: "Restylane en México: Kysse, Lyft, Refyne, Defyne y más | MG Dermalab",
+    description: "Línea completa Restylane de Galderma para médicos: Kysse para labios, Lyft, Contour, Eyelight y Skinboosters. Lote verificado y envío nacional. Cotiza hoy.",
     intro: "Explora la familia Restylane disponible para cotización profesional. Cada variante cuenta con una página comercial específica.",
     image: "assets/restylane-family.avif", width: 1200, height: 800,
     items: restylaneVariants.map(([slug, name, variant]) => [slug, name, variant]),
@@ -273,27 +273,29 @@ const esc = (value) => String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;"
 const json = (value) => JSON.stringify(value).replace(/</g, "\\u003c");
 
 function href(prefix, slug) {
-  return slug ? `${prefix}${slug}` : `${prefix}index.html#catalogo`;
+  return slug ? `${prefix}${slug}` : `${prefix}${slug === "" ? "dermatologia" : slug}`;
 }
 
 function breadcrumbTrail(page, type) {
   if (["neotrex", "vastionin", "epuris"].includes(page.slug)) {
     return [
       ["Inicio", `${site}/`],
-      ["Dermatología", `${site}/#catalogo-dermatologia`],
+      ["Dermatología", `${site}/dermatologia`],
       ["Isotretinoína", `${site}/isotretinoina`],
       [page.name, `${site}/${page.slug}`]
     ];
   }
-  if (page.slug === "tirzepatida") {
-    return [["Inicio", `${site}/`], ["Control de peso", `${site}/#lineas`], [page.h1 || page.name, `${site}/${page.slug}`]];
+  if (["tirzepatida", "retatrutida"].includes(page.slug)) {
+    return [["Inicio", `${site}/`], ["Control de peso", `${site}/control-de-peso`], [page.h1 || page.name, `${site}/${page.slug}`]];
   }
-  return [["Inicio", `${site}/`], [page.name, `${site}/${page.slug}`]];
+  if (page.category.includes("Restylane")) return [["Inicio", `${site}/`], ["Medicina estética", `${site}/medicina-estetica`], ["Restylane", `${site}/restylane`], [page.name, `${site}/${page.slug}`]];
+  if (["dysport","sculptra"].includes(page.slug)) return [["Inicio", `${site}/`], ["Medicina estética", `${site}/medicina-estetica`], [page.name, `${site}/${page.slug}`]];
+  return [["Inicio", `${site}/`], [page.category, `${site}/${page.category === "Dermatología" ? "dermatologia" : "medicina-estetica"}`], [page.name, `${site}/${page.slug}`]];
 }
 
 function breadcrumbHref(prefix, url) {
-  if (url === `${site}/`) return `${prefix}index.html`;
-  if (url.startsWith(`${site}/#`)) return `${prefix}index.html${url.slice(`${site}/`.length)}`;
+  if (url === `${site}/`) return `${prefix || "/"}`;
+  if (url.startsWith(`${site}/#`)) return `${prefix || "/"}${url.slice(`${site}/`.length)}`;
   return url.replace(`${site}/`, prefix);
 }
 
@@ -338,6 +340,14 @@ function regulatoryNote(page) {
   return `\n      <aside class="seo-regulatory-note" aria-labelledby="regulatory-title"><p class="seo-kicker">${kicker}</p><div><h2 id="regulatory-title">${title}</h2><p>${esc(page.regulatory)}</p></div></aside>`;
 }
 
+
+function trustBlocks(page) {
+  if (["tirzepatida", "retatrutida"].includes(page.slug)) return "";
+  const active = page.category.includes("Restylane") ? "Ácido hialurónico" : page.slug === "dysport" ? "AbobotulinumtoxinA" : page.slug === "sculptra" ? "Ácido poli-L-láctico" : ["neotrex","epuris","vastionin"].includes(page.slug) ? "Isotretinoína" : "Dato publicado en la ficha";
+  const lab = page.category.includes("Restylane") || ["dysport","sculptra"].includes(page.slug) ? "<div><dt>Laboratorio</dt><dd>Galderma</dd></div>" : "";
+  return `<section class="seo-distribution" aria-labelledby="technical-title"><div><p class="seo-kicker">Información del producto</p><h2 id="technical-title">Ficha técnica</h2><p>Datos comerciales ya publicados por MG Dermalab.</p></div><dl>${lab}<div><dt>Principio activo</dt><dd>${esc(active)}</dd></div><div><dt>Presentaciones</dt><dd>${esc(page.presentation || "Confirmar al cotizar")}</dd></div></dl></section><section class="seo-story-stack"><article class="seo-story"><span class="seo-story-index">✓</span><div><h2>Cómo garantizamos producto original</h2><p>Revisamos lote, caducidad y empaque antes del envío y trabajamos con laboratorios reconocidos. <a href="${page.prefix || ""}productos-originales">Conoce nuestro proceso de revisión.</a></p></div></article><article class="seo-story"><span class="seo-story-index">MX</span><div><h2>Envíos a toda la República Mexicana</h2><p>Coordinamos cobertura, costo y tiempo antes de procesar el pedido. <a href="${page.prefix || ""}envios">Consulta cómo coordinamos los envíos.</a></p></div></article></section>`;
+}
+
 function finalCta(page, waText) {
   const isInvestigational = page.slug === "retatrutida";
   const title = isInvestigational ? "Consulta información y estatus" : "Consulta disponibilidad y cotización";
@@ -348,12 +358,10 @@ function finalCta(page, waText) {
 function head(page, prefix, type, faq) {
   const url = `${site}/${page.slug}`;
   const image = page.image ? `${site}/${page.image}` : `${site}/assets/hero-mg-dermalab-grafito-1600.jpg`;
-  const includeSubject = type === "hub" || page.includeProductSchema !== false;
+  const includeSubject = true;
   const subject = type === "hub"
     ? {"@type": "CollectionPage", "@id": `${url}#subject`, name: page.name, description: page.intro, url, hasPart: page.items.map(([slug, name]) => ({"@type": "WebPage", name, url: `${site}/${slug}`}))}
-    : page.includeProductSchema === false
-      ? null
-      : {"@type": "Product", "@id": `${url}#subject`, name: page.name, category: page.category, description: page.intro, url, ...(page.image ? {image} : {})};
+    : {"@type": "Product", "@id": `${url}#subject`, name: page.name, category: page.category, description: page.intro, url, brand: {"@type":"Brand", name: page.category.includes("Restylane") || ["dysport","sculptra"].includes(page.slug) ? "Galderma" : page.name}, ...(page.image ? {image} : {})};
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -406,10 +414,10 @@ function header(prefix, page) {
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9MFWNKW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <header class="site-header" data-header>
-      <a class="brand" href="${prefix}index.html" aria-label="MG Dermalab inicio"><span class="brand-mark">MG</span><span>Dermalab</span></a>
-      <nav class="main-nav" id="main-nav" aria-label="Navegación principal"><a href="${prefix}index.html#catalogo">Productos</a><a href="${prefix}index.html#laboratorios">Laboratorios</a><a href="${prefix}index.html#nosotros">Nosotros</a><a href="${prefix}index.html#faq">FAQ</a></nav>
+      <a class="brand" href="${prefix || "/"}" aria-label="MG Dermalab inicio"><span class="brand-mark">MG</span><span>Dermalab</span></a>
+      <nav class="main-nav" id="main-nav" aria-label="Navegación principal"><a href="${prefix}dermatologia">Dermatología</a><a href="${prefix}medicina-estetica">Medicina estética</a><a href="${prefix}control-de-peso">Control de peso</a><a href="${prefix}profesionales">Profesionales</a><a href="${prefix}farmacias">Farmacias</a><a href="${prefix}nosotros">Nosotros</a><a href="${prefix}contacto">Contacto</a></nav>
       <button class="mobile-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span></button>
-      <a class="nav-cta" href="${prefix}index.html?producto=${page.slug}#contacto">Solicitar cotización</a>
+      <a class="nav-cta" href="${prefix || "/"}?producto=${page.slug}#contacto">Solicitar cotización</a>
     </header>`;
 }
 
@@ -420,7 +428,7 @@ function visual(page, prefix) {
 }
 
 function footer(prefix) {
-  return `<footer class="site-footer seo-footer"><div class="footer-column footer-identity"><div class="footer-brand"><span class="brand-mark">MG</span><p>Dermalab</p></div><span>Distribución especializada para profesionales de la salud en México.</span></div><nav class="footer-column" aria-label="Líneas"><strong>Explorar</strong><a href="${prefix}isotretinoina">Isotretinoína</a><a href="${prefix}dysport">Dysport</a><a href="${prefix}restylane">Restylane</a><a href="${prefix}sculptra">Sculptra</a></nav><div class="footer-column"><strong>Contacto</strong><a href="https://wa.me/525654434495" target="_blank" rel="noopener">WhatsApp: 56 5443 4495</a><a href="mailto:mgdermalab@gmail.com">mgdermalab@gmail.com</a><a href="${prefix}privacidad.html">Aviso de privacidad</a></div></footer>
+  return `<footer class="site-footer seo-footer"><div class="footer-column footer-identity"><div class="footer-brand"><span class="brand-mark">MG</span><p>Dermalab</p></div><span>Distribución especializada para médicos, clínicas y farmacias en México.</span></div><nav class="footer-column" aria-label="Empresa"><strong>Empresa</strong><a href="${prefix}nosotros">Nosotros</a><a href="${prefix}contacto">Contacto</a><a href="${prefix}productos-originales">Producto original</a><a href="${prefix}envios">Envíos</a></nav><nav class="footer-column" aria-label="Clientes"><strong>Clientes</strong><a href="${prefix}profesionales">Profesionales</a><a href="${prefix}farmacias">Farmacias</a><a href="${prefix}dermatologia">Dermatología</a><a href="${prefix}medicina-estetica">Medicina estética</a></nav><div class="footer-column"><strong>Contacto</strong><a href="https://wa.me/525654434495" target="_blank" rel="noopener">WhatsApp: 56 5443 4495</a><a href="mailto:mgdermalab@gmail.com">mgdermalab@gmail.com</a><a href="${prefix}privacidad">Aviso de privacidad</a></div></footer>
     <script src="${prefix}seo-pages.js" defer></script>
   </body>
 </html>
@@ -434,26 +442,33 @@ function productHtml(page, prefix) {
   const heroCta = isInvestigational ? "Consultar información por WhatsApp" : "Consultar disponibilidad por WhatsApp";
   const presentationLine = page.presentation && !page.h1 ? `<p class="seo-presentation">${esc(page.presentation)}</p>` : "";
   const breadcrumb = breadcrumbTrail(page, "product");
-  const usesSeoBreadcrumb = ["neotrex", "vastionin", "epuris", "tirzepatida"].includes(page.slug);
+  const usesSeoBreadcrumb = true;
   const breadcrumbMarkup = usesSeoBreadcrumb
     ? breadcrumb.map(([name, url], index) => index === breadcrumb.length - 1 ? `<span aria-current="page">${esc(name)}</span>` : `<a href="${breadcrumbHref(prefix, url)}">${esc(name)}</a><span aria-hidden="true">/</span>`).join("")
-    : `<a href="${prefix}index.html">Inicio</a><span aria-hidden="true">/</span><a href="${page.category.includes("Restylane") ? `${prefix}restylane` : `${prefix}index.html#catalogo`}">${esc(page.category)}</a><span aria-hidden="true">/</span><span aria-current="page">${esc(page.name)}</span>`;
+    : `<a href="${prefix || "/"}">Inicio</a><span aria-hidden="true">/</span><a href="${page.category.includes("Restylane") ? `${prefix}restylane` : `${prefix || "/"}#catalogo`}">${esc(page.category)}</a><span aria-hidden="true">/</span><span aria-current="page">${esc(page.name)}</span>`;
   return `${head(page, prefix, "product", faq)}
   ${header(prefix, page)}
     <main class="seo-main" id="contenido">
       <nav class="seo-breadcrumb" aria-label="Breadcrumb">${breadcrumbMarkup}</nav>
       <section class="seo-hero seo-hero-premium">
-        <div class="seo-hero-copy"><p class="seo-kicker">${esc(page.category)}</p><h1>${esc(page.h1 || page.name)}</h1>${presentationLine}<p class="seo-subtitle">${esc(page.subtitle)}</p><p class="seo-intro">${esc(page.intro)}</p><div class="seo-actions"><a class="primary-button" data-seo-whatsapp data-product-name="${esc(page.name)}" data-category="${esc(page.category)}" data-presentation="${esc(page.presentation || "No especificada")}" href="https://wa.me/525654434495?text=${waText}" target="_blank" rel="noopener">${heroCta}</a><a class="seo-back-link" href="${prefix}index.html#catalogo">Volver al catálogo</a></div></div>
+        <div class="seo-hero-copy"><p class="seo-kicker">${esc(page.category)}</p><h1>${esc(page.h1 || page.name)}</h1>${presentationLine}<p class="seo-subtitle">${esc(page.subtitle)}</p><p class="seo-intro">${esc(page.intro)}</p><div class="seo-actions"><a class="primary-button" data-seo-whatsapp data-product-name="${esc(page.name)}" data-category="${esc(page.category)}" data-presentation="${esc(page.presentation || "No especificada")}" href="https://wa.me/525654434495?text=${waText}" target="_blank" rel="noopener">${heroCta}</a><a class="seo-back-link" href="${prefix}${page.category === "Dermatología" ? "dermatologia" : page.category.includes("Control") || ["tirzepatida","retatrutida"].includes(page.slug) ? "control-de-peso" : "medicina-estetica"}">Volver a la línea</a></div></div>
         ${visual(page, prefix)}
       </section>
       ${storySections(page)}
       ${presentations(page)}
-      ${distribution(page)}${regulatoryNote(page)}
+      ${page.slug === "dysport" ? `<section class="seo-story-stack"><article class="seo-story"><span class="seo-story-index">$</span><div><h2>¿Cuánto cuesta Dysport?</h2><p>El precio depende de la presentación (300 U o 500 U) y del volumen solicitado. No publicamos precios porque cada cuenta profesional recibe una cotización según sus necesidades. <a href="https://wa.me/525654434495" target="_blank" rel="noopener">Solicitar cotización por WhatsApp.</a></p><p><a href="${prefix}dysport-vs-botox">Consulta la comparativa profesional entre Dysport y Botox.</a></p></div></article></section>` : ""}
+      ${distribution(page)}${trustBlocks({...page, prefix})}${regulatoryNote(page)}
       <section class="seo-faq" aria-labelledby="faq-title"><div class="seo-section-heading"><p class="seo-kicker">Antes de cotizar</p><h2 id="faq-title">Preguntas frecuentes</h2></div><div class="seo-faq-list">${faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}</div></section>
       <section class="seo-related" aria-labelledby="related-title"><div><p class="seo-kicker">También puede interesarte</p><h2 id="related-title">Explora productos relacionados</h2></div><nav class="seo-related-links" aria-label="Productos relacionados">${page.related.map(([slug, label]) => `<a href="${href(prefix, slug)}">${esc(label)}<span aria-hidden="true">→</span></a>`).join("")}</nav></section>
       ${finalCta(page, waText)}
     </main>
     ${footer(prefix)}`;
+}
+
+
+function isotretinoinaExpansion(page, prefix) {
+  if (page.slug !== "isotretinoina") return "";
+  return `<section class="seo-story-stack" aria-label="Guía comercial de isotretinoína"><article class="seo-story"><span class="seo-story-index">03</span><div><h2>Cómo usar esta guía de marcas</h2><p>Esta página funciona como punto de entrada a las tres marcas publicadas por MG Dermalab. La ficha de cada marca reúne su presentación comercial, enlaces relacionados y el canal de cotización. Para evitar confusiones, la solicitud debe indicar marca y concentración; no sustituimos automáticamente una marca por otra ni asumimos equivalencias comerciales.</p></div></article><article class="seo-story"><span class="seo-story-index">04</span><div><h2>Información necesaria para una cotización</h2><p>Para preparar una respuesta útil necesitamos cuatro datos: marca, concentración de 10 mg o 20 mg, cantidad aproximada y ciudad de destino. Con esos datos el equipo puede revisar existencia, condiciones por volumen y alternativas de envío. La disponibilidad puede cambiar, por lo que siempre se confirma antes de procesar el pedido.</p></div></article><article class="seo-story"><span class="seo-story-index">05</span><div><h2>Pedidos para médicos y clínicas</h2><p>Las cuentas profesionales pueden solicitar una o varias presentaciones en una misma cotización. El equipo comercial organiza la respuesta por marca y cantidad para facilitar la revisión. Cuando existe una necesidad recurrente, la recompra se coordina por el mismo canal, manteniendo la validación de existencia y condiciones vigente en cada solicitud.</p></div></article><article class="seo-story"><span class="seo-story-index">06</span><div><h2>Pedidos para farmacias</h2><p>Las farmacias pueden consultar pedidos puntuales o recurrentes. La cotización considera la referencia solicitada y el volumen, sin publicar precios fijos. Si se requieren varias marcas, conviene listarlas por separado para evitar que una concentración o cantidad se asigne a la referencia equivocada.</p></div></article><article class="seo-story"><span class="seo-story-index">07</span><div><h2>Revisión y envío</h2><p>Antes del envío revisamos presentación, lote, caducidad y empaque. También confirmamos cobertura, costo y tiempo estimado para el destino. Consulta nuestro proceso de <a href="${prefix}productos-originales">revisión de producto original</a> y la información sobre <a href="${prefix}envios">envíos nacionales</a>.</p></div></article><article class="seo-story"><span class="seo-story-index">08</span><div><h2>Uso con receta y seguimiento médico</h2><p>La isotretinoína oral requiere receta, valoración y seguimiento médico. La información de esta página es comercial y general: no proporciona dosis, duración de tratamiento ni recomendaciones para pacientes concretos. La selección de marca y presentación debe respetar la indicación del profesional tratante y los requisitos aplicables al pedido.</p></div></article></section>`;
 }
 
 function hubFaq(page) {
@@ -468,14 +483,15 @@ function hubFaq(page) {
 function hubHtml(page, prefix) {
   const faq = hubFaq(page);
   const waText = encodeURIComponent(`Hola, quiero consultar la línea ${page.name} con MG Dermalab.`);
+  const lineHref = page.category === "Dermatología" ? "dermatologia" : "medicina-estetica";
   return `${head(page, prefix, "hub", faq)}
   ${header(prefix, page)}
     <main class="seo-main" id="contenido">
-      <nav class="seo-breadcrumb" aria-label="Breadcrumb"><a href="${prefix}index.html">Inicio</a><span aria-hidden="true">/</span><span>${esc(page.category)}</span><span aria-hidden="true">/</span><span aria-current="page">${esc(page.name)}</span></nav>
-      <section class="seo-hero seo-hub-hero seo-hero-premium"><div class="seo-hero-copy"><p class="seo-kicker">${esc(page.category)} · Guía de línea</p><h1>${esc(page.name)}</h1><p class="seo-subtitle">${esc(page.subtitle)}</p><p class="seo-intro">${esc(page.intro)}</p><div class="seo-actions"><a class="primary-button" data-seo-whatsapp data-product-name="${esc(page.name)}" data-category="${esc(page.category)}" data-presentation="${esc(page.items.map((i) => i[1]).join(", "))}" href="https://wa.me/525654434495?text=${waText}" target="_blank" rel="noopener">Consultar la línea por WhatsApp</a><a class="seo-back-link" href="${prefix}index.html#catalogo">Volver al catálogo</a></div></div>${visual(page, prefix)}</section>
-      ${storySections(page)}
+      <nav class="seo-breadcrumb" aria-label="Breadcrumb"><a href="${prefix || "/"}">Inicio</a><span aria-hidden="true">/</span><span>${esc(page.category)}</span><span aria-hidden="true">/</span><span aria-current="page">${esc(page.name)}</span></nav>
+      <section class="seo-hero seo-hub-hero seo-hero-premium"><div class="seo-hero-copy"><p class="seo-kicker">${esc(page.category)} · Guía de línea</p><h1>${esc(page.name)}</h1><p class="seo-subtitle">${esc(page.subtitle)}</p><p class="seo-intro">${esc(page.intro)}</p><div class="seo-actions"><a class="primary-button" data-seo-whatsapp data-product-name="${esc(page.name)}" data-category="${esc(page.category)}" data-presentation="${esc(page.items.map((i) => i[1]).join(", "))}" href="https://wa.me/525654434495?text=${waText}" target="_blank" rel="noopener">Consultar la línea por WhatsApp</a><a class="seo-back-link" href="${prefix}${lineHref}">Volver a la línea</a></div></div>${visual(page, prefix)}</section>
+      ${storySections(page)}${isotretinoinaExpansion(page, prefix)}
       <section class="seo-family" aria-labelledby="family-title"><div class="seo-section-heading"><p class="seo-kicker">${esc(page.familyKicker || "Opciones disponibles")}</p><h2 id="family-title">${esc(page.familyTitle || "Encuentra la ficha que buscas")}</h2><p>${esc(page.note)}</p></div><div class="seo-family-grid">${page.items.map(([slug, name, presentation], index) => `<a href="${prefix}${slug}"><span>${String(index + 1).padStart(2, "0")}</span><strong>${esc(name)}</strong><small>${esc(presentation)}</small><i aria-hidden="true">→</i></a>`).join("")}</div></section>
-      ${distribution(page)}
+      ${distribution(page)}${page.slug === "isotretinoina" ? `<section class="seo-story-stack"><article class="seo-story"><span class="seo-story-index">01</span><div><h2>Presentaciones de isotretinoína disponibles en México</h2><p>MG Dermalab consulta Neotrex, Epuris y Vastionin en 10 mg y 20 mg, siempre sujetos a disponibilidad. Cada ficha enlazada reúne la información comercial confirmada.</p></div></article><article class="seo-story"><span class="seo-story-index">02</span><div><h2>Para médicos y farmacias: cómo cotizar</h2><p>Indica marca, concentración, cantidad y destino. Revisamos disponibilidad, condiciones por volumen, recompra y envío antes de confirmar el pedido.</p></div></article></section><section class="seo-related"><div><p class="seo-kicker">Comparativa profesional</p><h2>Neotrex, Epuris y Vastionin</h2></div><nav class="seo-related-links"><a href="${prefix}neotrex-vs-epuris-vs-vastionin">Ver comparativa<span>→</span></a></nav></section>` : ""}
       <section class="seo-faq" aria-labelledby="faq-title"><div class="seo-section-heading"><p class="seo-kicker">Información comercial</p><h2 id="faq-title">Preguntas frecuentes</h2></div><div class="seo-faq-list">${faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}</div></section>
       ${finalCta(page, waText)}
     </main>
