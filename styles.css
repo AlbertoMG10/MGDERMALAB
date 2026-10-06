@@ -8595,6 +8595,92 @@ h3,
 
 .seo-repeat-order .seo-actions { justify-content: flex-end; }
 
+.seo-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-block: var(--space-4);
+}
+
+.seo-catalog-card {
+  display: grid;
+  grid-template-rows: 220px 1fr;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 0 14px 36px rgba(22, 24, 27, .07);
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.seo-catalog-card:hover {
+  border-color: rgba(255, 90, 31, .5);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 42px rgba(22, 24, 27, .1);
+}
+
+.seo-catalog-card-media {
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+  margin: 0;
+  padding: var(--space-3);
+  background: #f7f8f8;
+}
+
+.seo-catalog-card-media:empty::before {
+  content: "MG";
+  display: grid;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  border: 1px solid rgba(255, 90, 31, .45);
+  border-radius: 50%;
+  color: var(--teal);
+  font-weight: 800;
+}
+
+.seo-catalog-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.seo-catalog-card > div {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: var(--space-3);
+}
+
+.seo-catalog-card h3,
+.seo-catalog-card p { margin: 0; }
+
+.seo-catalog-card span {
+  margin-top: var(--space-1);
+  color: var(--teal);
+  font-weight: 800;
+}
+
+.seo-table-wrap { overflow-x: auto; }
+
+.seo-product-table {
+  width: 100%;
+  margin-top: var(--space-3);
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.seo-product-table th,
+.seo-product-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.seo-product-table th { color: var(--muted); font-size: 13px; text-transform: uppercase; }
+.seo-product-table a { color: var(--teal); font-weight: 800; }
+
 .seo-actions::after,
 .seo-final-cta .primary-button::after {
   content: "Producto original · Envío a toda la República";
@@ -8617,6 +8703,8 @@ h3,
 }
 
 @media (max-width: 700px) {
+  .seo-catalog-grid { grid-template-columns: 1fr; }
+  .seo-catalog-card { grid-template-rows: 200px 1fr; }
   .seo-next-step nav { grid-template-columns: 1fr; }
   .seo-next-step a { min-height: 0; }
   .seo-repeat-order { grid-template-columns: 1fr; align-items: start; }
