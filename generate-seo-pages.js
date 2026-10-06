@@ -505,4 +505,74 @@ for (const page of [...pages, ...hubs]) {
   fs.writeFileSync(`${root}/${page.slug}.html`, flat);
 }
 
+const architectureUpdates = {
+  dermatologia: {
+    intro: "La línea de dermatología de MG Dermalab abastece isotretinoína oral a dermatólogos, médicos, clínicas y farmacias en toda la República Mexicana. Trabajamos con marcas reconocidas en presentaciones de 10 y 20 mg, con cotización directa y revisión de cada producto antes del envío.",
+    faq: [
+      ["¿Qué marcas de isotretinoína distribuyen?", "Neotrex, Epuris y Vastionin, sujetas a disponibilidad al momento de cotizar."],
+      ["¿Qué presentaciones manejan?", "10 mg y 20 mg. La presentación exacta se confirma en cada cotización."],
+      ["¿Puedo combinar varias marcas en una sola cotización?", "Sí. Indica marca, concentración y cantidad de cada producto y preparamos una cotización conjunta."],
+      ["¿Tienen condiciones por volumen?", "Sí. Manejamos escalas de 1–9, 10–49 y 50+ unidades, con condiciones para cuentas recurrentes."],
+      ["¿La isotretinoína requiere receta?", "Sí. Es un medicamento de prescripción; su uso debe ser indicado y supervisado por un médico."]
+    ],
+    content: `<section class="seo-story-stack"><article class="seo-story"><span class="seo-story-index">01</span><div><h2>Isotretinoína, la base de la línea</h2><p>La isotretinoína es un retinoide oral derivado de la vitamina A, utilizado en el manejo del acné severo o resistente a tratamientos convencionales. Es un medicamento de prescripción que requiere evaluación y seguimiento médico, por eso su abastecimiento debe hacerse a través de canales profesionales y confiables.</p><p><a href="isotretinoina">Conoce la ficha completa de isotretinoína →</a></p></div></article></section><section class="seo-family"><div class="seo-section-heading"><p class="seo-kicker">Portafolio</p><h2>Marcas disponibles</h2></div><div class="seo-family-grid"><a href="neotrex"><span>Neotrex</span><strong>10 mg y 20 mg</strong><small>Ver ficha</small><i aria-hidden="true">→</i></a><a href="epuris"><span>Epuris</span><strong>10 mg y 20 mg</strong><small>Ver ficha</small><i aria-hidden="true">→</i></a><a href="vastionin"><span>Vastionin</span><strong>10 mg y 20 mg</strong><small>Ver ficha</small><i aria-hidden="true">→</i></a></div><p>La disponibilidad de cada marca y presentación se confirma al momento de cotizar. ¿Necesitas comparar? <a href="neotrex-vs-epuris-vs-vastionin">Neotrex vs Epuris vs Vastionin →</a></p></section><section class="seo-story-stack"><article class="seo-story"><span class="seo-story-index">02</span><div><h2>Para quién es esta línea</h2><ul><li>Dermatólogos y médicos que manejan pacientes con acné severo.</li><li>Clínicas dermatológicas con consumo recurrente.</li><li>Farmacias independientes, cadenas y distribuidores.</li></ul></div></article><article class="seo-story"><span class="seo-story-index">03</span><div><h2>Cómo trabajamos</h2><ul><li>Cotización por marca, concentración y cantidad.</li><li>Condiciones por volumen: 1–9, 10–49 y 50+ unidades.</li><li>Revisión de lote, caducidad y empaque antes de cada envío.</li><li>Envío a toda la República, con costo y tiempo confirmados antes de enviar.</li><li>Recompra sencilla y seguimiento de pedidos por WhatsApp.</li></ul></div></article></section>`
+  },
+  "medicina-estetica": {
+    intro: "La línea de medicina estética de MG Dermalab reúne toxina botulínica, bioestimuladores de colágeno y rellenos de ácido hialurónico para médicos y clínicas de todo México, con cotización privada, revisión de producto y envío nacional.",
+    faq: [
+      ["¿A quién atienden en medicina estética?", "A médicos estéticos, dermatólogos y clínicas de medicina estética."],
+      ["¿Puedo cotizar Dysport, Sculptra y Restylane juntos?", "Sí. Indica productos y cantidades y preparamos una sola cotización."],
+      ["¿Qué presentaciones de Dysport manejan?", "Viales de 300 U y 500 U, sujetos a disponibilidad."],
+      ["¿Cómo garantizan que el producto es original?", "Revisamos lote, caducidad y empaque antes de cada envío. Conoce el proceso en /productos-originales."],
+      ["¿Envían a toda la República?", "Sí. Confirmamos cobertura, costo y tiempo de entrega antes de enviar."]
+    ],
+    content: `<section class="seo-story-stack"><article class="seo-story"><span class="seo-story-index">01</span><div><h2>Toxina botulínica</h2><p>Dysport (abobotulinumtoxinA) en viales de 300 U y 500 U. Las unidades de Dysport no son intercambiables con las de otras toxinas, por lo que la presentación debe elegirse según el protocolo de cada práctica.</p><p><a href="dysport">Ficha de Dysport →</a> · <a href="dysport-vs-botox">Dysport vs Botox: diferencias →</a></p></div></article><article class="seo-story"><span class="seo-story-index">02</span><div><h2>Bioestimulador de colágeno</h2><p>Sculptra (ácido poli-L-láctico) estimula la producción de colágeno para restaurar volumen y firmeza de forma progresiva.</p><p><a href="sculptra">Ficha de Sculptra →</a></p></div></article></section><section class="seo-family"><div class="seo-section-heading"><p class="seo-kicker">Portafolio</p><h2>Ácido hialurónico: familia Restylane</h2></div><div class="seo-family-grid"><a href="restylane-kysse"><span>Restylane Kysse</span><strong>Labios</strong><small>Ver ficha</small><i>→</i></a><a href="restylane-lyft"><span>Restylane Lyft</span><strong>Volumen facial</strong><small>Ver ficha</small><i>→</i></a><a href="restylane-refyne"><span>Restylane Refyne</span><strong>Arrugas moderadas</strong><small>Ver ficha</small><i>→</i></a><a href="restylane-defyne"><span>Restylane Defyne</span><strong>Surcos profundos</strong><small>Ver ficha</small><i>→</i></a><a href="restylane-contour"><span>Restylane Contour</span><strong>Contorno y pómulos</strong><small>Ver ficha</small><i>→</i></a><a href="restylane-eyelight"><span>Restylane Eyelight</span><strong>Ojeras</strong><small>Ver ficha</small><i>→</i></a><a href="restylane-skinboosters-vital"><span>Skinboosters Vital</span><strong>Calidad de piel</strong><small>Ver ficha</small><i>→</i></a><a href="restylane-skinboosters-vital-light"><span>Skinboosters Vital Light</span><strong>Calidad de piel</strong><small>Ver ficha</small><i>→</i></a></div><p><a href="guia-restylane">Guía Restylane: qué producto usar en cada zona →</a></p></section><section class="seo-story-stack"><article class="seo-story"><span class="seo-story-index">03</span><div><h2>Cómo trabajamos</h2><ul><li>Cotización conjunta de varios productos.</li><li>Condiciones por volumen: 1–9, 10–49 y 50+ unidades.</li><li>Revisión de lote, caducidad y empaque antes de cada envío.</li><li>Envío a toda la República con confirmación previa.</li><li>Seguimiento de pedidos y recompra por WhatsApp.</li></ul></div></article></section>`
+  },
+  "control-de-peso": {
+    intro: "La línea de control de peso de MG Dermalab está dirigida a médicos y clínicas que atienden programas de control de peso y necesitan un abastecimiento directo, con disponibilidad confirmada y atención especializada.",
+    faq: [
+      ["¿Cómo cotizo la línea de control de peso?", "Comparte producto, cantidad y ciudad por WhatsApp y te respondemos con disponibilidad y condiciones."],
+      ["¿A quién atienden en esta línea?", "A médicos y clínicas que atienden programas de control de peso."],
+      ["¿La disponibilidad es fija?", "No. Se confirma de forma individual en cada cotización."],
+      ["¿Realizan envíos a toda la República?", "Sí. Cobertura, costo y tiempo se confirman antes del envío."]
+    ],
+    content: `<section class="seo-story-stack"><article class="seo-story"><span class="seo-story-index">01</span><div><h2>Una línea pensada para clínicas</h2><p>Los productos de esta línea son de prescripción y su uso debe ser indicado y supervisado por un médico. Por eso atendemos exclusivamente a profesionales de la salud y confirmamos presentación, disponibilidad y requisitos aplicables en cada solicitud.</p></div></article></section><section class="seo-related"><div><p class="seo-kicker">Productos</p><h2>Productos de la línea</h2></div><nav class="seo-related-links"><a href="tirzepatida">Tirzepatida<span>→</span></a><a href="retatrutida">Retatrutida<span>→</span></a></nav></section><section class="seo-story-stack"><article class="seo-story"><span class="seo-story-index">02</span><div><h2>Cómo trabajamos</h2><ul><li>Atención directa por WhatsApp para médicos y clínicas.</li><li>Confirmación de disponibilidad y presentación antes de cotizar.</li><li>Condiciones para pedidos recurrentes.</li><li>Envío a toda la República con costo y tiempo confirmados previamente.</li></ul></div></article></section>`
+  },
+  nosotros: {
+    intro: "MG Dermalab es una empresa mexicana dedicada a facilitar el abastecimiento de productos dermatológicos y de medicina estética a médicos, clínicas y farmacias en toda la República. Nacimos para hacer más directa, ágil y confiable la forma en que los profesionales de la salud consiguen los productos que usan todos los días.",
+    faq: [],
+    content: `<section class="seo-story-stack"><article class="seo-story"><span class="seo-story-index">01</span><div><h2>Qué hacemos</h2><p>Distribuimos tres líneas especializadas, dermatología, medicina estética y control de peso, con atención comercial directa, cotizaciones privadas y envío nacional.</p></div></article></section><section class="seo-related"><div><p class="seo-kicker">Líneas especializadas</p><h2>Explora nuestras líneas</h2></div><nav class="seo-related-links"><a href="dermatologia">Dermatología<span>→</span></a><a href="medicina-estetica">Medicina estética<span>→</span></a><a href="control-de-peso">Control de peso<span>→</span></a></nav></section><section class="seo-story-stack"><article class="seo-story"><span class="seo-story-index">02</span><div><h2>A quién atendemos</h2><ul><li>Dermatólogos y médicos estéticos.</li><li>Clínicas dermatológicas y de medicina estética.</li><li>Farmacias independientes, cadenas y distribuidores.</li></ul></div></article><article class="seo-story"><span class="seo-story-index">03</span><div><h2>Nuestros compromisos</h2><ul><li><strong>Producto original:</strong> revisamos lote, caducidad y empaque antes de cada envío.</li><li><strong>Atención directa:</strong> un solo canal por WhatsApp, sin intermediarios.</li><li><strong>Cotizaciones claras:</strong> condiciones por volumen y para cuentas recurrentes.</li><li><strong>Cobertura nacional:</strong> envíos a toda la República con confirmación previa.</li><li><strong>Continuidad:</strong> seguimiento de pedidos y recompra sencilla.</li></ul></div></article><article class="seo-story"><span class="seo-story-index">04</span><div><h2>Misión</h2><p>Facilitar a médicos, clínicas y farmacias de todo México el acceso a productos dermatológicos y de medicina estética originales, con atención directa, entregas confiables y condiciones profesionales.</p></div></article><article class="seo-story"><span class="seo-story-index">05</span><div><h2>Visión</h2><p>Ser el distribuidor de referencia en dermatología y medicina estética para los profesionales de la salud en México, reconocido por su confiabilidad, rapidez y especialización.</p></div></article><article class="seo-story"><span class="seo-story-index">06</span><div><h2>Laboratorios con los que trabajamos</h2><p>Nuestro portafolio incluye productos relacionados con Galderma, Megalabs, Advaita y Farmapiel. La disponibilidad se confirma en cada cotización.</p><p><a href="productos-originales">Conoce cómo garantizamos producto original →</a></p></div></article></section>`
+  }
+};
+
+function faqMarkup(faq) {
+  if (!faq.length) return "";
+  return `<section class="seo-faq"><div class="seo-section-heading"><p class="seo-kicker">Preguntas frecuentes</p><h2>Preguntas frecuentes</h2></div><div class="seo-faq-list">${faq.map(([question, answer]) => `<details><summary>${esc(question)}</summary><p>${esc(answer)}</p></details>`).join("")}</div></section>`;
+}
+
+function updateArchitecturePage(slug, data) {
+  const file = `${root}/${slug}.html`;
+  let html = fs.readFileSync(file, "utf8");
+  html = html.replace(/<p class="seo-intro">[\s\S]*?<\/p>/, `<p class="seo-intro">${esc(data.intro)}</p>`);
+  html = html.replace(/(<section class="seo-hero seo-hero-premium">[\s\S]*?<\/section>)[\s\S]*?(<section class="seo-final-cta">)/, `$1${data.content}${faqMarkup(data.faq)}$2`);
+  html = html.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/, (match, jsonText) => {
+    const schema = JSON.parse(jsonText);
+    schema["@graph"] = schema["@graph"].filter((node) => node["@type"] !== "FAQPage");
+    if (data.faq.length) {
+      schema["@graph"].push({
+        "@type": "FAQPage",
+        mainEntity: data.faq.map(([name, text]) => ({
+          "@type": "Question",
+          name,
+          acceptedAnswer: {"@type": "Answer", text}
+        }))
+      });
+    }
+    return `<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
+  });
+  fs.writeFileSync(file, html);
+}
+
+for (const [slug, data] of Object.entries(architectureUpdates)) updateArchitecturePage(slug, data);
+
 console.log(`Generated ${pages.length + hubs.length} SEO pages in flat form.`);
