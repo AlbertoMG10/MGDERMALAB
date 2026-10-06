@@ -400,9 +400,7 @@ function head(page, prefix, type, faq) {
     <meta name="twitter:description" content="${esc(page.description)}" />
     <meta name="twitter:image" content="${image}" />
     <title>${esc(page.title)}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="preload" href="${prefix}assets/dm-sans-latin-400-700.woff2" as="font" type="font/woff2" crossorigin />
     ${page.image ? `<link rel="preload" as="image" href="${prefix}${page.image}" />` : ""}
     <link rel="stylesheet" href="${prefix}styles.css?v=20260922-seo-premium" />
     <script type="application/ld+json">${json(schema)}</script>
@@ -417,22 +415,27 @@ function header(prefix, page) {
       <a class="brand" href="${prefix || "/"}" aria-label="MG Dermalab inicio"><span class="brand-mark">MG</span><span>Dermalab</span></a>
       <nav class="main-nav" id="main-nav" aria-label="Navegación principal"><a href="${prefix}dermatologia">Dermatología</a><a href="${prefix}medicina-estetica">Medicina estética</a><a href="${prefix}control-de-peso">Control de peso</a><a href="${prefix}profesionales">Profesionales</a><a href="${prefix}farmacias">Farmacias</a><a href="${prefix}nosotros">Nosotros</a><a href="${prefix}contacto">Contacto</a></nav>
       <button class="mobile-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav" data-menu-toggle><span></span><span></span></button>
-      <a class="nav-cta" href="${prefix || "/"}?producto=${page.slug}#contacto">Solicitar cotización</a>
+      <a class="nav-cta" href="${prefix || "/"}?producto=${page.slug}#contacto">Cotizar</a>
     </header>`;
 }
 
 function visual(page, prefix) {
   if (page.image) return `<figure class="seo-product-visual"><img src="${prefix}${page.image}" alt="${esc(page.imageAlt || `${page.name} disponible para cotización con MG Dermalab`)}" width="${page.width}" height="${page.height}" fetchpriority="high" /></figure>`;
-  const signature = page.slug === "retatrutida" ? "Investigación clínica" : page.presentation ? esc(page.presentation) : "Distribución especializada";
-  return `<div class="seo-product-visual seo-product-signature" role="img" aria-label="${esc(page.name)} — ${esc(page.category)} — MG Dermalab"><span>MG Dermalab</span><p>${esc(page.category)}</p><strong>${esc(page.name)}</strong><small>${signature}</small></div>`;
+  return "";
 }
 
 function footer(prefix) {
-  return `<footer class="site-footer seo-footer"><div class="footer-column footer-identity"><div class="footer-brand"><span class="brand-mark">MG</span><p>Dermalab</p></div><span>Distribución especializada para médicos, clínicas y farmacias en México.</span></div><nav class="footer-column" aria-label="Empresa"><strong>Empresa</strong><a href="${prefix}nosotros">Nosotros</a><a href="${prefix}contacto">Contacto</a><a href="${prefix}productos-originales">Producto original</a><a href="${prefix}envios">Envíos</a></nav><nav class="footer-column" aria-label="Clientes"><strong>Clientes</strong><a href="${prefix}profesionales">Profesionales</a><a href="${prefix}farmacias">Farmacias</a><a href="${prefix}dermatologia">Dermatología</a><a href="${prefix}medicina-estetica">Medicina estética</a></nav><div class="footer-column"><strong>Contacto</strong><a href="https://wa.me/525654434495" target="_blank" rel="noopener">WhatsApp: 56 5443 4495</a><a href="mailto:mgdermalab@gmail.com">mgdermalab@gmail.com</a><a href="${prefix}privacidad">Aviso de privacidad</a></div></footer>
+  return `<footer class="site-footer seo-footer"><div class="footer-column footer-identity"><div class="footer-brand"><span class="brand-mark">MG</span><p>Dermalab</p></div><span>Distribución especializada para médicos, clínicas y farmacias en México.</span></div><nav class="footer-column" aria-label="Empresa"><strong>Empresa</strong><a href="${prefix}nosotros">Nosotros</a><a href="${prefix}contacto">Contacto</a><a href="${prefix}productos-originales">Producto original</a><a href="${prefix}envios">Envíos</a></nav><nav class="footer-column" aria-label="Líneas y clientes"><strong>Explorar</strong><a href="${prefix}dermatologia">Dermatología</a><a href="${prefix}medicina-estetica">Medicina estética</a><a href="${prefix}control-de-peso">Control de peso</a><a href="${prefix}profesionales">Profesionales</a><a href="${prefix}farmacias">Farmacias</a></nav><div class="footer-column"><strong>Contacto</strong><a href="https://wa.me/525654434495" target="_blank" rel="noopener">WhatsApp: 56 5443 4495</a><a href="mailto:mgdermalab@gmail.com">mgdermalab@gmail.com</a><a href="${prefix}privacidad">Aviso de privacidad</a></div></footer>
     <script src="${prefix}seo-pages.js" defer></script>
   </body>
 </html>
 `;
+}
+
+function nextStep(page, prefix) {
+  const links = (page.related || []).slice(0, 2);
+  if (!links.some(([slug]) => slug === "productos-originales")) links.push(["productos-originales", "Cómo revisamos cada producto"]);
+  return `<section class="seo-next-step" aria-labelledby="next-step-title"><div><p class="seo-kicker">Siguiente paso</p><h2 id="next-step-title">Continúa explorando</h2></div><nav aria-label="Páginas relacionadas">${links.slice(0, 3).map(([slug, label]) => `<a href="${href(prefix, slug)}"><strong>${esc(label)}</strong><span>Ver información →</span></a>`).join("")}</nav></section>`;
 }
 
 function productHtml(page, prefix) {
@@ -459,8 +462,7 @@ function productHtml(page, prefix) {
       ${page.slug === "dysport" ? `<section class="seo-story-stack"><article class="seo-story"><span class="seo-story-index">$</span><div><h2>¿Cuánto cuesta Dysport?</h2><p>El precio depende de la presentación (300 U o 500 U) y del volumen solicitado. No publicamos precios porque cada cuenta profesional recibe una cotización según sus necesidades. <a href="https://wa.me/525654434495" target="_blank" rel="noopener">Solicitar cotización por WhatsApp.</a></p><p><a href="${prefix}dysport-vs-botox">Consulta la comparativa profesional entre Dysport y Botox.</a></p></div></article></section>` : ""}
       ${distribution(page)}${trustBlocks({...page, prefix})}${regulatoryNote(page)}
       <section class="seo-faq" aria-labelledby="faq-title"><div class="seo-section-heading"><p class="seo-kicker">Antes de cotizar</p><h2 id="faq-title">Preguntas frecuentes</h2></div><div class="seo-faq-list">${faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}</div></section>
-      <section class="seo-related" aria-labelledby="related-title"><div><p class="seo-kicker">También puede interesarte</p><h2 id="related-title">Explora productos relacionados</h2></div><nav class="seo-related-links" aria-label="Productos relacionados">${page.related.map(([slug, label]) => `<a href="${href(prefix, slug)}">${esc(label)}<span aria-hidden="true">→</span></a>`).join("")}</nav></section>
-      ${finalCta(page, waText)}
+      ${nextStep(page, prefix)}${finalCta(page, waText)}
     </main>
     ${footer(prefix)}`;
 }
@@ -493,7 +495,7 @@ function hubHtml(page, prefix) {
       <section class="seo-family" aria-labelledby="family-title"><div class="seo-section-heading"><p class="seo-kicker">${esc(page.familyKicker || "Opciones disponibles")}</p><h2 id="family-title">${esc(page.familyTitle || "Encuentra la ficha que buscas")}</h2><p>${esc(page.note)}</p></div><div class="seo-family-grid">${page.items.map(([slug, name, presentation], index) => `<a href="${prefix}${slug}"><span>${String(index + 1).padStart(2, "0")}</span><strong>${esc(name)}</strong><small>${esc(presentation)}</small><i aria-hidden="true">→</i></a>`).join("")}</div></section>
       ${distribution(page)}${page.slug === "isotretinoina" ? `<section class="seo-story-stack"><article class="seo-story"><span class="seo-story-index">01</span><div><h2>Presentaciones de isotretinoína disponibles en México</h2><p>MG Dermalab consulta Neotrex, Epuris y Vastionin en 10 mg y 20 mg, siempre sujetos a disponibilidad. Cada ficha enlazada reúne la información comercial confirmada.</p></div></article><article class="seo-story"><span class="seo-story-index">02</span><div><h2>Para médicos y farmacias: cómo cotizar</h2><p>Indica marca, concentración, cantidad y destino. Revisamos disponibilidad, condiciones por volumen, recompra y envío antes de confirmar el pedido.</p></div></article></section><section class="seo-related"><div><p class="seo-kicker">Comparativa profesional</p><h2>Neotrex, Epuris y Vastionin</h2></div><nav class="seo-related-links"><a href="${prefix}neotrex-vs-epuris-vs-vastionin">Ver comparativa<span>→</span></a></nav></section>` : ""}
       <section class="seo-faq" aria-labelledby="faq-title"><div class="seo-section-heading"><p class="seo-kicker">Información comercial</p><h2 id="faq-title">Preguntas frecuentes</h2></div><div class="seo-faq-list">${faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}</div></section>
-      ${finalCta(page, waText)}
+      ${nextStep({...page, related: page.items.slice(0, 2).map(([slug, name]) => [slug, name])}, prefix)}${finalCta(page, waText)}
     </main>
     ${footer(prefix)}`;
 }
@@ -554,7 +556,14 @@ function updateArchitecturePage(slug, data) {
   const file = `${root}/${slug}.html`;
   let html = fs.readFileSync(file, "utf8");
   html = html.replace(/<p class="seo-intro">[\s\S]*?<\/p>/, `<p class="seo-intro">${esc(data.intro)}</p>`);
-  html = html.replace(/(<section class="seo-hero seo-hero-premium">[\s\S]*?<\/section>)[\s\S]*?(<section class="seo-final-cta">)/, `$1${data.content}${faqMarkup(data.faq)}$2`);
+  const relatedByPage = {
+    dermatologia: [["isotretinoina", "Isotretinoína"], ["neotrex-vs-epuris-vs-vastionin", "Comparar marcas"], ["profesionales", "Atención a profesionales"]],
+    "medicina-estetica": [["guia-restylane", "Guía Restylane"], ["dysport-vs-botox", "Dysport y otras toxinas"], ["profesionales", "Atención a profesionales"]],
+    "control-de-peso": [["tirzepatida", "Tirzepatida"], ["retatrutida", "Retatrutida"], ["profesionales", "Atención a profesionales"]],
+    nosotros: [["dermatologia", "Dermatología"], ["medicina-estetica", "Medicina estética"], ["control-de-peso", "Control de peso"]]
+  };
+  const next = nextStep({related: relatedByPage[slug] || []}, "");
+  html = html.replace(/(<section class="seo-hero seo-hero-premium">[\s\S]*?<\/section>)[\s\S]*?(<section class="seo-final-cta">)/, `$1${data.content}${faqMarkup(data.faq)}${next}$2`);
   html = html.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/, (match, jsonText) => {
     const schema = JSON.parse(jsonText);
     schema["@graph"] = schema["@graph"].filter((node) => node["@type"] !== "FAQPage");
@@ -574,5 +583,39 @@ function updateArchitecturePage(slug, data) {
 }
 
 for (const [slug, data] of Object.entries(architectureUpdates)) updateArchitecturePage(slug, data);
+
+for (const slug of ["profesionales", "farmacias"]) {
+  const file = `${root}/${slug}.html`;
+  let html = fs.readFileSync(file, "utf8");
+  html = html.replace(/<section class="seo-repeat-order">[\s\S]*?<\/section>/g, "");
+  const message = encodeURIComponent("Hola, quiero hacer una recompra de:");
+  const repeatOrder = `<section class="seo-repeat-order"><div><p class="seo-kicker">Recompra fácil</p><h2>Tu siguiente pedido, en menos pasos</h2><p>Guarda nuestro contacto y envíanos tu lista de productos y cantidades. Te respondemos con la cotización.</p></div><div class="seo-actions"><a class="primary-button" data-seo-whatsapp data-product-name="Recompra" data-category="${slug}" data-presentation="Lista del cliente" href="https://wa.me/525654434495?text=${message}" target="_blank" rel="noopener">Recomprar por WhatsApp</a><a class="seo-back-link" href="mg-dermalab.vcf" download>Guardar contacto</a></div></section>`;
+  html = html.replace('<section class="seo-final-cta">', `${repeatOrder}<section class="seo-final-cta">`);
+  fs.writeFileSync(file, html);
+}
+
+const replacements = [
+  [/Mostramos únicamente las presentaciones confirmadas en nuestro catálogo\. La existencia se valida al solicitar cotización\./g, "Confirmamos existencia al momento de tu cotización."],
+  [/Envíos nacionales sujetos a validación de destino\./g, "Enviamos a toda la República."],
+  [/Existencia y presentación se confirman antes de continuar\./g, ""],
+  [/Referencia comercial basada en las indicaciones ya publicadas\./g, ""],
+  [/La revisión se limita a elementos verificables[^<]*\./g, "Revisamos sellos, lote y caducidad de cada pieza antes de enviarla."],
+  [/¿Listo para solicitar tu cotización\?/g, "Solicita tu cotización"]
+];
+
+for (const file of fs.readdirSync(root).filter((name) => name.endsWith(".html") && name !== "index.html")) {
+  const path = `${root}/${file}`;
+  let html = fs.readFileSync(path, "utf8");
+  for (const [pattern, value] of replacements) html = html.replace(pattern, value);
+  html = html
+    .replace(/<link rel="preconnect" href="https:\/\/fonts\.googleapis\.com">/g, "")
+    .replace(/<link rel="preconnect" href="https:\/\/fonts\.gstatic\.com" crossorigin>/g, "")
+    .replace(/<link href="https:\/\/fonts\.googleapis\.com\/css2[^>]+>/g, '<link rel="preload" href="assets/dm-sans-latin-400-700.woff2" as="font" type="font/woff2" crossorigin>')
+    .replace(/<div class="seo-product-visual seo-product-signature"[\s\S]*?<\/div>/g, "")
+    .replace(/<h2>Información antes de cotizar<\/h2>/g, "<h2>Preguntas frecuentes</h2>")
+    .replace(/<h2>Enlaces relacionados<\/h2>/g, "<h2>Siguiente paso</h2>")
+    .replace(/Comparte la línea, cantidad y ciudad\. Confirmaremos disponibilidad y condiciones comerciales\./g, "Cuéntanos qué necesitas y te respondemos por WhatsApp con disponibilidad y condiciones.");
+  fs.writeFileSync(path, html);
+}
 
 console.log(`Generated ${pages.length + hubs.length} SEO pages in flat form.`);
