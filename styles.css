@@ -28,6 +28,7 @@ body {
   color: var(--ink);
   background: var(--sand);
   font-family: "DM Sans", Arial, sans-serif;
+  font-size-adjust: 0.53;
   letter-spacing: 0;
   overflow-x: hidden;
 }
