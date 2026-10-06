@@ -502,10 +502,7 @@ for (const page of [...pages, ...hubs]) {
   const isHub = hubs.includes(page);
   const render = isHub ? hubHtml : productHtml;
   const flat = render(page, "").replace(/[ \t]+$/gm, "");
-  const nested = render(page, "../").replace(/[ \t]+$/gm, "");
   fs.writeFileSync(`${root}/${page.slug}.html`, flat);
-  fs.mkdirSync(`${root}/${page.slug}`, {recursive: true});
-  fs.writeFileSync(`${root}/${page.slug}/index.html`, nested);
 }
 
-console.log(`Generated ${pages.length + hubs.length} SEO pages in flat and directory forms.`);
+console.log(`Generated ${pages.length + hubs.length} SEO pages in flat form.`);
