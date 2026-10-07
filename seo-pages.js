@@ -37,12 +37,14 @@
     menu.classList.remove("is-open");
   }));
 
-  document.querySelectorAll("[data-seo-whatsapp]").forEach((link) => {
+  if (!document.querySelector(".contact-form")) document.querySelectorAll('a[href*="wa.me/"]').forEach((link) => {
     link.addEventListener("click", () => {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: "whatsapp_click",
+        page_path: window.location.pathname,
         product_name: link.dataset.productName || "",
+        line: link.dataset.category || document.querySelector("h1")?.textContent.trim() || document.title,
         category: link.dataset.category || "",
         presentation: link.dataset.presentation || "",
         location: "product-whatsapp"

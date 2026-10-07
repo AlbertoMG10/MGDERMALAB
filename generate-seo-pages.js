@@ -3,6 +3,22 @@ const fs = require("fs");
 const root = __dirname;
 const site = "https://mgdermalab.mx";
 
+const gtmBootstrap = `(function(w,d,s,l,i){w[l]=w[l]||[];var load=function(){if(d.querySelector("script[data-gtm-bootstrap]"))return;var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.dataset.gtmBootstrap="";j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);};var timer,events=["pointerdown","touchstart","keydown"];var cleanup=function(){if(timer){w.clearTimeout(timer);timer=0;}events.forEach(function(n){w.removeEventListener(n,start);});w.removeEventListener("load",schedule);};var start=function(){cleanup();load();};events.forEach(function(n){w.addEventListener(n,start,{once:true,passive:true});});var schedule=function(){timer=w.setTimeout(start,7000);};if(d.readyState==="complete"){schedule();}else{w.addEventListener("load",schedule,{once:true});}})(window,document,"script","dataLayer","GTM-T9MFWNKW");`;
+const gtmNoscript = `<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9MFWNKW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>`;
+
+function ensureGtm(html) {
+  if (!html.includes("GTM-T9MFWNKW")) {
+    html = html.replace(
+      /<script>window\.dataLayer=window\.dataLayer\|\|\[\];<\/script>/,
+      `<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({"gtm.start":new Date().getTime(),event:"gtm.js"});${gtmBootstrap}</script>`
+    );
+  }
+  if (!html.includes("googletagmanager.com/ns.html")) {
+    html = html.replace(/<body([^>]*)>/, `<body$1>${gtmNoscript}`);
+  }
+  return html;
+}
+
 const commonFaq = [
   ["¿Realizan envíos nacionales?", "Sí. MG Dermalab coordina envíos nacionales; cobertura, costo y tiempo se confirman al cotizar."],
   ["¿Cómo solicito disponibilidad?", "Envía el nombre del producto, la cantidad y tu ciudad por WhatsApp. Si aplica, incluye la presentación que buscas. Un asesor responderá con la disponibilidad vigente."],
@@ -382,7 +398,8 @@ function head(page, prefix, type, faq) {
     <script>
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push(${json({event: "page_view", page_type: type === "hub" ? "seo_category" : "seo_product", product_name: page.name, category: page.category, presentation: type === "hub" ? page.items.map((i) => i[1]).join(", ") : page.presentation})});
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-T9MFWNKW");
+      window.dataLayer.push({"gtm.start":new Date().getTime(),event:"gtm.js"});
+      ${gtmBootstrap}
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -414,7 +431,7 @@ function head(page, prefix, type, faq) {
 
 function header(prefix, page) {
   return `<body class="seo-page${page.slug === "isotretinoina" ? " seo-isotretinoina" : ""}">
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9MFWNKW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    ${gtmNoscript}
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <header class="site-header" data-header>
       <a class="brand" href="${prefix || "/"}" aria-label="MG Dermalab inicio"><span class="brand-mark">MG</span><span>Dermalab</span></a>
@@ -693,7 +710,7 @@ for (const file of fs.readdirSync(root).filter((name) => name.endsWith(".html") 
     .replace(/<h2>Información antes de cotizar<\/h2>/g, "<h2>Preguntas frecuentes</h2>")
     .replace(/<h2>Enlaces relacionados<\/h2>/g, "<h2>Siguiente paso</h2>")
     .replace(/Comparte la línea, cantidad y ciudad\. Confirmaremos disponibilidad y condiciones comerciales\./g, "Cuéntanos qué necesitas y te respondemos por WhatsApp con disponibilidad y condiciones.");
-  fs.writeFileSync(path, html);
+  fs.writeFileSync(path, ensureGtm(html));
 }
 
 console.log(`Generated ${pages.length + hubs.length} SEO pages in flat form.`);
