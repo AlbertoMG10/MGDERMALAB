@@ -8718,3 +8718,117 @@ h3,
     transition-duration: .01ms !important;
   }
 }
+
+/* Accessible brand colors and dark-section text. */
+:root {
+  --accent-text: #C2410C;
+  --accent-on-dark: #FF8A5C;
+  --accent-button: #C2410C;
+  --accent-button-hover: #9A3412;
+}
+
+.eyebrow,
+.seo-kicker,
+.seo-presentation,
+.seo-story-index,
+.seo-next-step a span,
+.seo-catalog-card span,
+.seo-product-table a,
+.seo-family-grid i,
+.seo-related-links span,
+.seo-faq-list summary::after {
+  color: var(--accent-text);
+}
+
+.seo-distribution h2,
+.seo-final-cta h2,
+.seo-info-band h2,
+.product-media-section h2,
+.product-image-story h2 {
+  color: #FFFFFF;
+}
+
+.seo-distribution p,
+.seo-final-cta p,
+.seo-info-band p,
+.product-media-section p,
+.product-image-story p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.seo-distribution .seo-kicker,
+.seo-final-cta .seo-kicker,
+.seo-info-band .seo-kicker,
+.product-media-section .eyebrow,
+.product-image-story .eyebrow,
+.seo-distribution dt {
+  color: var(--accent-on-dark);
+}
+
+.seo-final-cta .primary-button,
+.hero-control-cta,
+.contact-whatsapp {
+  border-color: var(--accent-button);
+  color: #FFFFFF;
+  background: var(--accent-button);
+}
+
+.seo-final-cta .primary-button:hover,
+.hero-control-cta:hover,
+.contact-whatsapp:hover {
+  border-color: var(--accent-button-hover);
+  color: #FFFFFF;
+  background: var(--accent-button-hover);
+}
+
+.line-card:hover .line-index,
+.line-card:hover .line-card-cta,
+.line-card:focus-visible .line-card-cta {
+  color: var(--accent-on-dark);
+}
+
+.hero-eyebrow {
+  color: #B33A0B;
+}
+
+.home-trust-strip span {
+  color: var(--accent-text);
+}
+
+/* Keep secondary text above WCAG AA on the light SEO surfaces. */
+.seo-breadcrumb,
+.seo-breadcrumb a,
+.seo-breadcrumb span,
+.seo-source,
+.seo-source a,
+.seo-family-grid span,
+.seo-family-grid small {
+  color: rgba(22, 24, 27, 0.76);
+}
+
+.seo-intro,
+.seo-hero-copy .seo-intro,
+.legal-card p {
+  color: #16181B;
+}
+
+.seo-story-index {
+  color: #9A3412;
+}
+
+.line-card .line-index,
+.line-card .line-card-cta {
+  color: var(--accent-on-dark);
+}
+
+.seo-catalog-card {
+  row-gap: 18px;
+}
+
+.seo-catalog-card-media {
+  background: #FFFFFF;
+}
+
+.seo-catalog-card > div {
+  padding-top: 0;
+}
