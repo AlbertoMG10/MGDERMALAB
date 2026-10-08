@@ -3,6 +3,22 @@ const fs = require("fs");
 const root = __dirname;
 const site = "https://mgdermalab.mx";
 
+const gtmBootstrap = `(function(w,d,s,l,i){w[l]=w[l]||[];var load=function(){if(d.querySelector("script[data-gtm-bootstrap]"))return;var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.dataset.gtmBootstrap="";j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);};var timer,events=["pointerdown","touchstart","keydown"];var cleanup=function(){if(timer){w.clearTimeout(timer);timer=0;}events.forEach(function(n){w.removeEventListener(n,start);});w.removeEventListener("load",schedule);};var start=function(){cleanup();load();};events.forEach(function(n){w.addEventListener(n,start,{once:true,passive:true});});var schedule=function(){timer=w.setTimeout(start,7000);};if(d.readyState==="complete"){schedule();}else{w.addEventListener("load",schedule,{once:true});}})(window,document,"script","dataLayer","GTM-T9MFWNKW");`;
+const gtmNoscript = `<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9MFWNKW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>`;
+
+function ensureGtm(html) {
+  if (!html.includes("GTM-T9MFWNKW")) {
+    html = html.replace(
+      /<script>window\.dataLayer=window\.dataLayer\|\|\[\];<\/script>/,
+      `<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({"gtm.start":new Date().getTime(),event:"gtm.js"});${gtmBootstrap}</script>`
+    );
+  }
+  if (!html.includes("googletagmanager.com/ns.html")) {
+    html = html.replace(/<body([^>]*)>/, `<body$1>${gtmNoscript}`);
+  }
+  return html;
+}
+
 const commonFaq = [
   ["¿Realizan envíos nacionales?", "Sí. MG Dermalab coordina envíos nacionales; cobertura, costo y tiempo se confirman al cotizar."],
   ["¿Cómo solicito disponibilidad?", "Envía el nombre del producto, la cantidad y tu ciudad por WhatsApp. Si aplica, incluye la presentación que buscas. Un asesor responderá con la disponibilidad vigente."],
@@ -74,6 +90,8 @@ const pages = [
     title: "Retatrutida: agonista triple en investigación | MG Dermalab",
     description: "Conoce qué es la retatrutida, cómo activa los receptores GIP, GLP-1 y glucagón y cuál es su estatus actual de investigación clínica.",
     intro: "Una molécula investigacional que reúne actividad sobre tres sistemas receptores y se estudia dentro del desarrollo cardiometabólico de Lilly.",
+    image: "assets/retatrutida-vial-60mg.png", width: 1039, height: 1513,
+    imageAlt: "Vial de Retatrutida",
     note: "Contenido educativo basado en información oficial de Lilly sobre su programa de investigación clínica.",
     related: [["tirzepatida", "Tirzepatida"], ["", "Catálogo MG Dermalab"]]
   }
@@ -95,6 +113,8 @@ for (const [slug, name, variant, description] of restylaneVariants) {
     slug, name, category: "Medicina estética · Restylane", presentation: variant,
     title: `${name} | Cotización | MG Dermalab`, description,
     intro: `${name} forma parte de la familia Restylane. MG Dermalab confirma disponibilidad y condiciones comerciales para cada solicitud.`,
+    image: "assets/restylane-family.avif", width: 1200, height: 800,
+    imageAlt: "Familia Restylane de Galderma",
     note: `Consulta la variante ${variant} con atención comercial directa para médicos y clínicas.`,
     related: [["restylane", "Ver familia Restylane"], ["dysport", "Dysport"], ["sculptra", "Sculptra"]]
   });
@@ -117,6 +137,7 @@ const hubs = [
     description: "Línea completa Restylane de Galderma para médicos: Kysse para labios, Lyft, Contour, Eyelight y Skinboosters. Lote verificado y envío nacional. Cotiza hoy.",
     intro: "Explora la familia Restylane disponible para cotización profesional. Cada variante cuenta con una página comercial específica.",
     image: "assets/restylane-family.avif", width: 1200, height: 800,
+    imageAlt: "Familia Restylane de Galderma",
     items: restylaneVariants.map(([slug, name, variant]) => [slug, name, variant]),
     note: "Selecciona una variante para consultar su ficha comercial y solicitar disponibilidad."
   }
@@ -377,7 +398,8 @@ function head(page, prefix, type, faq) {
     <script>
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push(${json({event: "page_view", page_type: type === "hub" ? "seo_category" : "seo_product", product_name: page.name, category: page.category, presentation: type === "hub" ? page.items.map((i) => i[1]).join(", ") : page.presentation})});
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-T9MFWNKW");
+      window.dataLayer.push({"gtm.start":new Date().getTime(),event:"gtm.js"});
+      ${gtmBootstrap}
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -409,7 +431,7 @@ function head(page, prefix, type, faq) {
 
 function header(prefix, page) {
   return `<body class="seo-page${page.slug === "isotretinoina" ? " seo-isotretinoina" : ""}">
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9MFWNKW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    ${gtmNoscript}
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <header class="site-header" data-header>
       <a class="brand" href="${prefix || "/"}" aria-label="MG Dermalab inicio"><span class="brand-mark">MG</span><span>Dermalab</span></a>
@@ -631,6 +653,25 @@ for (const [slug, data] of Object.entries(consolidatedPages)) {
   fs.writeFileSync(file, html);
 }
 
+const restylaneFamilyImage = '<figure class="seo-catalog-card-media"><img src="assets/restylane-family.avif" alt="Familia Restylane de Galderma" width="1200" height="800" loading="lazy"></figure>';
+const medicineFile = `${root}/medicina-estetica.html`;
+let medicineHtml = fs.readFileSync(medicineFile, "utf8");
+for (const [slug] of restylaneVariants) {
+  medicineHtml = medicineHtml.replace(
+    new RegExp(`(<a class="seo-catalog-card" href="${slug}">)<figure class="seo-catalog-card-media" aria-hidden="true"></figure>`),
+    `$1${restylaneFamilyImage}`
+  );
+}
+fs.writeFileSync(medicineFile, medicineHtml);
+
+const guideFile = `${root}/guia-restylane.html`;
+let guideHtml = fs.readFileSync(guideFile, "utf8");
+guideHtml = guideHtml.replace(
+  /(<section class="seo-hero[^>]*>[\s\S]*?<div class="seo-hero-copy">[\s\S]*?<\/div>)(<\/section>)/,
+  '$1<figure class="seo-product-visual"><img src="assets/restylane-family.avif" alt="Familia Restylane de Galderma" width="1200" height="800" fetchpriority="high"></figure>$2'
+);
+fs.writeFileSync(guideFile, guideHtml);
+
 const pageWhatsAppMessages = {
   dermatologia: "Hola, quiero cotizar productos de la línea de dermatología (isotretinoína). Producto: __. Cantidad: __. Ciudad: __",
   "medicina-estetica": "Hola, quiero cotizar productos de medicina estética. Producto: __. Cantidad: __. Ciudad: __",
@@ -669,7 +710,7 @@ for (const file of fs.readdirSync(root).filter((name) => name.endsWith(".html") 
     .replace(/<h2>Información antes de cotizar<\/h2>/g, "<h2>Preguntas frecuentes</h2>")
     .replace(/<h2>Enlaces relacionados<\/h2>/g, "<h2>Siguiente paso</h2>")
     .replace(/Comparte la línea, cantidad y ciudad\. Confirmaremos disponibilidad y condiciones comerciales\./g, "Cuéntanos qué necesitas y te respondemos por WhatsApp con disponibilidad y condiciones.");
-  fs.writeFileSync(path, html);
+  fs.writeFileSync(path, ensureGtm(html));
 }
 
 console.log(`Generated ${pages.length + hubs.length} SEO pages in flat form.`);

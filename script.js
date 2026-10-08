@@ -54,6 +54,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 const mobileViewport = window.matchMedia("(max-width: 980px)");
 const FORM_MIN_SUBMIT_MS = 2500;
 const LEAD_REQUEST_TIMEOUT_MS = 60000;
+const LEAD_WHATSAPP_FALLBACK_MS = 8000;
 
 let ticking = false;
 let turnstileWidgetId = null;
@@ -340,6 +341,7 @@ const trackProductWhatsAppClick = (productId) => {
   if (!productParams.product_name) return;
 
   trackEvent("whatsapp_click", {
+    page_path: window.location.pathname,
     location: "product-whatsapp",
     ...productParams,
   });
@@ -684,6 +686,40 @@ const setFormStatus = (form, message, state = "") => {
   }
 };
 
+const buildLeadWhatsAppHref = (payload) => {
+  const details = [
+    payload.nombre && `Nombre: ${payload.nombre}`,
+    payload.tipoCliente && `Tipo de cliente: ${payload.tipoCliente}`,
+    payload.producto && `Producto o línea: ${payload.producto}`,
+    payload.cantidad && `Cantidad: ${payload.cantidad}`,
+  ].filter(Boolean).join(". ");
+  const message = `Hola, estoy enviando una solicitud de cotización a MG Dermalab. ${details}`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+};
+
+const showLeadWhatsAppFallback = (form, payload) => {
+  const status = form.querySelector(".form-status");
+  if (!status || form.dataset.state !== "loading" || status.querySelector("[data-lead-whatsapp-fallback]")) return;
+  status.textContent = "El envío sigue en proceso. Si prefieres, también puedes continuar por WhatsApp. ";
+  const link = document.createElement("a");
+  link.href = buildLeadWhatsAppHref(payload);
+  link.target = "_blank";
+  link.rel = "noopener";
+  link.className = "contact-whatsapp form-whatsapp-fallback";
+  link.dataset.leadWhatsappFallback = "";
+  link.dataset.whatsappProduct = payload.producto || "Cotización general";
+  link.textContent = "Enviar por WhatsApp";
+  link.addEventListener("click", () => {
+    trackEvent("whatsapp_click", {
+      page_path: window.location.pathname,
+      product_name: payload.producto || "Cotización general",
+      line: payload.producto || document.querySelector("h1")?.textContent.trim() || document.title,
+      location: "lead-form-fallback",
+    });
+  });
+  status.appendChild(link);
+};
+
 const submitLeadForm = async (form, event) => {
   event.preventDefault();
 
@@ -720,13 +756,15 @@ const submitLeadForm = async (form, event) => {
     return;
   }
 
-  if (button) {
-    button.textContent = "Enviando...";
-  }
   form.setAttribute("aria-busy", "true");
-  setFormStatus(form, "Enviando...", "loading");
+  if (button) button.textContent = "Enviando tu solicitud...";
+  setFormStatus(form, "Enviando tu solicitud...", "loading");
   const requestController = new AbortController();
   const requestTimeout = window.setTimeout(() => requestController.abort(), LEAD_REQUEST_TIMEOUT_MS);
+  const whatsappFallbackTimeout = window.setTimeout(
+    () => showLeadWhatsAppFallback(form, payload),
+    LEAD_WHATSAPP_FALLBACK_MS
+  );
 
   try {
     const response = await fetch(LEADS_ENDPOINT, {
@@ -779,6 +817,7 @@ const submitLeadForm = async (form, event) => {
     });
   } finally {
     window.clearTimeout(requestTimeout);
+    window.clearTimeout(whatsappFallbackTimeout);
     if (button) {
       button.disabled = false;
       button.textContent = originalText;
@@ -791,6 +830,10 @@ leadForms.forEach((form) => {
   setLeadStartedAt(form);
   form.addEventListener("submit", (event) => submitLeadForm(form, event));
 });
+
+if (leadForms.length) {
+  initTurnstile();
+}
 
 if (contactForm && clientTypeSelect) {
   clientTypeSelect.addEventListener("change", updateRecetaField);
@@ -805,8 +848,22 @@ whatsappLinks.forEach((link) => {
     const productParams = getProductAnalyticsParams(cardProductId || modalProductId);
 
     trackEvent("whatsapp_click", {
+      page_path: window.location.pathname,
+      line: productParams.category || document.querySelector("h1")?.textContent.trim() || document.title,
       location: link.className || "whatsapp_link",
       ...productParams,
+    });
+  });
+});
+
+document.querySelectorAll('a[href*="wa.me/"]').forEach((link) => {
+  if (link.matches("[data-whatsapp-link], [data-product-whatsapp], [data-mg-whatsapp], [data-seo-whatsapp]")) return;
+  link.addEventListener("click", () => {
+    trackEvent("whatsapp_click", {
+      page_path: window.location.pathname,
+      product_name: link.dataset.whatsappProduct || link.dataset.productName || link.closest("[data-product]")?.dataset.product || "",
+      line: link.dataset.category || document.querySelector("h1")?.textContent.trim() || document.title,
+      location: link.className || "whatsapp_link",
     });
   });
 });
@@ -1078,6 +1135,8 @@ document.querySelectorAll("[data-mg-whatsapp]").forEach((link) => {
     const productParams = getProductAnalyticsParams("tirzepatida");
 
     trackEvent("whatsapp_click", {
+      page_path: window.location.pathname,
+      line: "Control de peso MG Dermalab",
       location: "product-whatsapp",
       ...productParams,
     });
