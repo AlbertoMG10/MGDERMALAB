@@ -74,6 +74,8 @@ const pages = [
     title: "Retatrutida: agonista triple en investigación | MG Dermalab",
     description: "Conoce qué es la retatrutida, cómo activa los receptores GIP, GLP-1 y glucagón y cuál es su estatus actual de investigación clínica.",
     intro: "Una molécula investigacional que reúne actividad sobre tres sistemas receptores y se estudia dentro del desarrollo cardiometabólico de Lilly.",
+    image: "assets/retatrutida-vial-60mg.png", width: 1039, height: 1513,
+    imageAlt: "Vial de Retatrutida",
     note: "Contenido educativo basado en información oficial de Lilly sobre su programa de investigación clínica.",
     related: [["tirzepatida", "Tirzepatida"], ["", "Catálogo MG Dermalab"]]
   }
@@ -95,6 +97,8 @@ for (const [slug, name, variant, description] of restylaneVariants) {
     slug, name, category: "Medicina estética · Restylane", presentation: variant,
     title: `${name} | Cotización | MG Dermalab`, description,
     intro: `${name} forma parte de la familia Restylane. MG Dermalab confirma disponibilidad y condiciones comerciales para cada solicitud.`,
+    image: "assets/restylane-family.avif", width: 1200, height: 800,
+    imageAlt: "Familia Restylane de Galderma",
     note: `Consulta la variante ${variant} con atención comercial directa para médicos y clínicas.`,
     related: [["restylane", "Ver familia Restylane"], ["dysport", "Dysport"], ["sculptra", "Sculptra"]]
   });
@@ -117,6 +121,7 @@ const hubs = [
     description: "Línea completa Restylane de Galderma para médicos: Kysse para labios, Lyft, Contour, Eyelight y Skinboosters. Lote verificado y envío nacional. Cotiza hoy.",
     intro: "Explora la familia Restylane disponible para cotización profesional. Cada variante cuenta con una página comercial específica.",
     image: "assets/restylane-family.avif", width: 1200, height: 800,
+    imageAlt: "Familia Restylane de Galderma",
     items: restylaneVariants.map(([slug, name, variant]) => [slug, name, variant]),
     note: "Selecciona una variante para consultar su ficha comercial y solicitar disponibilidad."
   }
@@ -630,6 +635,25 @@ for (const [slug, data] of Object.entries(consolidatedPages)) {
   });
   fs.writeFileSync(file, html);
 }
+
+const restylaneFamilyImage = '<figure class="seo-catalog-card-media"><img src="assets/restylane-family.avif" alt="Familia Restylane de Galderma" width="1200" height="800" loading="lazy"></figure>';
+const medicineFile = `${root}/medicina-estetica.html`;
+let medicineHtml = fs.readFileSync(medicineFile, "utf8");
+for (const [slug] of restylaneVariants) {
+  medicineHtml = medicineHtml.replace(
+    new RegExp(`(<a class="seo-catalog-card" href="${slug}">)<figure class="seo-catalog-card-media" aria-hidden="true"></figure>`),
+    `$1${restylaneFamilyImage}`
+  );
+}
+fs.writeFileSync(medicineFile, medicineHtml);
+
+const guideFile = `${root}/guia-restylane.html`;
+let guideHtml = fs.readFileSync(guideFile, "utf8");
+guideHtml = guideHtml.replace(
+  /(<section class="seo-hero[^>]*>[\s\S]*?<div class="seo-hero-copy">[\s\S]*?<\/div>)(<\/section>)/,
+  '$1<figure class="seo-product-visual"><img src="assets/restylane-family.avif" alt="Familia Restylane de Galderma" width="1200" height="800" fetchpriority="high"></figure>$2'
+);
+fs.writeFileSync(guideFile, guideHtml);
 
 const pageWhatsAppMessages = {
   dermatologia: "Hola, quiero cotizar productos de la línea de dermatología (isotretinoína). Producto: __. Cantidad: __. Ciudad: __",
